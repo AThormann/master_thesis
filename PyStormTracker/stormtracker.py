@@ -40,7 +40,7 @@ def hodges_tracker(input_file_path='name', output_file_name='output', track_vari
 def plot_tracks(data, min_length=0, projection=ccrs.PlateCarree()):
     fig, ax = plt.subplots(figsize=(10, 8), subplot_kw={'projection': projection})
     ax.coastlines()
-    ax.set_extend(np.min(data.lons), np.max(data.lons), np.min(data.lats), np.max(data.lats))
+    ax.set_extent([np.min(data.lons), np.max(data.lons), np.min(data.lats), np.max(data.lats)], crs=projection)
     ax.gridlines(draw_labels=True)
 
     for d in data:
