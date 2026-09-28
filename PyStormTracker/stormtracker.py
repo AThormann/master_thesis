@@ -31,8 +31,10 @@ def hodges_tracker(input_file_path='name', output_file_name='output', track_vari
     elif len(tracks) == 0:
         return False
     else:
+        #path = "PyStormTracker/json"
         tracks.write(f"{output_file_name}.trackjson")
-        return "Tracking done"
+        "Tracking done"
+        return tracks
 
 
 
