@@ -39,7 +39,7 @@ def hodges_tracker(input_file_path='name', output_file_name='output', track_vari
 
 
 
-def plot_tracks(data, min_length=0, projection=ccrs.PlateCarree(), points=True):
+def plot_tracks(data, min_length=0, projection=ccrs.PlateCarree(), points=True, text=True):
     fig, ax = plt.subplots(figsize=(10, 8), subplot_kw={'projection': projection})
     ax.coastlines()
     ax.set_extent([np.min(data.lons), np.max(data.lons), np.min(data.lats), np.max(data.lats)], crs=projection)
@@ -51,7 +51,8 @@ def plot_tracks(data, min_length=0, projection=ccrs.PlateCarree(), points=True):
             if points == True:
                 ax.plot(d.lons, d.lats, 'go', transform=projection)  # Track points
             ax.plot(d.lons[0], d.lats[0], 'k', transform=projection)  # Start point
-            ax.text(d.lons[0], d.lats[0], str(pd.to_datetime(d.times[0], unit='ms')), transform=projection)  # Track start time
+            if text == True:
+                ax.text(d.lons[0], d.lats[0], str(pd.to_datetime(d.times[0], unit='ms')), transform=projection)  # Track start time
     ax.set_title(f"ETC tracks in NA between {pd.to_datetime(data[0].times[0], unit="ms")} and {pd.to_datetime(data[-1].times[-1], unit="ms")}")
 
 
