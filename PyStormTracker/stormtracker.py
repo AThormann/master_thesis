@@ -1,3 +1,6 @@
+import os
+import warnings
+
 import numpy as np
 import xarray as xr
 import netCDF4 as nc
@@ -6,11 +9,24 @@ import cartopy.crs as ccrs
 import pandas as pd
 
 import pystormtracker as pst
+from pystormtracker.sample import sample_tracks
 
-def hodges_tracker(input_file_path='name', output_file_name='output', track_variable='vo', min_track_points=10, taper_points=10, lmin=5,lmax=42,dmax=9.0,min_object_grid_points=18):
-    
-    data_file = xr.open_dataset(input_file_path)
-    tracker = pst.HodgesTracker(min_track_points =min_track_points, taper_points=taper_points, lmin=lmin, lmax=lmax, dmax=dmax, min_object_grid_points=min_object_grid_points)
+def hodges_tracker(input_file_path='name', output_file_name='output', track_variable='vo', min_track_points=10, taper_points=10, lmin=5,lmax=42,dmax=6.5,min_object_grid_points=18,
+                   object_threshold=None, use_dmax_zones=True, exclude_boundary_extrema=False):
+    """
+    Run the Hodges tracker on a file path or an already prepared xarray Dataset.
+
+    dmax (degrees per time step) is only used when use_dmax_zones=False; otherwise
+    pystormtracker uses its default latitude zones (6.5 deg in the extratropics).
+    """
+    if isinstance(input_file_path, xr.Dataset):
+        data_file = input_file_path
+    else:
+        data_file = xr.open_dataset(input_file_path)
+
+    extra = {} if use_dmax_zones else {"dmax_zones": np.empty((0, 5))}
+    tracker = pst.HodgesTracker(min_track_points =min_track_points, taper_points=taper_points, lmin=lmin, lmax=lmax, dmax=dmax, min_object_grid_points=min_object_grid_points,
+                                exclude_boundary_extrema=exclude_boundary_extrema, **extra)
 
     if track_variable == 'vo':
         detect = 'max'
@@ -22,8 +38,8 @@ def hodges_tracker(input_file_path='name', output_file_name='output', track_vari
     tracks = tracker.track(
         data_file,
         track_variable,
-        detection_mode= detect, 
-        #object_threshold=2e-5
+        detection_mode= detect,
+        object_threshold=object_threshold,
     )
 
     if tracks is None:
@@ -32,11 +48,10 @@ def hodges_tracker(input_file_path='name', output_file_name='output', track_vari
         return False
     else:
         #path = "PyStormTracker/json"
-        tracks.write(f"{output_file_name}.trackjson")
+        if output_file_name:
+            tracks.write(f"{output_file_name}.trackjson")
         "Tracking done"
         return tracks
-
-
 
 
 def plot_tracks(data, min_length=0, projection=ccrs.PlateCarree(), points=True, text=True):
@@ -246,3 +261,220 @@ def track_statistics(tracks, ds, samples=DEFAULT_SAMPLES, radius_km=500,
         summary["time_of_vo_max"] = pd.Series(points.loc[idx.values, "time"].values, index=idx.index)
  
     return points, summary.reset_index()
+
+
+# --------------------------------------------------------------------------
+# Regional tracking (North Atlantic / Northern Europe) and post-processing
+# --------------------------------------------------------------------------
+
+EARTH_RADIUS_KM = 6371.0
+
+
+def prepare_tracking_field(ds, variable="vo", level=850, domain=None):
+    """
+    Return a clean (time, latitude, longitude) Dataset with only the tracking variable.
+
+    - selects the pressure level (if there is one)
+    - converts longitudes to -180..180 and sorts them (ERA5 is often 0..360)
+    - cuts out the tracking domain (lon_min, lon_max, lat_min, lat_max)
+    """
+    if isinstance(ds, (str, os.PathLike)):
+        ds = xr.open_dataset(ds)
+    da = ds[variable]
+    if "pressure_level" in da.dims:
+        da = da.sel(pressure_level=level, method="nearest")
+    da = da.drop_vars([c for c in ("pressure_level", "expver", "number") if c in da.coords])
+
+    lon = da["longitude"]
+    if float(lon.max()) > 180:
+        da = da.assign_coords(longitude=((lon + 180) % 360) - 180)
+    da = da.sortby("longitude")
+
+    if domain is not None:
+        lon_min, lon_max, lat_min, lat_max = domain
+        lat_slice = slice(lat_max, lat_min) if da["latitude"][0] > da["latitude"][-1] else slice(lat_min, lat_max)
+        da = da.sel(longitude=slice(lon_min, lon_max), latitude=lat_slice)
+    return da.to_dataset(name=variable)
+
+
+def haversine_km(lat1, lon1, lat2, lon2):
+    """Great-circle distance in km (works on numpy arrays)."""
+    lat1, lon1, lat2, lon2 = map(np.radians, (lat1, lon1, lat2, lon2))
+    a = np.sin((lat2 - lat1) / 2) ** 2 + np.cos(lat1) * np.cos(lat2) * np.sin((lon2 - lon1) / 2) ** 2
+    return 2 * EARTH_RADIUS_KM * np.arcsin(np.sqrt(a))
+
+
+def _in_box(lat, lon, box):
+    lon_min, lon_max, lat_min, lat_max = box
+    return (lon >= lon_min) & (lon <= lon_max) & (lat >= lat_min) & (lat <= lat_max)
+
+
+def tracks_to_points(tracks):
+    """One row per track point: track_id, time, lat, lon and all track variables."""
+    cols = {
+        "track_id": np.repeat(np.asarray(tracks.ids), np.diff(tracks.offsets)),
+        "time": _to_datetime(tracks.times),
+        "lat": np.asarray(tracks.lats),
+        "lon": np.asarray(tracks.lons),
+    }
+    for name, values in tracks.variables.items():
+        cols[name] = np.asarray(values)
+    return pd.DataFrame(cols)
+
+
+def summarise_tracks(tracks, region, domain, time_range=None, edge_buffer_deg=2.5):
+    """
+    One row per track with the quantities used by the post-processing filters.
+
+    region : (lon_min, lon_max, lat_min, lat_max) that we are interested in
+    domain : (lon_min, lon_max, lat_min, lat_max) of the field that was tracked
+    time_range : (first_time, last_time) of the tracked data, used to flag
+                 tracks that are cut off by the start/end of the period
+    edge_buffer_deg : points closer than this to the domain edge count as "at the edge"
+    """
+    pts = tracks_to_points(tracks)
+    var = tracks.primary_variable
+
+    # distance travelled between consecutive points of the same track
+    same = pts["track_id"].eq(pts["track_id"].shift())
+    step = haversine_km(pts["lat"].shift(), pts["lon"].shift(), pts["lat"], pts["lon"])
+    pts["step_km"] = np.where(same, step, 0.0)
+
+    lon_min, lon_max, lat_min, lat_max = domain
+    inner = (lon_min + edge_buffer_deg, lon_max - edge_buffer_deg,
+             lat_min + edge_buffer_deg, lat_max - edge_buffer_deg)
+    pts["in_region"] = _in_box(pts["lat"], pts["lon"], region)
+    pts["at_edge"] = ~_in_box(pts["lat"], pts["lon"], inner)
+
+    g = pts.groupby("track_id", sort=False)
+    s = pd.DataFrame({
+        "n_points": g.size(),
+        "start_time": g["time"].first(),
+        "end_time": g["time"].last(),
+        "lat_genesis": g["lat"].first(),
+        "lon_genesis": g["lon"].first(),
+        "lat_lysis": g["lat"].last(),
+        "lon_lysis": g["lon"].last(),
+        "path_km": g["step_km"].sum(),
+        "n_in_region": g["in_region"].sum(),
+        "frac_at_edge": g["at_edge"].mean(),
+    })
+    s["duration_h"] = (s["end_time"] - s["start_time"]) / pd.Timedelta(hours=1)
+    s["separation_km"] = haversine_km(s["lat_genesis"], s["lon_genesis"], s["lat_lysis"], s["lon_lysis"])
+    s["genesis_in_region"] = _in_box(s["lat_genesis"], s["lon_genesis"], region)
+
+    # intensity: vo -> maximum, msl -> minimum
+    idx = g[var].idxmin() if tracks.mode == "min" else g[var].idxmax()
+    s[f"{var}_peak"] = pts.loc[idx.values, var].values
+    s["time_peak"] = pts.loc[idx.values, "time"].values
+    s["lat_peak"] = pts.loc[idx.values, "lat"].values
+    s["lon_peak"] = pts.loc[idx.values, "lon"].values
+    s["peak_in_region"] = _in_box(s["lat_peak"], s["lon_peak"], region)
+
+    if time_range is not None:
+        t0, t1 = pd.Timestamp(time_range[0]), pd.Timestamp(time_range[1])
+        s["starts_at_first_frame"] = s["start_time"] <= t0
+        s["ends_at_last_frame"] = s["end_time"] >= t1
+    return s.reset_index(), pts
+
+
+def postprocess_tracks(tracks, region, domain, time_range=None,
+                       region_criterion="passes", min_points_in_region=1,
+                       min_duration_h=48, min_separation_km=1000,
+                       min_peak=None, max_frac_at_edge=0.5,
+                       edge_buffer_deg=2.5, drop_time_truncated=False):
+    """
+    Filter raw Hodges tracks down to the storms we want in the region.
+
+    Every criterion becomes a boolean column in `summary` (True = passes), and
+    `keep` is the AND of all of them, so you can see why each track was removed.
+
+    region_criterion : "passes"  -> at least `min_points_in_region` points in the region
+                       "genesis" -> the first point is in the region
+                       "peak"    -> the point of maximum intensity is in the region
+    min_duration_h    : minimum lifetime in hours
+    min_separation_km : minimum distance between genesis and lysis (removes stationary features)
+    min_peak          : minimum peak intensity of the tracked variable (vo: s-1, msl: Pa; msl uses <=)
+    max_frac_at_edge  : maximum fraction of points within `edge_buffer_deg` of the domain edge
+    drop_time_truncated : also remove tracks touching the first/last time step
+
+    Returns (filtered Tracks, summary DataFrame for all tracks, per-point DataFrame for all tracks)
+    """
+    summary, points = summarise_tracks(tracks, region, domain, time_range, edge_buffer_deg)
+    var = tracks.primary_variable
+
+    if region_criterion == "passes":
+        summary["ok_region"] = summary["n_in_region"] >= min_points_in_region
+    elif region_criterion == "genesis":
+        summary["ok_region"] = summary["genesis_in_region"]
+    elif region_criterion == "peak":
+        summary["ok_region"] = summary["peak_in_region"]
+    else:
+        raise ValueError("region_criterion must be 'passes', 'genesis' or 'peak'")
+
+    summary["ok_duration"] = summary["duration_h"] >= min_duration_h
+    summary["ok_separation"] = summary["separation_km"] >= min_separation_km
+    summary["ok_edge"] = summary["frac_at_edge"] <= max_frac_at_edge
+    if min_peak is None:
+        summary["ok_peak"] = True
+    elif tracks.mode == "min":
+        summary["ok_peak"] = summary[f"{var}_peak"] <= min_peak
+    else:
+        summary["ok_peak"] = summary[f"{var}_peak"] >= min_peak
+    if drop_time_truncated and time_range is not None:
+        summary["ok_time"] = ~(summary["starts_at_first_frame"] | summary["ends_at_last_frame"])
+    else:
+        summary["ok_time"] = True
+
+    ok_cols = [c for c in summary.columns if c.startswith("ok_")]
+    summary["keep"] = summary[ok_cols].all(axis=1)
+
+    # summary rows are in the same order as the tracks, so the mask lines up
+    filtered = tracks.filter(summary["keep"].to_numpy())
+    return filtered, summary, points
+
+
+def filter_report(summary):
+    """How many tracks fail each criterion (a track can fail several)."""
+    ok_cols = [c for c in summary.columns if c.startswith("ok_")]
+    report = pd.DataFrame({
+        "removed_by_this_criterion": [(~summary[c]).sum() for c in ok_cols],
+        "removed_only_by_this_criterion": [
+            ((~summary[c]) & summary[[o for o in ok_cols if o != c]].all(axis=1)).sum() for c in ok_cols
+        ],
+    }, index=[c[3:] for c in ok_cols])
+    print(f"raw tracks: {len(summary)}, kept: {summary['keep'].sum()}")
+    return report
+
+
+def plot_regional_tracks(tracks, region, domain, summary=None, ax=None, title=None):
+    """
+    Plot tracks with the region (red) and tracking domain (black dashed) boxes.
+    If `summary` is given, removed tracks are drawn in light grey.
+    """
+    proj = ccrs.LambertConformal(central_longitude=-15, central_latitude=55)
+    pc = ccrs.PlateCarree()
+    if ax is None:
+        fig, ax = plt.subplots(figsize=(11, 8), subplot_kw={"projection": proj})
+    ax.set_extent([domain[0] - 2, domain[1] + 2, domain[2] - 2, domain[3]], crs=pc)
+    ax.coastlines(linewidth=0.6)
+    ax.gridlines(draw_labels=True, linewidth=0.3)
+
+    for box, style in ((domain, dict(color="k", linestyle="--")), (region, dict(color="red"))):
+        # densify the edges so they follow parallels/meridians in the projection
+        lo = np.linspace(box[0], box[1], 100)
+        la = np.linspace(box[2], box[3], 100)
+        xs = np.concatenate([lo, np.full(100, box[1]), lo[::-1], np.full(100, box[0])])
+        ys = np.concatenate([np.full(100, box[2]), la, np.full(100, box[3]), la[::-1]])
+        ax.plot(xs, ys, lw=1.5, transform=pc, **style)
+
+    keep = None if summary is None else dict(zip(summary["track_id"], summary["keep"]))
+    for tr in tracks:
+        kept = True if keep is None else keep.get(tr.track_id, True)
+        if kept:
+            ax.plot(tr.lons, tr.lats, "-", lw=1.4, transform=pc)
+            ax.plot(tr.lons[0], tr.lats[0], "k.", ms=6, transform=pc)
+        else:
+            ax.plot(tr.lons, tr.lats, "-", color="0.75", lw=0.8, transform=pc, zorder=0)
+    ax.set_title(title or "Tracks")
+    return ax
