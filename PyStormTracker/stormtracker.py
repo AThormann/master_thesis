@@ -54,15 +54,19 @@ def hodges_tracker(input_file_path='name', output_file_name='output', track_vari
         return tracks
 
 
-def plot_tracks(data, min_length=0, projection=ccrs.PlateCarree(), points=True, text=True):
-    fig, ax = plt.subplots(figsize=(10, 8), subplot_kw={'projection': projection})
+def plot_tracks(data, min_length=0, projection=ccrs.PlateCarree(), points=True, text=True, title=None, n_rows=1, n_cols=1):
+    """Plot tracks on a new map, or on an existing cartopy axis given as `ax` (e.g. a subplot)."""
+    fig, ax = plt.subplots(n_rows, n_cols, figsize=(10, 8), subplot_kw={'projection': projection})
+    
     ax.coastlines()
     ax.set_extent([np.min(data.lons), np.max(data.lons), np.min(data.lats), np.max(data.lats)], crs=projection)
     ax.gridlines(draw_labels=True)
 
     for d in data:
         if len(d) >= min_length:
-            ax.plot(d.lons, d.lats, transform=projection)
+            # Geodetic: segments follow great circles, so tracks crossing the
+            # dateline (179 -> -179) are not drawn as a line across the whole map
+            ax.plot(d.lons, d.lats, transform=ccrs.Geodetic())
             if points == True:
                 ax.plot(d.lons, d.lats, 'go', transform=projection)  # Track points
             ax.plot(d.lons[0], d.lats[0], 'k', transform=projection)  # Start point
@@ -70,10 +74,68 @@ def plot_tracks(data, min_length=0, projection=ccrs.PlateCarree(), points=True, 
                 ax.text(d.lons[0], d.lats[0], str(pd.to_datetime(d.times[0], unit='ms')), transform=projection)  # Track start time
     ax.set_title(f"ETC tracks in NA between {pd.to_datetime(data[0].times[0], unit="ms")} and {pd.to_datetime(data[-1].times[-1], unit="ms")}")
 
+    return fig, ax
 
 
 
 
+
+def load_st_report(file_path, variable="msl", units="Pa", mode="min", scale=100.0):
+    """
+    Read a storm report text file (e.g. Data/st_report.txt) into a Tracks object,
+    so it can be used like the output of hodges_tracker / pst.load_tracks.
+
+    The file is a list of blocks, one per start time:
+
+        1990/01/01  00   Number of Storms Begun  2
+             1   1     93.93   -5.24   1007.38    1990/01/01  00
+             ...
+
+    with the columns: storm number (within the block), point number, longitude,
+    latitude, central pressure, date, hour. Storm numbers restart in every block,
+    so tracks get new running ids 1, 2, 3, ... in file order.
+
+    variable / units / mode describe the value column after multiplying it by
+    `scale`. The file has central pressure in hPa; pystormtracker wants 'msl'
+    in Pa, so the default scale is 100.
+    """
+    lons, lats, values, times, offsets = [], [], [], [], []
+    n_announced = 0
+    block = 0          # counts header lines, to separate storms with the same number
+    current = None     # (block, storm number) of the track being read
+
+    with open(file_path) as f:
+        for line_no, line in enumerate(f, start=1):
+            if not line.strip():
+                continue
+            parts = line.split()
+            if "Number of Storms Begun" in line:
+                block += 1
+                n_announced += int(parts[-1])
+                continue
+            if len(parts) != 7:
+                raise ValueError(f"{file_path}, line {line_no}: cannot read {line!r}")
+
+            storm = (block, int(parts[0]))
+            if storm != current:
+                current = storm
+                offsets.append(len(lons))
+            lons.append(float(parts[2]))
+            lats.append(float(parts[3]))
+            values.append(float(parts[4]))
+            times.append(f"{parts[5].replace('/', '-')}T{parts[6]}")
+
+    n_tracks = len(offsets)
+    offsets.append(len(lons))
+    if n_tracks != n_announced:
+        warnings.warn(f"The headers announce {n_announced} storms but {n_tracks} were read.")
+
+    times_ms = np.array(times, dtype="datetime64[ms]").astype(np.int64)
+    metadata = pst.models.tracks.TracksMetadata(primary_variable=variable, mode=mode,
+                                                units={variable: units})
+    return pst.Tracks(ids=np.arange(1, n_tracks + 1), offsets=np.array(offsets),
+                      times=times_ms, lats=np.array(lats), lons=np.array(lons),
+                      variables={variable: np.array(values) * scale}, metadata=metadata)
 
 
 #plotting method for tracks in json format
