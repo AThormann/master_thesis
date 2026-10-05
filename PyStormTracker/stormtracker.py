@@ -10,6 +10,8 @@ import pandas as pd
 
 import pystormtracker as pst
 from pystormtracker.sample import sample_tracks
+from pystormtracker.hodges.rsplice import filter_rsplice
+from pystormtracker.models.geo import DEG_TO_RAD, geod_dist
 
 def hodges_tracker(input_file_path='name', output_file_name='output', track_variable='vo', min_track_points=10, taper_points=10, lmin=5,lmax=42,dmax=6.5,min_object_grid_points=18,
                    object_threshold=None, use_dmax_zones=True, exclude_boundary_extrema=False):
@@ -440,9 +442,46 @@ def summarise_tracks(tracks, region, domain, time_range=None, edge_buffer_deg=2.
     return s.reset_index(), pts
 
 
+def rsplice_summary(tracks, min_points=8, max_points=None, distance_degrees=10.0,
+                    distance_mode="endpoint", cadence=np.timedelta64(6, "h")):
+    """
+    TRACK's RSPLICE filter (pystormtracker.hodges.rsplice.filter_rsplice) as a per-track table.
+
+    Columns:
+      rsplice_points           observed points + missing frames inside the track (gaps / cadence - 1)
+      rsplice_displacement_deg great-circle displacement in degrees, endpoint (genesis -> lysis)
+                               or travel (sum of all steps) depending on distance_mode
+      ok_rsplice               True if filter_rsplice keeps the track
+    """
+    cadence_ms = None if cadence is None else int(cadence / np.timedelta64(1, "ms"))
+    rows = []
+    for tr in tracks:
+        n = len(tr)
+        if cadence_ms is not None and n > 1:
+            n += int(np.sum(np.diff(tr.times) // cadence_ms - 1))
+        if len(tr) < 2:
+            disp = 0.0
+        elif distance_mode == "endpoint":
+            disp = geod_dist(float(tr.lats[0]), float(tr.lons[0]), float(tr.lats[-1]), float(tr.lons[-1]))
+        else:
+            disp = sum(geod_dist(float(tr.lats[i]), float(tr.lons[i]), float(tr.lats[i + 1]), float(tr.lons[i + 1]))
+                       for i in range(len(tr) - 1))
+        rows.append((tr.track_id, n, disp / DEG_TO_RAD))
+    out = pd.DataFrame(rows, columns=["track_id", "rsplice_points", "rsplice_displacement_deg"])
+
+    # the keep/drop decision itself comes from pystormtracker, so it matches TRACK exactly
+    kept = filter_rsplice(tracks, min_points=min_points, max_points=max_points,
+                          distance_degrees=distance_degrees, distance_mode=distance_mode,
+                          expected_cadence=cadence)
+    out["ok_rsplice"] = out["track_id"].isin(np.asarray(kept.ids))
+    return out
+
+
 def postprocess_tracks(tracks, region, domain, time_range=None,
                        region_criterion="passes", min_points_in_region=1,
-                       min_duration_h=48, min_separation_km=1000,
+                       rsplice_min_points=8, rsplice_max_points=None,
+                       rsplice_distance_degrees=10.0, rsplice_distance_mode="endpoint",
+                       rsplice_cadence=np.timedelta64(6, "h"),
                        min_peak=None, max_frac_at_edge=0.5,
                        edge_buffer_deg=2.5, drop_time_truncated=False):
     """
@@ -454,8 +493,10 @@ def postprocess_tracks(tracks, region, domain, time_range=None,
     region_criterion : "passes"  -> at least `min_points_in_region` points in the region
                        "genesis" -> the first point is in the region
                        "peak"    -> the point of maximum intensity is in the region
-    min_duration_h    : minimum lifetime in hours
-    min_separation_km : minimum distance between genesis and lysis (removes stationary features)
+    rsplice_*         : lifetime and displacement filter of TRACK (filter_rsplice):
+                        keep tracks with min_points <= points (incl. missing frames) <= max_points
+                        and displacement >= distance_degrees ("endpoint" or "travel")
+    rsplice_cadence   : time step of the data, used to count missing frames (ERA5 here: 6 h)
     min_peak          : minimum peak intensity of the tracked variable (vo: s-1, msl: Pa; msl uses <=)
     max_frac_at_edge  : maximum fraction of points within `edge_buffer_deg` of the domain edge
     drop_time_truncated : also remove tracks touching the first/last time step
@@ -463,6 +504,10 @@ def postprocess_tracks(tracks, region, domain, time_range=None,
     Returns (filtered Tracks, summary DataFrame for all tracks, per-point DataFrame for all tracks)
     """
     summary, points = summarise_tracks(tracks, region, domain, time_range, edge_buffer_deg)
+    rs = rsplice_summary(tracks, min_points=rsplice_min_points, max_points=rsplice_max_points,
+                         distance_degrees=rsplice_distance_degrees, distance_mode=rsplice_distance_mode,
+                         cadence=rsplice_cadence)
+    summary = summary.merge(rs, on="track_id", how="left", validate="one_to_one")
     var = tracks.primary_variable
 
     if region_criterion == "passes":
@@ -474,8 +519,6 @@ def postprocess_tracks(tracks, region, domain, time_range=None,
     else:
         raise ValueError("region_criterion must be 'passes', 'genesis' or 'peak'")
 
-    summary["ok_duration"] = summary["duration_h"] >= min_duration_h
-    summary["ok_separation"] = summary["separation_km"] >= min_separation_km
     summary["ok_edge"] = summary["frac_at_edge"] <= max_frac_at_edge
     if min_peak is None:
         summary["ok_peak"] = True
