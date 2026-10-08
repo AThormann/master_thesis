@@ -79,7 +79,70 @@ def plot_tracks(data, min_length=0, projection=ccrs.PlateCarree(), points=True, 
     return fig, ax
 
 
+import numpy as np
+import xarray as xr
 
+MISSING = 1.0e25
+COLS = ["step", "lon", "lat", "vorticity", "mslp_lon", "mslp_lat", "mslp"]
+
+
+def load_tracks(path):
+    """Parse a TRACK-format file into an xarray.Dataset with one `obs` dimension.
+
+    `track_id` is a coordinate on `obs`. Missing values (1e25) become NaN.
+    """
+    rows, track_ids = [], []
+    current_id = None
+
+    with open(path) as f:
+        for line in f:
+            line = line.strip()
+            if line.startswith("TRACK_ID"):
+                current_id = int(line.split()[1])
+            elif current_id is not None and "&" in line:
+                vals = line.replace("&", " ").split()
+                if len(vals) == len(COLS):
+                    rows.append([float(v) for v in vals])
+                    track_ids.append(current_id)
+
+    data = np.array(rows)
+    data[data >= MISSING] = np.nan
+
+    ds = xr.Dataset(
+        {name: ("obs", data[:, i]) for i, name in enumerate(COLS)},
+        coords={"track_id": ("obs", np.array(track_ids))},
+    )
+    ds["step"] = ds["step"].astype(int)
+    return ds
+
+
+def to_padded(ds):
+    """Reshape to a rectangular (track_id, point) Dataset, NaN-padded."""
+    df = ds.to_dataframe().reset_index(drop=True)
+    df["point"] = df.groupby("track_id").cumcount()
+    return df.set_index(["track_id", "point"]).to_xarray()
+
+
+def select_track(ds, track_id):
+    """Return the points of a single track."""
+    return ds.where(ds.track_id == track_id, drop=True)
+
+
+def wrap_lon(lon, to="-180"):
+    """Convert longitudes between 0..360 and -180..180 conventions."""
+    if to == "-180":
+        return ((lon + 180) % 360) - 180
+    return lon % 360
+
+
+def track_summary(ds):
+    """Per-track stats: number of points, peak vorticity, lowest MSLP."""
+    g = ds.groupby("track_id")
+    return xr.Dataset({
+        "n_points": g.count()["lon"],
+        "max_vorticity": g.max()["vorticity"],
+        "min_mslp": g.min()["mslp"],
+    })
 
 
 def load_st_report(file_path, variable="msl", units="Pa", mode="min", scale=100.0):
@@ -552,7 +615,7 @@ def filter_report(summary):
     return report
 
 
-def plot_regional_tracks(tracks, region, domain, summary=None, ax=None, title=None):
+def plot_regional_tracks(tracks, region, domain, summary=None, ax=None, title=None, object=True):
     """
     Plot tracks with the region (red) and tracking domain (black dashed) boxes.
     If `summary` is given, removed tracks are drawn in light grey.
@@ -572,14 +635,20 @@ def plot_regional_tracks(tracks, region, domain, summary=None, ax=None, title=No
         xs = np.concatenate([lo, np.full(100, box[1]), lo[::-1], np.full(100, box[0])])
         ys = np.concatenate([np.full(100, box[2]), la, np.full(100, box[3]), la[::-1]])
         ax.plot(xs, ys, lw=1.5, transform=pc, **style)
+    if object:  
+        keep = None if summary is None else dict(zip(summary["track_id"], summary["keep"]))
+        for tr in tracks:
+            kept = True if keep is None else keep.get(tr.track_id, True)
+            if kept:
+                ax.plot(tr.lons, tr.lats, "-", lw=1.4, transform=pc)
+                ax.plot(tr.lons[0], tr.lats[0], "k.", ms=6, transform=pc)
+            else:
+                ax.plot(tr.lons, tr.lats, "-", color="0.75", lw=0.8, transform=pc, zorder=0)
 
-    keep = None if summary is None else dict(zip(summary["track_id"], summary["keep"]))
-    for tr in tracks:
-        kept = True if keep is None else keep.get(tr.track_id, True)
-        if kept:
-            ax.plot(tr.lons, tr.lats, "-", lw=1.4, transform=pc)
-            ax.plot(tr.lons[0], tr.lats[0], "k.", ms=6, transform=pc)
-        else:
-            ax.plot(tr.lons, tr.lats, "-", color="0.75", lw=0.8, transform=pc, zorder=0)
+    else:
+        for i in np.unique(tracks.track_id):
+            tr = select_track(tracks, i)
+            ax.plot(tr.lon, tr.lat, "-", lw=1.4, transform=pc)
+            ax.plot(tr.lon[0], tr.lat[0], "k.", ms=6, transform=pc)
     ax.set_title(title or "Tracks")
     return ax
