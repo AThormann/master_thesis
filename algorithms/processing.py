@@ -27,7 +27,7 @@ def prepare_tracking_field(ds, variable="vo", level=850, domain=None):
     Return a clean (time, latitude, longitude) Dataset with only the tracking variable.
 
     - selects the pressure level (if there is one)
-    - converts longitudes to -180..180 and sorts them (ERA5 is often 0..360)
+    - converts longitudes to -180..180 and sorts them
     - cuts out the tracking domain (lon_min, lon_max, lat_min, lat_max)
     """
     if isinstance(ds, (str, os.PathLike)):
@@ -52,8 +52,8 @@ def prepare_tracking_field(ds, variable="vo", level=850, domain=None):
 
 # CONDUCT TRACKING
 
-def hodges_tracker(input_file_path='name', output_file_name='output', track_variable='vo', min_track_points=10, taper_points=10, lmin=5,lmax=42,dmax=6.5,min_object_grid_points=18,
-                   object_threshold=None, use_dmax_zones=True, exclude_boundary_extrema=False):
+def hodges_tracker(input_file_path='name', output_file_name='output', track_variable='vo', min_track_points=10, taper_points=10, lmin=5,lmax=42,min_object_grid_points=18,
+                   object_threshold=None, exclude_boundary_extrema=False):
     """
     Run the Hodges tracker on a file path or an already prepared xarray Dataset.
 
@@ -78,9 +78,9 @@ def hodges_tracker(input_file_path='name', output_file_name='output', track_vari
     else:
         data_file = xr.open_dataset(input_file_path)
 
-    extra = {} if use_dmax_zones else {"dmax_zones": np.empty((0, 5))}
-    tracker = pst.HodgesTracker(min_track_points =min_track_points, taper_points=taper_points, lmin=lmin, lmax=lmax, dmax=dmax, min_object_grid_points=min_object_grid_points,
-                                exclude_boundary_extrema=exclude_boundary_extrema, **extra)
+    
+    tracker = pst.HodgesTracker(min_track_points =min_track_points, taper_points=taper_points, lmin=lmin, lmax=lmax, min_object_grid_points=min_object_grid_points,
+                                exclude_boundary_extrema=exclude_boundary_extrema)
 
     if track_variable == 'vo':
         detect = 'max'
@@ -160,6 +160,7 @@ def summarise_tracks(tracks, region, domain, time_range=None, edge_buffer_deg=2.
                  tracks that are cut off by the start/end of the period
     edge_buffer_deg : points closer than this to the domain edge count as "at the edge"
     """
+    
     pts = tracks_to_points(tracks)
     var = tracks.primary_variable
 
@@ -306,26 +307,14 @@ def postprocess_tracks(tracks, region, domain, time_range=None,
     summary = summary.assign_coords(track_id=("track_id", summary["track_id"].to_numpy()))
     return filtered, summary, points
 
-
-
-
-def select_track(ds, track_id):
-    """Return the points of a single track."""
-    return ds.where(ds.track_id == track_id, drop=True)
-
-
-
-
-def wrap_lon(lon, to="-180"):
-    """Convert longitudes between 0..360 and -180..180 conventions."""
-    if to == "-180":
-        return ((lon + 180) % 360) - 180
-    return lon % 360
-
-
-
-
-
-
-
-
+def filter_report(summary):
+    """How many tracks fail each criterion (a track can fail several)."""
+    ok_cols = [c for c in summary.columns if c.startswith("ok_")]
+    report = pd.DataFrame({
+        "removed_by_this_criterion": [(~summary[c]).sum() for c in ok_cols],
+        "removed_only_by_this_criterion": [
+            ((~summary[c]) & summary[[o for o in ok_cols if o != c]].all(axis=1)).sum() for c in ok_cols
+        ],
+    }, index=[c[3:] for c in ok_cols])
+    print(f"raw tracks: {len(summary)}, kept: {summary['keep'].sum()}")
+    return report

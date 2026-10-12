@@ -26,9 +26,9 @@ def hodges_tracker(input_file_path='name', output_file_name='output', track_vari
     else:
         data_file = xr.open_dataset(input_file_path)
 
-    extra = {} if use_dmax_zones else {"dmax_zones": np.empty((0, 5))}
+    # extra = {} if use_dmax_zones else {"dmax_zones": np.empty((0, 5))}
     tracker = pst.HodgesTracker(min_track_points =min_track_points, taper_points=taper_points, lmin=lmin, lmax=lmax, dmax=dmax, min_object_grid_points=min_object_grid_points,
-                                exclude_boundary_extrema=exclude_boundary_extrema, **extra)
+                                 exclude_boundary_extrema=exclude_boundary_extrema)
 
     if track_variable == 'vo':
         detect = 'max'
