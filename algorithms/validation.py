@@ -191,3 +191,51 @@ def postprocess_validation_tracks(dataset, region, domain, time_range=None,
 
     return filtered, summary
 
+
+
+
+def plot_regional_tracks(tracks, region, domain, summary=None, ax=None, title=None, object=True):
+    """
+    Plot tracks with the region (red) and tracking domain (black dashed) boxes.
+    If `summary` is given, removed tracks are drawn in light grey.
+    """
+    proj = ccrs.LambertConformal(central_longitude=-15, central_latitude=55)
+    pc = ccrs.PlateCarree()
+    if ax is None:
+        fig, ax = plt.subplots(figsize=(11, 8), subplot_kw={"projection": proj})
+    ax.set_extent([domain[0] - 2, domain[1] + 2, domain[2] - 2, domain[3]], crs=pc)
+    ax.coastlines(linewidth=0.6)
+    ax.gridlines(draw_labels=True, linewidth=0.3)
+
+    for box, style in ((domain, dict(color="k", linestyle="--")), (region, dict(color="red"))):
+        # densify the edges so they follow parallels/meridians in the projection
+        lo = np.linspace(box[0], box[1], 100)
+        la = np.linspace(box[2], box[3], 100)
+        xs = np.concatenate([lo, np.full(100, box[1]), lo[::-1], np.full(100, box[0])])
+        ys = np.concatenate([np.full(100, box[2]), la, np.full(100, box[3]), la[::-1]])
+        ax.plot(xs, ys, lw=1.5, transform=pc, **style)
+    if object:  
+        keep = None if summary is None else dict(zip(summary["track_id"], summary["keep"]))
+        for tr in tracks:
+            kept = True if keep is None else keep.get(tr.track_id, True)
+            if kept:
+                ax.plot(tr.lons, tr.lats, "-", lw=1.4, transform=pc)
+                ax.plot(tr.lons[0], tr.lats[0], "k.", ms=6, transform=pc)
+            else:
+                ax.plot(tr.lons, tr.lats, "-", color="0.75", lw=0.8, transform=pc, zorder=0)
+
+    else:
+        keep = None if summary is None else dict(
+            zip(np.asarray(summary["track_id"]).tolist(),
+                np.asarray(summary["keep"]).tolist())
+        )
+        for i, tr in tracks.groupby("track_id"):
+            kept = True if keep is None else keep.get(i, True)
+            if kept:
+                ax.plot(tr.lon, tr.lat, "-", lw=1.4, transform=pc)
+                ax.plot(tr.lon.iloc[0], tr.lat.iloc[0], "k.", ms=6, transform=pc)
+    ax.set_title(title or "Tracks")
+    return ax
+
+
+
