@@ -72,7 +72,6 @@ def load_tracks(path, start_time=None, end_time=None):
 
 
 
-
 def summarise_tracks(dataset, region, domain, time_range=None, edge_buffer_deg=2.5):
     """
     One row per track with the quantities used by the post-processing filters.
@@ -85,7 +84,7 @@ def summarise_tracks(dataset, region, domain, time_range=None, edge_buffer_deg=2
     """
     
    
-    var = 'vorticity'
+    #var = 'vorticity'
 
 
     # distance travelled between consecutive points of the same track
@@ -116,9 +115,9 @@ def summarise_tracks(dataset, region, domain, time_range=None, edge_buffer_deg=2
     s["separation_km"] = haversine_km(s["lat_genesis"], s["lon_genesis"], s["lat_lysis"], s["lon_lysis"])
     s["genesis_in_region"] = _in_box(s["lat_genesis"], s["lon_genesis"], region)
 
-    # intensity: vo -> maximum, msl -> minimum
-    idx = g[var].idxmax()
-    s[f"{var}_peak"] = dataset.loc[idx.values, var].values
+    # intensity: vo -> maximum
+    idx = g['vorticity'].idxmax()
+    s[f"{'vorticity'}_peak"] = dataset.loc[idx.values, 'vorticity'].values
     s["time_peak"] = dataset.loc[idx.values, "time"].values
     s["lat_peak"] = dataset.loc[idx.values, "lat"].values
     s["lon_peak"] = dataset.loc[idx.values, "lon"].values
@@ -131,7 +130,7 @@ def summarise_tracks(dataset, region, domain, time_range=None, edge_buffer_deg=2
     return s.reset_index(), dataset
 
 
-def postprocess_validation_tracks(tracks, region, domain, time_range=None,
+def postprocess_validation_tracks(dataset, region, domain, time_range=None,
                        region_criterion="passes", min_points_in_region=1,
                        rsplice_min_points=8, rsplice_max_points=None,
                        rsplice_distance_degrees=10.0, rsplice_distance_mode="endpoint",
@@ -157,14 +156,14 @@ def postprocess_validation_tracks(tracks, region, domain, time_range=None,
 
     Returns (filtered Tracks, summary DataFrame for all tracks, per-point DataFrame for all tracks)
     """
-    summary, points = summarise_tracks(tracks, region, domain, time_range, edge_buffer_deg)
+    summary, points = summarise_tracks(dataset, region, domain, time_range, edge_buffer_deg)
 
 
-    rs = rsplice_summary(tracks, min_points=rsplice_min_points, max_points=rsplice_max_points,
-                         distance_degrees=rsplice_distance_degrees, distance_mode=rsplice_distance_mode,
-                         cadence=rsplice_cadence)
-    summary = summary.merge(rs, on="track_id", how="left", validate="one_to_one")
-    var = tracks.primary_variable
+    # rs = rsplice_summary(tracks, min_points=rsplice_min_points, max_points=rsplice_max_points,
+    #                      distance_degrees=rsplice_distance_degrees, distance_mode=rsplice_distance_mode,
+    #                      cadence=rsplice_cadence)
+    # summary = summary.merge(rs, on="track_id", how="left", validate="one_to_one")
+    
 
     if region_criterion == "passes":
         summary["ok_region"] = summary["n_in_region"] >= min_points_in_region
@@ -178,10 +177,8 @@ def postprocess_validation_tracks(tracks, region, domain, time_range=None,
     summary["ok_edge"] = summary["frac_at_edge"] <= max_frac_at_edge
     if min_peak is None:
         summary["ok_peak"] = True
-    elif tracks.mode == "min":
-        summary["ok_peak"] = summary[f"{var}_peak"] <= min_peak
     else:
-        summary["ok_peak"] = summary[f"{var}_peak"] >= min_peak
+        summary["ok_peak"] = summary[f"{'vorticity'}_peak"] >= min_peak
     if drop_time_truncated and time_range is not None:
         summary["ok_time"] = ~(summary["starts_at_first_frame"] | summary["ends_at_last_frame"])
     else:
@@ -191,7 +188,7 @@ def postprocess_validation_tracks(tracks, region, domain, time_range=None,
     summary["keep"] = summary[ok_cols].all(axis=1)
 
     # summary rows are in the same order as the tracks, so the mask lines up
-    filtered = tracks.filter(summary["keep"].to_numpy())
-    summary = summary.to_xarray()
-    summary = summary.assign_coords(track_id=("track_id", summary["track_id"].to_numpy()))
-    return filtered, summary, points
+    filtered = dataset.filter(summary["keep"].to_numpy())
+
+    return filtered, summary
+

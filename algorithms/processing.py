@@ -303,8 +303,7 @@ def postprocess_tracks(tracks, region, domain, time_range=None,
 
     # summary rows are in the same order as the tracks, so the mask lines up
     filtered = tracks.filter(summary["keep"].to_numpy())
-    summary = summary.to_xarray()
-    summary = summary.assign_coords(track_id=("track_id", summary["track_id"].to_numpy()))
+
     return filtered, summary, points
 
 def filter_report(summary):
