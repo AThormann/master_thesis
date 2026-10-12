@@ -16,6 +16,7 @@ from pystormtracker.models.geo import DEG_TO_RAD, geod_dist
 
 MISSING = 1.0e25
 COLS = ["step", "lon", "lat", "vorticity", "mslp_lon", "mslp_lat", "mslp"]
+EARTH_RADIUS_KM = 6371.0
 
 def wrap_lon(lon, to="-180"):
     """Convert longitudes between 0..360 and -180..180 conventions."""
@@ -64,10 +65,10 @@ def load_tracks(path, start_time=None, end_time=None):
     )
     ds["step"] = ds["step"].astype(int)
     ds["lon"] = wrap_lon(ds.lon)
+    ds = ds.to_pandas()
     times = pd.date_range(start=start_time, end=end_time, freq="6h")
     ds['time'] = times[ds['step']-1] # times are created from the step in the data set and step 1 is equal to the start time
     ds.pop("step") #delete the step column
-    ds =  ds.to_pandas()
     return ds
 
 
@@ -132,9 +133,6 @@ def summarise_tracks(dataset, region, domain, time_range=None, edge_buffer_deg=2
 
 def postprocess_validation_tracks(dataset, region, domain, time_range=None,
                        region_criterion="passes", min_points_in_region=1,
-                       rsplice_min_points=8, rsplice_max_points=None,
-                       rsplice_distance_degrees=10.0, rsplice_distance_mode="endpoint",
-                       rsplice_cadence=np.timedelta64(6, "h"),
                        min_peak=None, max_frac_at_edge=0.5,
                        edge_buffer_deg=2.5, drop_time_truncated=False):
     """
@@ -188,7 +186,8 @@ def postprocess_validation_tracks(dataset, region, domain, time_range=None,
     summary["keep"] = summary[ok_cols].all(axis=1)
 
     # summary rows are in the same order as the tracks, so the mask lines up
-    filtered = dataset.filter(summary["keep"].to_numpy())
+    #filtered = dataset.filter(summary["keep"].to_numpy())
+    filtered = dataset[dataset["track_id"].isin(summary.loc[summary["keep"], "track_id"])]
 
     return filtered, summary
 
