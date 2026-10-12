@@ -49,10 +49,10 @@ def hodges_tracker(input_file_path='name', output_file_name='output', track_vari
     elif len(tracks) == 0:
         return False
     else:
-        #path = "PyStormTracker/json"
+        
         if output_file_name:
             tracks.write(f"{output_file_name}.trackjson")
-        "Tracking done"
+        
         return tracks
 
 
@@ -622,6 +622,7 @@ def plot_regional_tracks(tracks, region, domain, summary=None, ax=None, title=No
     """
     proj = ccrs.LambertConformal(central_longitude=-15, central_latitude=55)
     pc = ccrs.PlateCarree()
+    
     if ax is None:
         fig, ax = plt.subplots(figsize=(11, 8), subplot_kw={"projection": proj})
     ax.set_extent([domain[0] - 2, domain[1] + 2, domain[2] - 2, domain[3]], crs=pc)

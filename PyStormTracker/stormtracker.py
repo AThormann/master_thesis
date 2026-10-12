@@ -502,6 +502,8 @@ def summarise_tracks(tracks, region, domain, time_range=None, edge_buffer_deg=2.
         t0, t1 = pd.Timestamp(time_range[0]), pd.Timestamp(time_range[1])
         s["starts_at_first_frame"] = s["start_time"] <= t0
         s["ends_at_last_frame"] = s["end_time"] >= t1
+
+    
     return s.reset_index(), pts
 
 
@@ -599,6 +601,8 @@ def postprocess_tracks(tracks, region, domain, time_range=None,
 
     # summary rows are in the same order as the tracks, so the mask lines up
     filtered = tracks.filter(summary["keep"].to_numpy())
+    summary = summary.to_xarray()
+    summary = summary.assign_coords(track_id=("track_id", summary["track_id"].to_numpy()))
     return filtered, summary, points
 
 
