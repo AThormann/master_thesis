@@ -16,6 +16,7 @@ from pystormtracker.models.geo import DEG_TO_RAD, geod_dist
 EARTH_RADIUS_KM = 6371.0
 REGION = (-80, 20, 30, 80)   # smaller region for tracking, limited by the domain, 10 deg smaller
 DOMAIN = (-90, 30, 20, 90)   # tracking domain (region + buffer), limited by the downloaded data
+#format: (lon_min, lon_max, lat_min, lat_max)
 
 
 
@@ -105,7 +106,7 @@ def hodges_tracker(input_file_path='name', output_file_name='output', track_vari
         if output_file_name:
         
             MODULE_DIR = os.path.dirname(os.path.abspath(__file__))
-            DEFAULT_OUTPUT_DIR = os.path.join(MODULE_DIR, "..", "tracksjson") 
+            DEFAULT_OUTPUT_DIR = os.path.join(MODULE_DIR, "..", "trackjson") 
             tracks.write(os.path.join(DEFAULT_OUTPUT_DIR, f"{output_file_name}.trackjson"))
 
         return tracks
