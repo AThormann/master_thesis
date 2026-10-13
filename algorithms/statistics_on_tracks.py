@@ -9,7 +9,7 @@ from pystormtracker.sample import sample_tracks
 
 def select_track(ds, track_id):
     """Return the points of a single track."""
-    return ds.where(ds.track_id == track_id, drop=True)
+    return ds.where(ds.track_id == track_id)
 
 DEFAULT_SAMPLES = (
     ("t2m", "min",  "t_min"),

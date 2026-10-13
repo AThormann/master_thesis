@@ -1,15 +1,8 @@
 import os
-import warnings
-
 import numpy as np
 import xarray as xr
-import netCDF4 as nc
-import matplotlib.pyplot as plt
-import cartopy.crs as ccrs
 import pandas as pd
-
 import pystormtracker as pst
-from pystormtracker.sample import sample_tracks
 from pystormtracker.hodges.rsplice import filter_rsplice
 from pystormtracker.models.geo import DEG_TO_RAD, geod_dist
 
@@ -64,8 +57,8 @@ def hodges_tracker(input_file_path='name', output_file_name='output', track_vari
         track_variable (str): Variable to track ('vo' for vorticity, 'msl' for mean sea level pressure).
         min_track_points (int): Minimum number of points required for a valid track.
         taper_points (int): Number of points to taper at the ends of tracks.
-        lmin (float): Minimum latitude for tracking.
-        lmax (float): Maximum latitude for tracking.
+        lmin (float): min wavenumber bandpass filter
+        lmax (float): Maximum wavenumber bandpass filter.
         dmax (float): Maximum distance between consecutive points in a track. (dmax (degrees per time step) is only used when use_dmax_zones=False; otherwise pystormtracker uses its default latitude zones (6.5 deg in the extratropics).)
         min_object_grid_points (int): Minimum number of grid points required for an object to be considered.
         object_threshold (float or None): Threshold value for object detection. If None, automatic detection is used.

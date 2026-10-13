@@ -144,10 +144,6 @@ def postprocess_validation_tracks(dataset, region, domain, time_range=None,
     region_criterion : "passes"  -> at least `min_points_in_region` points in the region
                        "genesis" -> the first point is in the region
                        "peak"    -> the point of maximum intensity is in the region
-    rsplice_*         : lifetime and displacement filter of TRACK (filter_rsplice):
-                        keep tracks with min_points <= points (incl. missing frames) <= max_points
-                        and displacement >= distance_degrees ("endpoint" or "travel")
-    rsplice_cadence   : time step of the data, used to count missing frames (ERA5 here: 6 h)
     min_peak          : minimum peak intensity of the tracked variable (vo: s-1, msl: Pa; msl uses <=)
     max_frac_at_edge  : maximum fraction of points within `edge_buffer_deg` of the domain edge
     drop_time_truncated : also remove tracks touching the first/last time step
@@ -176,7 +172,7 @@ def postprocess_validation_tracks(dataset, region, domain, time_range=None,
     if min_peak is None:
         summary["ok_peak"] = True
     else:
-        summary["ok_peak"] = summary[f"{'vorticity'}_peak"] >= min_peak
+        summary["ok_peak"] = summary["vorticity_peak"] >= min_peak
     if drop_time_truncated and time_range is not None:
         summary["ok_time"] = ~(summary["starts_at_first_frame"] | summary["ends_at_last_frame"])
     else:
@@ -190,6 +186,7 @@ def postprocess_validation_tracks(dataset, region, domain, time_range=None,
     filtered = dataset[dataset["track_id"].isin(summary.loc[summary["keep"], "track_id"])]
 
     return filtered, summary
+
 
 
 
