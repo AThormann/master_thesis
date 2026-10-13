@@ -103,7 +103,11 @@ def hodges_tracker(input_file_path='name', output_file_name='output', track_vari
     else:
         
         if output_file_name:
-            tracks.write(f"{output_file_name}.trackjson")
+        
+            MODULE_DIR = os.path.dirname(os.path.abspath(__file__))
+            DEFAULT_OUTPUT_DIR = os.path.join(MODULE_DIR, "..", "tracksjson") 
+            tracks.write(os.path.join(DEFAULT_OUTPUT_DIR, f"{output_file_name}.trackjson"))
+
         return tracks
 
 
