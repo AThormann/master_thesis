@@ -137,6 +137,7 @@ def summarise_tracks(dataset, region, domain, time_range=None, edge_buffer_deg=2
 def postprocess_validation_tracks(dataset, region, domain, time_range=None,
                        region_criterion="passes", min_points_in_region=1,
                        min_peak=None, max_frac_at_edge=0.5,
+                       min_points=8, min_distance_km =1000, distance_mode="endpoint",
                        edge_buffer_deg=2.5, drop_time_truncated=False):
     """
     Filter validation dataset tracks down to the storms we want in the region.
@@ -155,7 +156,8 @@ def postprocess_validation_tracks(dataset, region, domain, time_range=None,
     """
     summary, points = summarise_tracks(dataset, region, domain, time_range, edge_buffer_deg)
 
-    
+    dist = summary["separation_km"] if distance_mode == "endpoint" else summary["path_km"]
+    summary["ok_rsplice"] = (summary["n_points"] >= min_points) & (dist >= min_distance_km)
     # rs = rsplice_summary(tracks, min_points=rsplice_min_points, max_points=rsplice_max_points,
     #                      distance_degrees=rsplice_distance_degrees, distance_mode=rsplice_distance_mode,
     #                      cadence=rsplice_cadence)
@@ -189,8 +191,6 @@ def postprocess_validation_tracks(dataset, region, domain, time_range=None,
     filtered = dataset[dataset["track_id"].isin(summary.loc[summary["keep"], "track_id"])]
 
     return filtered, summary
-
-
 
 
 
