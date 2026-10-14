@@ -1,4 +1,5 @@
 
+from ast import Raise
 import os
 import warnings
 
@@ -68,7 +69,9 @@ def load_tracks(path, start_time=None, end_time=None):
     ds = ds.to_pandas()
     times = pd.date_range(start=start_time, end=end_time, freq="6h")
     ds['time'] = times[ds['step']-1] # times are created from the step in the data set and step 1 is equal to the start time
-    ds.pop("step") #delete the step column
+    #ds.pop("step") #delete the step column
+    if ds['step'].max() > len(times):
+        Raise(ValueError(f"Track steps exceed the number of time steps in the range {start_time} to {end_time}."))
     return ds
 
 
@@ -152,7 +155,7 @@ def postprocess_validation_tracks(dataset, region, domain, time_range=None,
     """
     summary, points = summarise_tracks(dataset, region, domain, time_range, edge_buffer_deg)
 
-
+    
     # rs = rsplice_summary(tracks, min_points=rsplice_min_points, max_points=rsplice_max_points,
     #                      distance_degrees=rsplice_distance_degrees, distance_mode=rsplice_distance_mode,
     #                      cadence=rsplice_cadence)
