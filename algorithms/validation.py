@@ -1,19 +1,10 @@
 
-
-import os
-import warnings
-
 import numpy as np
 import xarray as xr
-import netCDF4 as nc
 import matplotlib.pyplot as plt
 import cartopy.crs as ccrs
 import pandas as pd
-
 import pystormtracker as pst
-from pystormtracker.sample import sample_tracks
-from pystormtracker.hodges.rsplice import filter_rsplice
-from pystormtracker.models.geo import DEG_TO_RAD, geod_dist
 
 MISSING = 1.0e25
 COLS = ["step", "lon", "lat", "vorticity", "mslp_lon", "mslp_lat", "mslp"]
@@ -68,10 +59,14 @@ def load_tracks(path, start_time, end_time):
     ds["lon"] = wrap_lon(ds.lon)
     ds = ds.to_pandas()
     times = pd.date_range(start=start_time, end=end_time, freq="6h")
+    smin, smax = ds["step"].min(), ds["step"].max()
+    if smin < 1 or smax > len(times):
+        raise ValueError(f"Track steps span {smin}..{smax}, but {start_time} to {end_time} "
+                         f"has only {len(times)} time steps (valid: 1..{len(times)}).")
+
     ds['time'] = times[ds['step']-1] # times are created from the step in the data set and step 1 is equal to the start time
     #ds.pop("step") #delete the step column
-    if ds['step'].max() > len(times):
-        raise ValueError(f"Track steps exceed the number of time steps in the range {start_time} to {end_time}.")
+    
     return ds
 
 
@@ -121,7 +116,7 @@ def summarise_tracks(dataset, region, domain, time_range=None, edge_buffer_deg=2
 
     # intensity: vo -> maximum
     idx = g['vorticity'].idxmax()
-    s[f"{'vorticity'}_peak"] = dataset.loc[idx.values, 'vorticity'].values
+    s['vo_peak'] = dataset.loc[idx.values, 'vorticity'].values
     s["time_peak"] = dataset.loc[idx.values, "time"].values
     s["lat_peak"] = dataset.loc[idx.values, "lat"].values
     s["lon_peak"] = dataset.loc[idx.values, "lon"].values
@@ -177,7 +172,7 @@ def postprocess_validation_tracks(dataset, region, domain, time_range=None,
     if min_peak is None:
         summary["ok_peak"] = True
     else:
-        summary["ok_peak"] = summary["vorticity_peak"] >= min_peak
+        summary["ok_peak"] = summary["vo_peak"] >= min_peak
     if drop_time_truncated and time_range is not None:
         summary["ok_time"] = ~(summary["starts_at_first_frame"] | summary["ends_at_last_frame"])
     else:
