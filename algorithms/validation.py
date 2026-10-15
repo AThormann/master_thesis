@@ -1,5 +1,5 @@
 
-from ast import Raise
+
 import os
 import warnings
 
@@ -38,7 +38,7 @@ def _in_box(lat, lon, box):
 
 
 
-def load_tracks(path, start_time=None, end_time=None):
+def load_tracks(path, start_time, end_time):
     """Parse a TRACK-format file into an xarray.Dataset with one `obs` dimension.
 
     `track_id` is a coordinate on `obs`. Missing values (1e25) become NaN.
@@ -71,7 +71,7 @@ def load_tracks(path, start_time=None, end_time=None):
     ds['time'] = times[ds['step']-1] # times are created from the step in the data set and step 1 is equal to the start time
     #ds.pop("step") #delete the step column
     if ds['step'].max() > len(times):
-        Raise(ValueError(f"Track steps exceed the number of time steps in the range {start_time} to {end_time}."))
+        raise ValueError(f"Track steps exceed the number of time steps in the range {start_time} to {end_time}.")
     return ds
 
 
