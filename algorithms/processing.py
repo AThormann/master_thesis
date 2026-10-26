@@ -46,7 +46,7 @@ def prepare_tracking_field(ds, variable="vo", level=850, domain=None):
 
 # CONDUCT TRACKING
 
-def hodges_tracker(input_file_path='name', output_file_name='output', track_variable='vo', min_track_points=3, taper_points=10, lmin=5,lmax=42,min_object_grid_points=18,
+def hodges_tracker(input_file_path='name', output_file_name='output', track_variable='vo', min_track_points=3, taper_points=10, lmin=5,lmax=42, spectral_taper = 0.1, min_object_grid_points=18,
                    object_threshold=None, exclude_boundary_extrema=False):
     """
     Run the Hodges tracker on a file path or an already prepared xarray Dataset.
@@ -73,7 +73,7 @@ def hodges_tracker(input_file_path='name', output_file_name='output', track_vari
         data_file = xr.open_dataset(input_file_path)
 
     
-    tracker = pst.HodgesTracker(min_track_points =min_track_points, taper_points=taper_points, lmin=lmin, lmax=lmax, min_object_grid_points=min_object_grid_points,
+    tracker = pst.HodgesTracker(min_track_points =min_track_points, taper_points=taper_points, lmin=lmin, lmax=lmax, spectral_taper = spectral_taper, min_object_grid_points=min_object_grid_points,
                                 exclude_boundary_extrema=exclude_boundary_extrema)
 
     if track_variable == 'vo':

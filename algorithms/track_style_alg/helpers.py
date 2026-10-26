@@ -21,7 +21,7 @@ def haversine_km(lat1, lon1, lat2, lon2):
 
 # Determine if a point is inside af lat/lon box
 def _in_box(lat, lon, box):
-    lon_min, lat_min, lon_max, lat_max = box
+    lon_min, lon_max, lat_min, lat_max = box
     return (lon >= lon_min) & (lon <= lon_max) & (lat >= lat_min) & (lat <= lat_max)
 
 
