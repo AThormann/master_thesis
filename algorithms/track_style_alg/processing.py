@@ -45,8 +45,8 @@ def prepare_tracking_field(ds, variable="vo", level=850, domain=None):
 
 # CONDUCT TRACKING
 
-def hodges_tracker(input_file_path='name', output_file_name='output', track_variable='vo', min_track_points=3, taper_points=10, lmin=5,lmax=42, spectral_taper = 0.1, min_object_grid_points=18,
-                   object_threshold=None, exclude_boundary_extrema=False):
+def hodges_tracker(input_file_path='name', output_file_name='output', track_variable='vo', min_track_points=3, taper_points=0, lmin=5,lmax=42, spectral_taper = 0.1, min_object_grid_points=1,
+                   object_threshold=1e-5, exclude_boundary_extrema=False):
     """
     Run the Hodges tracker on a file path or an already prepared xarray Dataset.
 
@@ -55,12 +55,13 @@ def hodges_tracker(input_file_path='name', output_file_name='output', track_vari
         output_file_name (str): Name of the output file to save the tracks.
         track_variable (str): Variable to track ('vo' for vorticity, 'msl' for mean sea level pressure).
         min_track_points (int): Minimum number of points required for a valid track.
-        taper_points (int): Number of points to taper at the ends of tracks.
+        taper_points (int): Tapering at the edge of the tracking domain. Set to None if tracking on sphere.
+        spectral_taper (float): Fraction of the spectrum to taper at the end of the spectrum. Default is 0.1 (10%). 1 is square filter.
         lmin (float): min wavenumber bandpass filter
         lmax (float): Maximum wavenumber bandpass filter.
         dmax (float): Maximum distance between consecutive points in a track. (dmax (degrees per time step) is only used when use_dmax_zones=False; otherwise pystormtracker uses its default latitude zones (6.5 deg in the extratropics).)
         min_object_grid_points (int): Minimum number of grid points required for an object to be considered.
-        object_threshold (float or None): Threshold value for object detection. If None, automatic detection is used.
+        object_threshold (float or None): Threshold value for object detection. If None, automatic detection is used. Default is 1e-5 in Hodges and Preistley papers 
         exclude_boundary_extrema (bool): Whether to exclude extrema at the boundaries of the domain.
 
     

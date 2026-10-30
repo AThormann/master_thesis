@@ -4,7 +4,7 @@ import pandas as pd
 
 EARTH_RADIUS_KM = 6371.0
 MISSING = 1.0e25
-#format (lon_min, lat_min, lon_max, lat_max) or (west, south, east, north)
+#format (lon_min, lon_max, lat_min, lat_max) or (west, east, south, north)
 REGION = (-80, 20, 30, 80)   # smaller region for tracking, limited by the domain, 10 deg smaller
 
 DOMAIN = (-90, 30, 20, 90)   # tracking domain (region + buffer), limited by the downloaded data
