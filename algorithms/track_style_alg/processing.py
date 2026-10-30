@@ -109,7 +109,7 @@ def hodges_tracker(input_file_path='name', output_file_name='output', track_vari
 #POST-PROCESSING of tracks:
 
 
-def rsplice_summary(tracks, min_points=8, max_points=None, distance_degrees=9.0,
+def rsplice_summary(tracks, min_points=8, max_points=None, distance_degrees=10.0,
                     distance_mode="endpoint", cadence=np.timedelta64(6, "h")):
     """
     TRACK's RSPLICE filter (pystormtracker.hodges.rsplice.filter_rsplice) as a per-track table.
@@ -149,7 +149,7 @@ def rsplice_summary(tracks, min_points=8, max_points=None, distance_degrees=9.0,
 def postprocess_tracks(tracks, region, domain, time_range=None,
                        region_criterion="passes", min_points_in_region=1,
                        rsplice_min_points=8, rsplice_max_points=None,
-                       rsplice_distance_degrees=9.0, rsplice_distance_mode="endpoint",
+                       rsplice_distance_degrees=10.0, rsplice_distance_mode="endpoint",
                        rsplice_cadence=np.timedelta64(6, "h"),
                        min_peak=None, max_frac_at_edge=0.5,
                        edge_buffer_deg=2.5, drop_time_truncated=False):
