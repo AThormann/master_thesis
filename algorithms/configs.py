@@ -18,12 +18,24 @@ POSTPROCESS_CONFIG = dict(region=REGION,
                           time_range=TIME_RANGE,
                           region_criterion="passes",
                           min_points_in_region=1,
-                          rsplice_min_points=8,
+                          rsplice_min_points=8, #42 hours
                           rsplice_max_points=None,
-                          rsplice_distance_degrees=10.0,
+                          rsplice_distance_degrees=10.0, #Reproducing priestley
                           rsplice_distance_mode="endpoint",
                           rsplice_cadence=np.timedelta64(6, "h"),
                           min_peak=None,
                           max_frac_at_edge=0.5,
-                          edge_buffer_deg=2.5, drop_time_truncated=False,
+                          edge_buffer_deg=2.5, 
+                          drop_time_truncated=False,
 )
+
+TRACK_CONFIGS = dict(min_track_points=3, 
+                     taper_points=0, 
+                     lmin=6,
+                     lmax=42, 
+                     spectral_taper = 0.1, 
+                     min_object_grid_points=1,
+                     object_threshold=1e-5, 
+                     exclude_boundary_extrema=False)
+
+track_variable = 'vo'
