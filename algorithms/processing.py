@@ -46,7 +46,7 @@ def prepare_tracking_field(ds, variable="vo", level=850, domain=None):
 
 # CONDUCT TRACKING
 
-def hodges_tracker(input_file_path='name', output_file_name='output', track_var=track_variable, **TRACK_CONFIGS):
+def hodges_tracker(input_file_path='name', output_file_name='output', track_var=track_variable, obj_threshold=object_threshold, **TRACK_CONFIGS):
     """
     Run the Hodges tracker on a file path or an already prepared xarray Dataset.
 
@@ -85,7 +85,7 @@ def hodges_tracker(input_file_path='name', output_file_name='output', track_var=
         data_file,
         track_var,
         detection_mode= detect,
-        object_threshold=TRACK_CONFIGS['object_threshold'],
+        object_threshold=obj_threshold,
     )
 
     if tracks is None:

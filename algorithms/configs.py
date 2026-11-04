@@ -34,8 +34,8 @@ TRACK_CONFIGS = dict(min_track_points=3,
                      lmin=6,
                      lmax=42, 
                      spectral_taper = 0.1, 
-                     min_object_grid_points=1,
-                     object_threshold=1e-5, 
+                     min_object_grid_points=1, 
                      exclude_boundary_extrema=False)
 
 track_variable = 'vo'
+object_threshold=1e-5
