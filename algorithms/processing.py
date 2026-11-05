@@ -7,7 +7,7 @@ import pystormtracker as pst
 from pystormtracker.hodges.rsplice import filter_rsplice
 from pystormtracker.models.geo import DEG_TO_RAD, geod_dist
 from helpers import haversine_km, _in_box, _to_datetime, wrap_lon, summarise_tracks, tracks_to_points
-from configs import EARTH_RADIUS_KM, REGION, DOMAIN, TRACK_CONFIGS, track_variable
+from configs import EARTH_RADIUS_KM, REGION, DOMAIN, TRACK_CONFIGS, track_variable, object_threshold
 
 
 

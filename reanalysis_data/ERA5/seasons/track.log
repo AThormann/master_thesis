@@ -1,0 +1,22 @@
+Tracking 2 seasons x 10 resolutions, variable vo at 850 hPa, {'min_track_points': 3, 'taper_points': 0, 'lmin': 6, 'lmax': 42, 'spectral_taper': 0.1, 'min_object_grid_points': 1, 'exclude_boundary_extrema': False}, object_threshold=1e-05
+[track] OK 19981999_DJF 3p0: 4819 tracks (0.6 min) -> /Users/asgerthormann/Documents/uni/master/master_code/master_thesis/reanalysis_data/ERA5/seasons/19981999_DJF_3p0_vo_raw.trackjson
+[track] OK 19981999_DJF 2p5: 4446 tracks (0.4 min) -> /Users/asgerthormann/Documents/uni/master/master_code/master_thesis/reanalysis_data/ERA5/seasons/19981999_DJF_2p5_vo_raw.trackjson
+[track] OK 19981999_DJF 1p875: 4115 tracks (0.5 min) -> /Users/asgerthormann/Documents/uni/master/master_code/master_thesis/reanalysis_data/ERA5/seasons/19981999_DJF_1p875_vo_raw.trackjson
+[track] OK 19981999_DJF 1p5: 3909 tracks (0.4 min) -> /Users/asgerthormann/Documents/uni/master/master_code/master_thesis/reanalysis_data/ERA5/seasons/19981999_DJF_1p5_vo_raw.trackjson
+[track] OK 19981999_DJF 1p25: 3905 tracks (0.4 min) -> /Users/asgerthormann/Documents/uni/master/master_code/master_thesis/reanalysis_data/ERA5/seasons/19981999_DJF_1p25_vo_raw.trackjson
+[track] OK 19981999_DJF 1p125: 3804 tracks (0.4 min) -> /Users/asgerthormann/Documents/uni/master/master_code/master_thesis/reanalysis_data/ERA5/seasons/19981999_DJF_1p125_vo_raw.trackjson
+[track] OK 19981999_DJF 1p0: 3798 tracks (0.4 min) -> /Users/asgerthormann/Documents/uni/master/master_code/master_thesis/reanalysis_data/ERA5/seasons/19981999_DJF_1p0_vo_raw.trackjson
+[track] OK 19981999_DJF 0p75: 3754 tracks (0.4 min) -> /Users/asgerthormann/Documents/uni/master/master_code/master_thesis/reanalysis_data/ERA5/seasons/19981999_DJF_0p75_vo_raw.trackjson
+[track] OK 19981999_DJF 0p5: 3721 tracks (0.4 min) -> /Users/asgerthormann/Documents/uni/master/master_code/master_thesis/reanalysis_data/ERA5/seasons/19981999_DJF_0p5_vo_raw.trackjson
+[track] OK 19981999_DJF 0p25: 3705 tracks (6.0 min) -> /Users/asgerthormann/Documents/uni/master/master_code/master_thesis/reanalysis_data/ERA5/seasons/19981999_DJF_0p25_vo_raw.trackjson
+[track] OK 19992000_DJF 3p0: 4896 tracks (0.6 min) -> /Users/asgerthormann/Documents/uni/master/master_code/master_thesis/reanalysis_data/ERA5/seasons/19992000_DJF_3p0_vo_raw.trackjson
+[track] OK 19992000_DJF 2p5: 4593 tracks (0.4 min) -> /Users/asgerthormann/Documents/uni/master/master_code/master_thesis/reanalysis_data/ERA5/seasons/19992000_DJF_2p5_vo_raw.trackjson
+[track] OK 19992000_DJF 1p875: 4235 tracks (0.5 min) -> /Users/asgerthormann/Documents/uni/master/master_code/master_thesis/reanalysis_data/ERA5/seasons/19992000_DJF_1p875_vo_raw.trackjson
+[track] OK 19992000_DJF 1p5: 3933 tracks (0.4 min) -> /Users/asgerthormann/Documents/uni/master/master_code/master_thesis/reanalysis_data/ERA5/seasons/19992000_DJF_1p5_vo_raw.trackjson
+[track] OK 19992000_DJF 1p25: 3953 tracks (0.5 min) -> /Users/asgerthormann/Documents/uni/master/master_code/master_thesis/reanalysis_data/ERA5/seasons/19992000_DJF_1p25_vo_raw.trackjson
+[track] OK 19992000_DJF 1p125: 3886 tracks (0.4 min) -> /Users/asgerthormann/Documents/uni/master/master_code/master_thesis/reanalysis_data/ERA5/seasons/19992000_DJF_1p125_vo_raw.trackjson
+[track] OK 19992000_DJF 1p0: 3842 tracks (0.4 min) -> /Users/asgerthormann/Documents/uni/master/master_code/master_thesis/reanalysis_data/ERA5/seasons/19992000_DJF_1p0_vo_raw.trackjson
+[track] OK 19992000_DJF 0p75: 3853 tracks (0.4 min) -> /Users/asgerthormann/Documents/uni/master/master_code/master_thesis/reanalysis_data/ERA5/seasons/19992000_DJF_0p75_vo_raw.trackjson
+[track] OK 19992000_DJF 0p5: 3821 tracks (0.4 min) -> /Users/asgerthormann/Documents/uni/master/master_code/master_thesis/reanalysis_data/ERA5/seasons/19992000_DJF_0p5_vo_raw.trackjson
+[track] OK 19992000_DJF 0p25: 3833 tracks (6.2 min) -> /Users/asgerthormann/Documents/uni/master/master_code/master_thesis/reanalysis_data/ERA5/seasons/19992000_DJF_0p25_vo_raw.trackjson
+[done] tracks in /Users/asgerthormann/Documents/uni/master/master_code/master_thesis/reanalysis_data/ERA5/seasons
