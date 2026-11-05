@@ -2,8 +2,8 @@
 Filter the raw tracks of every DJF season and resolution with POSTPROCESS_CONFIG from algorithms/configs.py.
 
 Input:  <track_dir>/<S><S+1>_DJF_<res>_vo_raw.trackjson   (from track_on_seasons.py)
-Output: <track_dir>/<S><S+1>_DJF_<res>_vo_filtered.trackjson
-        (--track-dir, default <out_root>/trackjson)
+Output: <filtered_dir>/<S><S+1>_DJF_<res>_vo_filtered.trackjson
+        (--track-dir, default <out_root>/trackjson; --filtered-dir, default the same as --track-dir)
 
 Steps per file (same as experiments/validation_tracks/coarse_validation.ipynb):
 1. load the raw tracks
@@ -17,6 +17,8 @@ Examples:
     python postprocess_on_seasons.py --out-root /Volumes/<drive>/ERA5_pressure_levels
     python postprocess_on_seasons.py --out-root /Volumes/<drive>/ERA5_pressure_levels --seasons 1998 --resolutions 3.0 --overwrite
 """
+
+from pathlib import Path
 
 import pandas as pd
 import pystormtracker as pst
@@ -38,10 +40,10 @@ def season_time_range(season_dir, res):
     return (f"{times[0]:%Y-%m-%d %H:%M}", f"{times[-1]:%Y-%m-%d %H:%M}")
 
 
-def postprocess_season(season_dir, res, track_dir, overwrite=False):
+def postprocess_season(season_dir, res, track_dir, filtered_dir, overwrite=False):
     """Clip and filter the raw tracks of one season and resolution, write the filtered .trackjson."""
     raw = track_file(track_dir, season_dir, res, "raw")
-    out = track_file(track_dir, season_dir, res, "filtered")
+    out = track_file(filtered_dir, season_dir, res, "filtered")
     if out.exists() and not overwrite:
         print(f"[post] SKIP {season_dir.name} {res_tag(res)} (exists)")
         return None
@@ -76,6 +78,8 @@ def main():
     parser = common_args("Filter the raw tracks of every season and resolution with POSTPROCESS_CONFIG.")
     parser.add_argument("--overwrite", action="store_true",
                         help="redo existing filtered files (e.g. after changing POSTPROCESS_CONFIG)")
+    parser.add_argument("--filtered-dir", type=Path, default=None,
+                        help="folder for the filtered .trackjson files (default: same as --track-dir)")
     args = parser.parse_args()
     unknown = [r for r in args.resolutions if r not in RESOLUTIONS]
     if unknown:
@@ -83,6 +87,7 @@ def main():
 
     dirs = season_dirs(args.out_root, args.seasons)
     track_dir = get_track_dir(args)
+    filtered_dir = args.filtered_dir or track_dir
     shown = {k: v for k, v in POSTPROCESS_CONFIG.items() if k != "time_range"}
     print(f"Post-processing {len(dirs)} seasons x {len(args.resolutions)} resolutions with {shown}")
 
@@ -90,12 +95,12 @@ def main():
     for d in dirs:
         for res in args.resolutions:
             try:
-                postprocess_season(d, res, track_dir, args.overwrite)
+                postprocess_season(d, res, track_dir, filtered_dir, args.overwrite)
             except Exception as e:
                 print(f"[error] {d.name} {res_tag(res)}: {e}")
                 failed.append(f"{d.name}_{res_tag(res)}")
 
-    print(f"[done] filtered tracks in {track_dir}")
+    print(f"[done] filtered tracks in {filtered_dir}")
     if failed:
         print(f"[done] FAILED: {failed}")
 

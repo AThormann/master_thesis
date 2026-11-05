@@ -140,7 +140,8 @@ Filters the raw tracks and writes `<out_root>/trackjson/<S><S+1>_DJF_<res>_vo_fi
 | `--out-root` | `reanalysis_data/ERA5/ERA5_pressure_levels` | folder containing the season folders and `trackjson/` |
 | `--seasons` | all season folders | season start years |
 | `--resolutions` | all 10 | resolutions in degrees |
-| `--track-dir` | `<out-root>/trackjson` | folder with the raw tracks; the filtered tracks are written here too |
+| `--track-dir` | `<out-root>/trackjson` | folder with the raw tracks |
+| `--filtered-dir` | same as `--track-dir` | folder for the filtered `.trackjson` files |
 | `--overwrite` | off | redo existing filtered files, e.g. after changing `POSTPROCESS_CONFIG` |
 
 **Steps per file** (same as `experiments/validation_tracks/coarse_validation.ipynb`):

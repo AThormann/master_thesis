@@ -14,9 +14,11 @@ from contextlib import contextmanager
 import matplotlib as mpl
 import numpy as np
 import matplotlib.pyplot as plt
+import seaborn as sns
 from mpl_toolkits.axes_grid1 import make_axes_locatable
 
-PALETTE = mpl.colormaps["Set2"].colors  # 8 soft, distinguishable colours
+PALETTE = sns.color_palette("colorblind")  # 8 soft, distinguishable colours
+#PALETTE = PALETTE.pop(-2)  # remove yellow, which is hard to see on white
 
 
 def _rc(ticksize=14, fontsize=20, figsize=(16, 9), dpi=150, facecolor="#e8e8e8"):
