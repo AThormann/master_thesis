@@ -2,7 +2,7 @@
 Run the Hodges tracker on every DJF season and resolution and save the raw tracks.
 
 Input:  <out_root>/<S><S+1>_DJF/<S><S+1>_DJF_<res>.nc   (from ERA5_download_seasons.py / regrid_era5.py)
-Output: <track_dir>/<S><S+1>_DJF_<res>_vo_raw.trackjson   (--track-dir, default <out_root>/trackjson)
+Output: <track_dir>/<S><S+1>_DJF/<S><S+1>_DJF_<res>_vo_raw.trackjson   (--track-dir, default <out_root>/trackjson)
 
 Tracking is done on the whole globe (the spectral filter needs the full sphere) with
 TRACK_CONFIGS, track_variable and object_threshold from algorithms/configs.py.
@@ -40,9 +40,13 @@ def season_dirs(out_root, seasons=None):
     return sorted(d for d in out_root.glob("*_DJF") if d.is_dir())
 
 
-def track_file(track_dir, season_dir, res, kind="raw"):
-    """<track_dir>/<S><S+1>_DJF_<res>_<var>_<kind>.trackjson, kind = 'raw' or 'filtered'"""
-    return Path(track_dir) / f"{Path(season_dir).name}_{res_tag(res)}_{track_variable}_{kind}.trackjson"
+def track_file(track_dir, season_dir, res, kind="raw", suffix="trackjson"):
+    """
+    <track_dir>/<S><S+1>_DJF/<S><S+1>_DJF_<res>_<var>_<kind>.<suffix>
+    kind = 'raw' or 'filtered' (.trackjson), or e.g. 'points_sl0p25' / 'summary_sl0p25' (.csv)
+    """
+    season = Path(season_dir).name
+    return Path(track_dir) / season / f"{season}_{res_tag(res)}_{track_variable}_{kind}.{suffix}"
 
 
 def get_track_dir(args):

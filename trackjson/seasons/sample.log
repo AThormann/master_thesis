@@ -1,0 +1,31 @@
+Sampling 2 seasons x 5 track resolutions, fields on 0p25, {'radius_km': 500, 'samples': [('msl', 'min', 'msl_min'), ('msl', 'nearest', 'msl_center'), ('ws10', 'max', 'ws10_max'), ('ws10', 'mean', 'ws10_mean')], 'pl_samples': [('vo', 'max', 'vo850_unfilt_max'), ('ws850', 'max', 'ws850_max')], 'sample_res': 0.25}
+[sample] WARNING 19981999_DJF 0p25: 18 points of 10 tracks are (within 500 km) outside the single-level area [90, -120, 10, 40]; their single-level samples are NaN
+[sample] WARNING 19981999_DJF 0p25: 34 values of 'vo850_unfilt_max' outside [-0.001, 0.001] (min 5.667e-05, max 0.001585)
+[sample] OK 19981999_DJF 0p25 sl0p25: 124 tracks, 1971 points, 18 outside area (0.3 min) -> 19981999_DJF_0p25_vo_points_sl0p25.csv
+[sample] WARNING 19981999_DJF 1p0: 17 points of 10 tracks are (within 500 km) outside the single-level area [90, -120, 10, 40]; their single-level samples are NaN
+[sample] WARNING 19981999_DJF 1p0: 34 values of 'vo850_unfilt_max' outside [-0.001, 0.001] (min 5.794e-05, max 0.001585)
+[sample] OK 19981999_DJF 1p0 sl0p25: 116 tracks, 1839 points, 17 outside area (0.3 min) -> 19981999_DJF_1p0_vo_points_sl0p25.csv
+[sample] WARNING 19981999_DJF 1p25: 16 points of 8 tracks are (within 500 km) outside the single-level area [90, -120, 10, 40]; their single-level samples are NaN
+[sample] WARNING 19981999_DJF 1p25: 33 values of 'vo850_unfilt_max' outside [-0.001, 0.001] (min 5.422e-05, max 0.001585)
+[sample] OK 19981999_DJF 1p25 sl0p25: 124 tracks, 1869 points, 16 outside area (0.3 min) -> 19981999_DJF_1p25_vo_points_sl0p25.csv
+[sample] WARNING 19981999_DJF 1p875: 15 points of 8 tracks are (within 500 km) outside the single-level area [90, -120, 10, 40]; their single-level samples are NaN
+[sample] WARNING 19981999_DJF 1p875: 33 values of 'vo850_unfilt_max' outside [-0.001, 0.001] (min 5.652e-05, max 0.001585)
+[sample] OK 19981999_DJF 1p875 sl0p25: 115 tracks, 1701 points, 15 outside area (0.3 min) -> 19981999_DJF_1p875_vo_points_sl0p25.csv
+[sample] WARNING 19981999_DJF 3p0: 4 points of 3 tracks are (within 500 km) outside the single-level area [90, -120, 10, 40]; their single-level samples are NaN
+[sample] WARNING 19981999_DJF 3p0: 23 values of 'vo850_unfilt_max' outside [-0.001, 0.001] (min 8.826e-05, max 0.001585)
+[sample] OK 19981999_DJF 3p0 sl0p25: 71 tracks, 836 points, 4 outside area (7.0 min) -> 19981999_DJF_3p0_vo_points_sl0p25.csv
+[sample] WARNING 19992000_DJF 0p25: 32 points of 6 tracks are (within 500 km) outside the single-level area [90, -120, 10, 40]; their single-level samples are NaN
+[sample] WARNING 19992000_DJF 0p25: 18 values of 'vo850_unfilt_max' outside [-0.001, 0.001] (min 6.538e-05, max 0.001701)
+[sample] OK 19992000_DJF 0p25 sl0p25: 126 tracks, 2073 points, 32 outside area (0.3 min) -> 19992000_DJF_0p25_vo_points_sl0p25.csv
+[sample] WARNING 19992000_DJF 1p0: 33 points of 9 tracks are (within 500 km) outside the single-level area [90, -120, 10, 40]; their single-level samples are NaN
+[sample] WARNING 19992000_DJF 1p0: 17 values of 'vo850_unfilt_max' outside [-0.001, 0.001] (min 6.538e-05, max 0.001701)
+[sample] OK 19992000_DJF 1p0 sl0p25: 127 tracks, 2112 points, 33 outside area (0.3 min) -> 19992000_DJF_1p0_vo_points_sl0p25.csv
+[sample] WARNING 19992000_DJF 1p25: 34 points of 8 tracks are (within 500 km) outside the single-level area [90, -120, 10, 40]; their single-level samples are NaN
+[sample] WARNING 19992000_DJF 1p25: 21 values of 'vo850_unfilt_max' outside [-0.001, 0.001] (min 6.538e-05, max 0.001701)
+[sample] OK 19992000_DJF 1p25 sl0p25: 133 tracks, 2089 points, 34 outside area (0.3 min) -> 19992000_DJF_1p25_vo_points_sl0p25.csv
+[sample] WARNING 19992000_DJF 1p875: 21 points of 5 tracks are (within 500 km) outside the single-level area [90, -120, 10, 40]; their single-level samples are NaN
+[sample] WARNING 19992000_DJF 1p875: 17 values of 'vo850_unfilt_max' outside [-0.001, 0.001] (min 6.514e-05, max 0.001701)
+[sample] OK 19992000_DJF 1p875 sl0p25: 122 tracks, 1847 points, 21 outside area (0.3 min) -> 19992000_DJF_1p875_vo_points_sl0p25.csv
+[sample] WARNING 19992000_DJF 3p0: 11 values of 'vo850_unfilt_max' outside [-0.001, 0.001] (min 7.927e-05, max 0.001701)
+[sample] OK 19992000_DJF 3p0 sl0p25: 77 tracks, 840 points, 0 outside area (7.3 min) -> 19992000_DJF_3p0_vo_points_sl0p25.csv
+[done] sampled tracks in /Users/asgerthormann/Documents/uni/master/master_code/master_thesis/trackjson/seasons

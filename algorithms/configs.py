@@ -39,3 +39,22 @@ TRACK_CONFIGS = dict(min_track_points=3,
 
 track_variable = 'vo'
 object_threshold=1e-5
+
+# ERA5 single levels: area of the CDS request (north, west, south, east).
+# Larger than DOMAIN so that sampling within radius_km of any track point stays inside the field.
+SL_AREA = [90, -120, 10, 40]
+
+# Sampling of fields along the tracks (statistics_on_tracks.py)
+SAMPLE_CONFIG = dict(radius_km=500,
+                     # (field, method, output column) from the single-level file; method: nearest, bilinear, mean, max, min
+                     samples=[("msl",  "min",     "msl_min"),      # central pressure (Pa)
+                              ("msl",  "nearest", "msl_center"),   # pressure at the vorticity centre (Pa)
+                              ("ws10", "max",     "ws10_max"),     # ws10 = hypot(u10, v10) on the grid (m s-1)
+                              ("ws10", "mean",    "ws10_mean"),
+                              ("gust10", "max",   "gust10_max"),
+                              ("gust10", "mean",  "gust10_mean")],  # gust10 = max wind gust on the grid (m s-1)
+                     # same, from the 0.25 degree pressure-level file (850 hPa)
+                     pl_samples=[("vo",    "max", "vo850_unfilt_max"),  # unfiltered vorticity (s-1)
+                                 ("ws850", "max", "ws850_max")],        # ws850 = hypot(u, v) on the grid (m s-1)
+                     sample_res=0.25,  # grid of the sampled fields, 0.25 (native) or one of regrid_era5.RESOLUTIONS
+)
