@@ -101,7 +101,7 @@ def postprocess_season(season_dir, res, track_dir, overwrite=False):
     filtered.write(tmp, format="json")
     tmp.replace(out)
     print(f"[post] OK {season_dir.name} {res_tag(res)} ({time_range[0]} -> {time_range[1]}): "
-          f"raw {len(tracks)} -> clipped {len(clipped)} -> kept {len(filtered)} -> {out}")
+          f"raw {len(tracks)} -> clipped {len(tracks)} -> kept {len(filtered)} -> {out}")
     return len(filtered)
 
 
