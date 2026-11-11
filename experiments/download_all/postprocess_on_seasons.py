@@ -85,15 +85,15 @@ def postprocess_season(season_dir, res, track_dir, overwrite=False):
     tracks = pst.load_tracks(raw)
     time_range = season_time_range(season_dir, res)
 
-    df = helpers.tracks_to_points(tracks)
-    df = val.clip_to_domain(df, DOMAIN, time_range)
-    if df.empty:
-        print(f"[post] WARNING {season_dir.name} {res_tag(res)}: no track points inside DOMAIN")
-        return None
-    clipped = points_to_tracks(df, tracks.metadata)  # vo already in s^-1
+    # df = helpers.tracks_to_points(tracks)
+    # df = val.clip_to_domain(df, DOMAIN, time_range)
+    # if df.empty:
+    #     print(f"[post] WARNING {season_dir.name} {res_tag(res)}: no track points inside DOMAIN")
+    #     return None
+    # clipped = points_to_tracks(df, tracks.metadata)  # vo already in s^-1
 
     config = {**POSTPROCESS_CONFIG, "time_range": time_range}
-    filtered, summary, _ = pro.postprocess_tracks(clipped, **config)
+    filtered, summary, _ = pro.postprocess_tracks(tracks, **config)
     print(pro.filter_report(summary).to_string())
 
     out.parent.mkdir(parents=True, exist_ok=True)
