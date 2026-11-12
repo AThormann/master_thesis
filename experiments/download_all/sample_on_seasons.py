@@ -43,7 +43,7 @@ def sample_season(season_dir, res, track_dir, sample_res=NATIVE_RES, overwrite=F
 
     sl_path = season_file(season_dir, sample_res, "sl")
     if not sl_path.exists() and sample_res != NATIVE_RES:
-        regrid_season(season_dir, resolutions=[sample_res], kind="sl", area=SL_AREA)
+        regrid_season(season_dir, resolutions=[sample_res], kind="sl", area=SL_AREA) #get a parameter for type of remap
     pl_path = season_file(season_dir, NATIVE_RES, "pl")
     for path in (sl_path, pl_path):
         if not path.exists():
