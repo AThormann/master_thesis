@@ -7,8 +7,11 @@ regrid_season() adds one file per resolution in RESOLUTIONS for the chosen kind.
 Single-level files cover a limited area: they are regridded to the same global grids and
 then cut back to that area (sellonlatbox), so the grid points match the pressure-level grids.
 
-The weights for each target grid are computed once (cdo gencon) and reused for
-every season (cdo remap), which gives the same result as cdo remapcon.
+The weights for each target grid are computed once (cdo genbil) and reused for
+every season (cdo remap), which gives the same result as cdo remapbil.
+This was changed from conservative remapping to bilinear remapping,
+as the latter is more appropriate for the non-flux variables (vorticity, mean sea level pressure) we are tracking.
+The weights are stored in a _regrid_weights folder next to the season folders.
 
 Usage (standalone):
     python regrid_era5.py <out_root>                 # all season folders in out_root
@@ -31,12 +34,12 @@ RESOLUTIONS = {
     0.25:  "ERA5 native (original, not regridded)",
     #0.5:   "MERRA-2 / CFSR class, HighResMIP",
     #0.75:  "ERA-Interim native",
-    1.0:   "CMIP6 HR models (e.g. MPI-ESM1-2-HR), GFS",
+    #1.0:   "CMIP6 HR models (e.g. MPI-ESM1-2-HR), GFS",
     #1.125: "BCC-CSM2-MR (T106)",
     1.25:  "JRA-55",
     #1.5:   "ERA-Interim / ERA-40 distribution grid",
     1.875: "MPI-ESM1-2-LR (T63), NorESM2-LR latitude",
-    #2.5:   "NCEP/NCAR R1/R2, NorESM2-LR longitude",
+    2.5:   "NCEP/NCAR R1/R2, NorESM2-LR longitude",
     3.0:   "coarse CMIP-class upper bound (~T42)",
 }
 NATIVE_RES = 0.25
@@ -96,14 +99,14 @@ def run_cdo(args, quiet=False):
 
 
 def get_weights(res, source_file, weights_dir):
-    """Grid file and conservative remapping weights for one resolution (computed only once)."""
+    """Grid file and bilinear remapping weights for one resolution (computed only once)."""
     weights_dir = Path(weights_dir)
     weights_dir.mkdir(parents=True, exist_ok=True)
     grid = write_grid_file(res, weights_dir)
-    weights = weights_dir / f"weights_con_{res_tag(res)}.nc"
+    weights = weights_dir / f"weights_bil_{res_tag(res)}.nc" #changed from weights_con
     if not weights.exists():
         try:
-            run_cdo([f"gencon,{grid}", str(source_file), str(weights)], quiet=True)
+            run_cdo([f"genbil,{grid}", str(source_file), str(weights)], quiet=True) # changed to bilinear weights insted of conservative weights
         except BaseException:
             weights.unlink(missing_ok=True)
             raise
