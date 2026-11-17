@@ -17,8 +17,8 @@ POSTPROCESS_CONFIG = dict(region=REGION,
                           domain=DOMAIN,
                           time_range=TIME_RANGE,
                           region_criterion="passes",
-                          min_points_in_region=1,
-                          rsplice_min_points=8, #42 hours
+                          min_points_in_region=4,
+                          rsplice_min_points=8, #48 hours
                           rsplice_max_points=None,
                           rsplice_distance_degrees=10.0, #Reproducing priestley
                           rsplice_distance_mode="endpoint",
