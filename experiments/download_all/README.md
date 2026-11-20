@@ -7,7 +7,7 @@ Scripts in this folder:
 | 1 | `ERA5_download_seasons.py` | downloads ERA5 (6-hourly) 850 hPa `u`, `v`, `vo` (`pl`) and single levels `u10`, `v10`, `msl` (`sl`), builds one file per DJF season, then regrids the 850 hPa files (calls step 2) |
 | 2 | `regrid_era5.py` | `regrid_season()`: conservative regridding (`cdo remapcon`) to the resolutions in `RESOLUTIONS`. Also runs on its own |
 | 3 | `track_on_seasons.py` | Hodges tracker (`processing.hodges_tracker`) on every season × resolution → raw `.trackjson` |
-| 4 | `postprocess_on_seasons.py` | clips to `DOMAIN` and filters with `processing.postprocess_tracks` + `POSTPROCESS_CONFIG` → filtered `.trackjson` |
+| 4 | `postprocess_on_seasons.py` | filters the full-length tracks with `processing.postprocess_tracks` + `POSTPROCESS_CONFIG` → filtered `.trackjson` |
 | 5 | `sample_on_seasons.py` | samples fields along every point of the filtered tracks (`statistics_on_tracks.py` + `SAMPLE_CONFIG`) → points and summary `.csv` |
 
 Every script skips outputs that already exist, so after a crash or interruption you just run the same command again.
@@ -59,7 +59,9 @@ Season `S` is December of year `S` plus January and February of year `S+1`. The 
 | Name | Used by | Meaning |
 |---|---|---|
 | `TRACK_CONFIGS`, `track_variable`, `object_threshold` | step 3 | tracker settings |
-| `REGION`, `DOMAIN`, `POSTPROCESS_CONFIG` | step 4 | clipping and filtering |
+| `REGION` | step 4 | selection box: a track is kept if its maximum `vo` lies in `REGION` and it has at least 4 points in `REGION` |
+| `DOMAIN` | plotting | no longer limits the tracks (no clipping); only used by the edge filter, which is off |
+| `POSTPROCESS_CONFIG` | step 4 | filter settings: `region_criterion=("passes", "peak")`, `min_points_in_region=4`, RSPLICE, `max_frac_at_edge=None` (edge filter off) |
 | `SL_AREA` | steps 1, 2, 5 | `[north, west, south, east]` of the single-level download. Must contain `DOMAIN` plus `radius_km` |
 | `SAMPLE_CONFIG` | step 5 | `radius_km`, `samples` (from the single levels), `pl_samples` (from the 0.25° 850 hPa file), `sample_res` |
 
@@ -166,15 +168,22 @@ Filters the raw tracks and writes `<track_dir>/<S><S+1>_DJF/<S><S+1>_DJF_<res>_v
 | `--track-dir` | `<out-root>/trackjson` | folder with the season folders of tracks |
 | `--overwrite` | off | redo existing filtered files, e.g. after changing `POSTPROCESS_CONFIG` |
 
-**Steps per file** (same as `experiments/validation_tracks/coarse_validation.ipynb`):
+Tracks are **not clipped** to `DOMAIN`: the global tracks are kept at full length. A track is kept only if both region criteria hold (`region_criterion=("passes", "peak")`):
+- `passes`: at least 4 points (24 h) inside `REGION`,
+- `peak`: the point of maximum `vo` (the tracked T6–42 filtered vorticity, over the whole track) lies inside `REGION`.
+
+The edge filter is off (`max_frac_at_edge=None`): tracking is global, so there is no domain edge. The other filters are unchanged: RSPLICE (≥ 8 points / 48 h, ≥ 10° endpoint displacement), `min_peak=None`, `drop_time_truncated=False`.
+
+**Steps per file:**
 1. `pst.load_tracks(raw file)`.
 2. **Time range of the season:** the first and last time step of the season's `.nc` file, e.g. `('1998-12-01 00:00', '1999-02-28 18:00')`. This replaces the hard-coded `TIME_RANGE` from the notebooks, and it handles leap years and test runs with `--days`.
-3. **Clip to the domain:**
-   - `helpers.tracks_to_points`, then `validation.clip_to_domain(df, DOMAIN, time_range)`.
-   - The points are then turned back into tracks while keeping **every** track variable (`vo`, `raw_value`, `object_*`). `validation.dataframe_to_tracks` would keep only `vo`.
-   - The tracks are global, so without this the points outside `DOMAIN` would count as "at the edge".
-4. **Filter:** `processing.postprocess_tracks(tracks, **POSTPROCESS_CONFIG)` with `time_range` set per season. All other settings come from `POSTPROCESS_CONFIG` in `configs.py`. With a real time range, `drop_time_truncated=True` in `configs.py` now also works.
-5. **Report:** prints `processing.filter_report(summary)` and `[post] OK <season> <res> (<time range>): raw N -> clipped N -> kept N`.
+3. **Filter:** `processing.postprocess_tracks(tracks, **POSTPROCESS_CONFIG)` with `time_range` set per season. All other settings come from `POSTPROCESS_CONFIG` in `configs.py`. With a real time range, `drop_time_truncated=True` in `configs.py` now also works. (Clipping to `DOMAIN` is kept as commented-out code in `postprocess_season`, so it can be switched back on.)
+4. **Report:** prints `processing.filter_report(summary)`, with one row per criterion (`region_passes`, `region_peak`, `edge`, `peak`, `time`, `rsplice`), and `[post] OK <season> <res> (<time range>): raw N -> kept N -> <file>`.
+
+**Known consequences:**
+- **Fewer tracks than with `passes` alone.** Tracks with ≥ 4 points in `REGION` that peak outside it are removed, and so are tracks that peak in `REGION` but spend less than 24 h there. The filter report shows how many tracks each criterion removes, and how many it removes on its own.
+- **Truncated tracks.** With `drop_time_truncated=False`, a track cut off at the first or last time step of the season may have its true peak outside the season, so its keep/drop decision can be wrong.
+- **More NaN single-level samples in step 5.** Full-length tracks often leave `SL_AREA`, so more points get `inside_area=False` and the `[sample] WARNING` appears more often. This is expected. The peak point is always in `REGION`, so values at peak time are almost always sampled. The exception is the far north-east corner of `REGION` (north of about 77°N and east of about 15°E): there 500 km spans more than the 20° of longitude between `REGION` and the east edge of `SL_AREA` (40°E). The check that points inside the area have no NaN stays as it is. Per-track summaries of single-level fields (e.g. `msl_min_min`) only cover the part of the track inside `SL_AREA`. The 850 hPa samples come from the global 0.25° file and cover the whole track.
 
 ```bash
 python postprocess_on_seasons.py --out-root /Volumes/<drive>/ERA5_pressure_levels --track-dir ../../trackjson/seasons

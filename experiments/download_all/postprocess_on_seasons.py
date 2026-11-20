@@ -5,12 +5,16 @@ Input:  <track_dir>/<S><S+1>_DJF/<S><S+1>_DJF_<res>_vo_raw.trackjson   (from tra
 Output: <track_dir>/<S><S+1>_DJF/<S><S+1>_DJF_<res>_vo_filtered.trackjson
         (--track-dir, default <out_root>/trackjson)
 
-Steps per file (same as experiments/validation_tracks/coarse_validation.ipynb):
+Tracks are kept at full length (global tracking, no clipping). A track is kept if its
+maximum vorticity lies in REGION and it has at least 4 points (24 h) in REGION
+(region_criterion=("passes", "peak") in POSTPROCESS_CONFIG); the edge filter is off.
+
+Steps per file:
 1. load the raw tracks
 2. time range of the season = first and last time step of the season's .nc file
    (replaces the hard-coded TIME_RANGE, handles leap years and test runs with --days)
-3. clip the global tracks to DOMAIN and that time range (validation.clip_to_domain), keeping
-   every variable of the tracks (vo, raw_value, object_*), not only vo
+3. (disabled, kept as commented-out code) clip the global tracks to DOMAIN and that time range
+   (validation.clip_to_domain), keeping every variable of the tracks (vo, raw_value, object_*)
 4. processing.postprocess_tracks with POSTPROCESS_CONFIG, time_range set per season
 5. print the filter report and write the filtered tracks
 
@@ -72,7 +76,7 @@ def points_to_tracks(df, metadata):
 
 
 def postprocess_season(season_dir, res, track_dir, overwrite=False):
-    """Clip and filter the raw tracks of one season and resolution, write the filtered .trackjson."""
+    """Filter the raw (full-length) tracks of one season and resolution, write the filtered .trackjson."""
     raw = track_file(track_dir, season_dir, res, "raw")
     out = track_file(track_dir, season_dir, res, "filtered")
     if out.exists() and not overwrite:
@@ -85,6 +89,7 @@ def postprocess_season(season_dir, res, track_dir, overwrite=False):
     tracks = pst.load_tracks(raw)
     time_range = season_time_range(season_dir, res)
 
+    # clipping to DOMAIN disabled: full-length tracks are kept (selection by peak and >= 4 points in REGION)
     # df = helpers.tracks_to_points(tracks)
     # df = val.clip_to_domain(df, DOMAIN, time_range)
     # if df.empty:
@@ -101,7 +106,7 @@ def postprocess_season(season_dir, res, track_dir, overwrite=False):
     filtered.write(tmp, format="json")
     tmp.replace(out)
     print(f"[post] OK {season_dir.name} {res_tag(res)} ({time_range[0]} -> {time_range[1]}): "
-          f"raw {len(tracks)} -> clipped {len(tracks)} -> kept {len(filtered)} -> {out}")
+          f"raw {len(tracks)} -> kept {len(filtered)} -> {out}")
     return len(filtered)
 
 

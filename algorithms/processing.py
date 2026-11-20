@@ -158,15 +158,18 @@ def postprocess_tracks(tracks, region, domain, time_range=None,
     Every criterion becomes a boolean column in `summary` (True = passes), and
     `keep` is the AND of all of them, so you can see why each track was removed.
 
-    region_criterion : "passes"  -> at least `min_points_in_region` points in the region
+    region_criterion : one criterion or a list of criteria that must all hold
+                       "passes"  -> at least `min_points_in_region` points in the region
                        "genesis" -> the first point is in the region
                        "peak"    -> the point of maximum intensity is in the region
+                       each criterion gets its own column ok_region_<criterion>
     rsplice_*         : lifetime and displacement filter of TRACK (filter_rsplice):
                         keep tracks with min_points <= points (incl. missing frames) <= max_points
                         and displacement >= distance_degrees ("endpoint" or "travel")
     rsplice_cadence   : time step of the data, used to count missing frames (ERA5 here: 6 h)
     min_peak          : minimum peak intensity of the tracked variable (vo: s-1, msl: Pa; msl uses <=)
-    max_frac_at_edge  : maximum fraction of points within `edge_buffer_deg` of the domain edge
+    max_frac_at_edge  : maximum fraction of points within `edge_buffer_deg` of the domain edge;
+                        None disables the edge filter
     drop_time_truncated : also remove tracks touching the first/last time step
 
     Returns (filtered Tracks, summary DataFrame for all tracks, per-point DataFrame for all tracks)
@@ -178,16 +181,20 @@ def postprocess_tracks(tracks, region, domain, time_range=None,
     summary = summary.merge(rs, on="track_id", how="left", validate="one_to_one")
     var = tracks.primary_variable
 
-    if region_criterion == "passes":
-        summary["ok_region"] = summary["n_in_region"] >= min_points_in_region
-    elif region_criterion == "genesis":
-        summary["ok_region"] = summary["genesis_in_region"]
-    elif region_criterion == "peak":
-        summary["ok_region"] = summary["peak_in_region"]
-    else:
-        raise ValueError("region_criterion must be 'passes', 'genesis' or 'peak'")
+    criteria = [region_criterion] if isinstance(region_criterion, str) else list(region_criterion)
+    region_ok = {"passes": summary["n_in_region"] >= min_points_in_region,
+                 "genesis": summary["genesis_in_region"],
+                 "peak": summary["peak_in_region"]}
+    unknown = [c for c in criteria if c not in region_ok]
+    if unknown or not criteria:
+        raise ValueError(f"region_criterion must be one or more of {list(region_ok)}, got {region_criterion}")
+    for c in criteria:
+        summary[f"ok_region_{c}"] = region_ok[c]
 
-    summary["ok_edge"] = summary["frac_at_edge"] <= max_frac_at_edge
+    if max_frac_at_edge is None:
+        summary["ok_edge"] = True
+    else:
+        summary["ok_edge"] = summary["frac_at_edge"] <= max_frac_at_edge
     if min_peak is None:
         summary["ok_peak"] = True
     elif tracks.mode == "min":
