@@ -1,290 +1,136 @@
-Sampling 28 seasons x 1 track resolutions, fields on 0p25, {'radius_km': 500, 'samples': [('msl', 'min', 'msl_min'), ('msl', 'nearest', 'msl_center'), ('ws10', 'max', 'ws10_max'), ('ws10', 'mean', 'ws10_mean'), ('gust10', 'max', 'gust10_max'), ('gust10', 'mean', 'gust10_mean')], 'pl_samples': [('vo', 'max', 'vo850_unfilt_max'), ('ws850', 'max', 'ws850_max')], 'sample_res': 0.25}
-[sample] WARNING 19981999_DJF 0p25: 121 points of 25 tracks are (within 500 km) outside the single-level area [90, -120, 10, 40]; their single-level samples are NaN
-[sample] OK 19981999_DJF 0p25 sl0p25: 110 tracks, 2047 points, 121 outside area (2.6 min) -> 19981999_DJF_0p25_vo_points_sl0p25.csv
-[sample] WARNING 19992000_DJF 0p25: 157 points of 27 tracks are (within 500 km) outside the single-level area [90, -120, 10, 40]; their single-level samples are NaN
-[sample] OK 19992000_DJF 0p25 sl0p25: 117 tracks, 2229 points, 157 outside area (2.3 min) -> 19992000_DJF_0p25_vo_points_sl0p25.csv
-[sample] WARNING 20002001_DJF 0p25: 141 points of 22 tracks are (within 500 km) outside the single-level area [90, -120, 10, 40]; their single-level samples are NaN
-[sample] OK 20002001_DJF 0p25 sl0p25: 123 tracks, 2391 points, 141 outside area (2.1 min) -> 20002001_DJF_0p25_vo_points_sl0p25.csv
-[sample] WARNING 20012002_DJF 0p25: 214 points of 35 tracks are (within 500 km) outside the single-level area [90, -120, 10, 40]; their single-level samples are NaN
-[sample] OK 20012002_DJF 0p25 sl0p25: 110 tracks, 2308 points, 214 outside area (1.7 min) -> 20012002_DJF_0p25_vo_points_sl0p25.csv
-[sample] WARNING 20022003_DJF 0p25: 124 points of 28 tracks are (within 500 km) outside the single-level area [90, -120, 10, 40]; their single-level samples are NaN
-[sample] OK 20022003_DJF 0p25 sl0p25: 129 tracks, 2322 points, 124 outside area (1.6 min) -> 20022003_DJF_0p25_vo_points_sl0p25.csv
-[sample] WARNING 20032004_DJF 0p25: 132 points of 26 tracks are (within 500 km) outside the single-level area [90, -120, 10, 40]; their single-level samples are NaN
-[sample] OK 20032004_DJF 0p25 sl0p25: 117 tracks, 2220 points, 132 outside area (1.9 min) -> 20032004_DJF_0p25_vo_points_sl0p25.csv
-[sample] WARNING 20042005_DJF 0p25: 237 points of 35 tracks are (within 500 km) outside the single-level area [90, -120, 10, 40]; their single-level samples are NaN
-[sample] OK 20042005_DJF 0p25 sl0p25: 132 tracks, 2483 points, 237 outside area (1.7 min) -> 20042005_DJF_0p25_vo_points_sl0p25.csv
-[sample] WARNING 20052006_DJF 0p25: 176 points of 31 tracks are (within 500 km) outside the single-level area [90, -120, 10, 40]; their single-level samples are NaN
-[sample] OK 20052006_DJF 0p25 sl0p25: 138 tracks, 2640 points, 176 outside area (1.7 min) -> 20052006_DJF_0p25_vo_points_sl0p25.csv
-[sample] WARNING 20062007_DJF 0p25: 120 points of 24 tracks are (within 500 km) outside the single-level area [90, -120, 10, 40]; their single-level samples are NaN
-[sample] OK 20062007_DJF 0p25 sl0p25: 119 tracks, 2105 points, 120 outside area (1.9 min) -> 20062007_DJF_0p25_vo_points_sl0p25.csv
-[sample] WARNING 20072008_DJF 0p25: 220 points of 30 tracks are (within 500 km) outside the single-level area [90, -120, 10, 40]; their single-level samples are NaN
-[sample] OK 20072008_DJF 0p25 sl0p25: 119 tracks, 2323 points, 220 outside area (1.9 min) -> 20072008_DJF_0p25_vo_points_sl0p25.csv
-[sample] WARNING 20082009_DJF 0p25: 157 points of 24 tracks are (within 500 km) outside the single-level area [90, -120, 10, 40]; their single-level samples are NaN
-[sample] OK 20082009_DJF 0p25 sl0p25: 125 tracks, 2307 points, 157 outside area (1.8 min) -> 20082009_DJF_0p25_vo_points_sl0p25.csv
-[sample] WARNING 20092010_DJF 0p25: 99 points of 19 tracks are (within 500 km) outside the single-level area [90, -120, 10, 40]; their single-level samples are NaN
-[sample] OK 20092010_DJF 0p25 sl0p25: 110 tracks, 2260 points, 99 outside area (1.6 min) -> 20092010_DJF_0p25_vo_points_sl0p25.csv
-[sample] WARNING 20102011_DJF 0p25: 99 points of 20 tracks are (within 500 km) outside the single-level area [90, -120, 10, 40]; their single-level samples are NaN
-[sample] OK 20102011_DJF 0p25 sl0p25: 125 tracks, 2173 points, 99 outside area (1.8 min) -> 20102011_DJF_0p25_vo_points_sl0p25.csv
-[sample] WARNING 20112012_DJF 0p25: 125 points of 30 tracks are (within 500 km) outside the single-level area [90, -120, 10, 40]; their single-level samples are NaN
-[sample] OK 20112012_DJF 0p25 sl0p25: 123 tracks, 2370 points, 125 outside area (1.9 min) -> 20112012_DJF_0p25_vo_points_sl0p25.csv
-[sample] WARNING 20122013_DJF 0p25: 102 points of 20 tracks are (within 500 km) outside the single-level area [90, -120, 10, 40]; their single-level samples are NaN
-[sample] OK 20122013_DJF 0p25 sl0p25: 110 tracks, 2110 points, 102 outside area (1.5 min) -> 20122013_DJF_0p25_vo_points_sl0p25.csv
-[sample] WARNING 20132014_DJF 0p25: 191 points of 24 tracks are (within 500 km) outside the single-level area [90, -120, 10, 40]; their single-level samples are NaN
-[sample] OK 20132014_DJF 0p25 sl0p25: 109 tracks, 2073 points, 191 outside area (1.9 min) -> 20132014_DJF_0p25_vo_points_sl0p25.csv
-[sample] WARNING 20142015_DJF 0p25: 168 points of 33 tracks are (within 500 km) outside the single-level area [90, -120, 10, 40]; their single-level samples are NaN
-[sample] OK 20142015_DJF 0p25 sl0p25: 121 tracks, 2265 points, 168 outside area (1.8 min) -> 20142015_DJF_0p25_vo_points_sl0p25.csv
-[sample] WARNING 20152016_DJF 0p25: 144 points of 30 tracks are (within 500 km) outside the single-level area [90, -120, 10, 40]; their single-level samples are NaN
-[sample] OK 20152016_DJF 0p25 sl0p25: 120 tracks, 2189 points, 144 outside area (2.1 min) -> 20152016_DJF_0p25_vo_points_sl0p25.csv
-[sample] WARNING 20162017_DJF 0p25: 132 points of 20 tracks are (within 500 km) outside the single-level area [90, -120, 10, 40]; their single-level samples are NaN
-[sample] OK 20162017_DJF 0p25 sl0p25: 124 tracks, 2329 points, 132 outside area (1.9 min) -> 20162017_DJF_0p25_vo_points_sl0p25.csv
-[sample] WARNING 20172018_DJF 0p25: 162 points of 34 tracks are (within 500 km) outside the single-level area [90, -120, 10, 40]; their single-level samples are NaN
-[sample] OK 20172018_DJF 0p25 sl0p25: 125 tracks, 2220 points, 162 outside area (1.8 min) -> 20172018_DJF_0p25_vo_points_sl0p25.csv
-[sample] WARNING 20182019_DJF 0p25: 128 points of 22 tracks are (within 500 km) outside the single-level area [90, -120, 10, 40]; their single-level samples are NaN
-[sample] OK 20182019_DJF 0p25 sl0p25: 110 tracks, 2092 points, 128 outside area (1.8 min) -> 20182019_DJF_0p25_vo_points_sl0p25.csv
-[sample] WARNING 20192020_DJF 0p25: 141 points of 29 tracks are (within 500 km) outside the single-level area [90, -120, 10, 40]; their single-level samples are NaN
-[sample] OK 20192020_DJF 0p25 sl0p25: 119 tracks, 2282 points, 141 outside area (1.8 min) -> 20192020_DJF_0p25_vo_points_sl0p25.csv
-[sample] WARNING 20202021_DJF 0p25: 94 points of 23 tracks are (within 500 km) outside the single-level area [90, -120, 10, 40]; their single-level samples are NaN
-[sample] OK 20202021_DJF 0p25 sl0p25: 123 tracks, 2344 points, 94 outside area (1.9 min) -> 20202021_DJF_0p25_vo_points_sl0p25.csv
-[sample] WARNING 20212022_DJF 0p25: 182 points of 25 tracks are (within 500 km) outside the single-level area [90, -120, 10, 40]; their single-level samples are NaN
-[sample] OK 20212022_DJF 0p25 sl0p25: 115 tracks, 2227 points, 182 outside area (1.9 min) -> 20212022_DJF_0p25_vo_points_sl0p25.csv
-[sample] WARNING 20222023_DJF 0p25: 160 points of 29 tracks are (within 500 km) outside the single-level area [90, -120, 10, 40]; their single-level samples are NaN
-[sample] OK 20222023_DJF 0p25 sl0p25: 123 tracks, 2304 points, 160 outside area (1.9 min) -> 20222023_DJF_0p25_vo_points_sl0p25.csv
-[sample] WARNING 20232024_DJF 0p25: 161 points of 29 tracks are (within 500 km) outside the single-level area [90, -120, 10, 40]; their single-level samples are NaN
-[sample] OK 20232024_DJF 0p25 sl0p25: 125 tracks, 2433 points, 161 outside area (2.0 min) -> 20232024_DJF_0p25_vo_points_sl0p25.csv
-[sample] WARNING 20242025_DJF 0p25: 202 points of 27 tracks are (within 500 km) outside the single-level area [90, -120, 10, 40]; their single-level samples are NaN
-[sample] OK 20242025_DJF 0p25 sl0p25: 123 tracks, 2474 points, 202 outside area (2.1 min) -> 20242025_DJF_0p25_vo_points_sl0p25.csv
-[sample] WARNING 20252026_DJF 0p25: 119 points of 26 tracks are (within 500 km) outside the single-level area [90, -120, 10, 40]; their single-level samples are NaN
-[sample] OK 20252026_DJF 0p25 sl0p25: 118 tracks, 2230 points, 119 outside area (2.0 min) -> 20252026_DJF_0p25_vo_points_sl0p25.csv
+Sampling 47 seasons x 1 track resolutions, fields on 0p25, {'radius_km': 500, 'samples': [('msl', 'min', 'msl_min'), ('msl', 'nearest', 'msl_center'), ('ws10', 'max', 'ws10_max'), ('ws10', 'mean', 'ws10_mean'), ('gust10', 'max', 'gust10_max'), ('gust10', 'mean', 'gust10_mean')], 'pl_samples': [('vo', 'max', 'vo850_unfilt_max'), ('ws850', 'max', 'ws850_max')], 'sample_res': 0.25}
+[sample] WARNING 19791980_DJF 0p25: 138 points of 24 tracks are (within 500 km) outside the single-level area [90, -120, 10, 40]; their single-level samples are NaN
+[sample] OK 19791980_DJF 0p25 sl0p25: 124 tracks, 2247 points, 138 outside area (1.5 min) -> 19791980_DJF_0p25_vo_points_sl0p25.csv
+[sample] WARNING 19801981_DJF 0p25: 162 points of 30 tracks are (within 500 km) outside the single-level area [90, -120, 10, 40]; their single-level samples are NaN
+[sample] OK 19801981_DJF 0p25 sl0p25: 122 tracks, 2330 points, 162 outside area (1.2 min) -> 19801981_DJF_0p25_vo_points_sl0p25.csv
+[sample] WARNING 19811982_DJF 0p25: 160 points of 22 tracks are (within 500 km) outside the single-level area [90, -120, 10, 40]; their single-level samples are NaN
+[sample] OK 19811982_DJF 0p25 sl0p25: 126 tracks, 2325 points, 160 outside area (1.1 min) -> 19811982_DJF_0p25_vo_points_sl0p25.csv
+[sample] WARNING 19821983_DJF 0p25: 115 points of 22 tracks are (within 500 km) outside the single-level area [90, -120, 10, 40]; their single-level samples are NaN
+[sample] OK 19821983_DJF 0p25 sl0p25: 116 tracks, 2104 points, 115 outside area (1.1 min) -> 19821983_DJF_0p25_vo_points_sl0p25.csv
+[sample] WARNING 19831984_DJF 0p25: 170 points of 28 tracks are (within 500 km) outside the single-level area [90, -120, 10, 40]; their single-level samples are NaN
+[sample] OK 19831984_DJF 0p25 sl0p25: 109 tracks, 2124 points, 170 outside area (1.1 min) -> 19831984_DJF_0p25_vo_points_sl0p25.csv
+[sample] WARNING 19841985_DJF 0p25: 132 points of 23 tracks are (within 500 km) outside the single-level area [90, -120, 10, 40]; their single-level samples are NaN
+[sample] OK 19841985_DJF 0p25 sl0p25: 116 tracks, 2204 points, 132 outside area (1.1 min) -> 19841985_DJF_0p25_vo_points_sl0p25.csv
+[sample] WARNING 19851986_DJF 0p25: 153 points of 26 tracks are (within 500 km) outside the single-level area [90, -120, 10, 40]; their single-level samples are NaN
+[sample] OK 19851986_DJF 0p25 sl0p25: 111 tracks, 2055 points, 153 outside area (1.2 min) -> 19851986_DJF_0p25_vo_points_sl0p25.csv
+[sample] WARNING 19861987_DJF 0p25: 198 points of 31 tracks are (within 500 km) outside the single-level area [90, -120, 10, 40]; their single-level samples are NaN
+[sample] OK 19861987_DJF 0p25 sl0p25: 114 tracks, 2186 points, 198 outside area (1.3 min) -> 19861987_DJF_0p25_vo_points_sl0p25.csv
+[sample] WARNING 19871988_DJF 0p25: 76 points of 14 tracks are (within 500 km) outside the single-level area [90, -120, 10, 40]; their single-level samples are NaN
+[sample] OK 19871988_DJF 0p25 sl0p25: 122 tracks, 2186 points, 76 outside area (1.1 min) -> 19871988_DJF_0p25_vo_points_sl0p25.csv
+[sample] WARNING 19881989_DJF 0p25: 86 points of 21 tracks are (within 500 km) outside the single-level area [90, -120, 10, 40]; their single-level samples are NaN
+[sample] OK 19881989_DJF 0p25 sl0p25: 100 tracks, 1806 points, 86 outside area (1.2 min) -> 19881989_DJF_0p25_vo_points_sl0p25.csv
+[sample] WARNING 19891990_DJF 0p25: 170 points of 31 tracks are (within 500 km) outside the single-level area [90, -120, 10, 40]; their single-level samples are NaN
+[sample] OK 19891990_DJF 0p25 sl0p25: 119 tracks, 2140 points, 170 outside area (1.0 min) -> 19891990_DJF_0p25_vo_points_sl0p25.csv
+[sample] WARNING 19901991_DJF 0p25: 110 points of 25 tracks are (within 500 km) outside the single-level area [90, -120, 10, 40]; their single-level samples are NaN
+[sample] OK 19901991_DJF 0p25 sl0p25: 117 tracks, 2113 points, 110 outside area (1.3 min) -> 19901991_DJF_0p25_vo_points_sl0p25.csv
+[sample] WARNING 19911992_DJF 0p25: 193 points of 32 tracks are (within 500 km) outside the single-level area [90, -120, 10, 40]; their single-level samples are NaN
+[sample] OK 19911992_DJF 0p25 sl0p25: 115 tracks, 2245 points, 193 outside area (1.7 min) -> 19911992_DJF_0p25_vo_points_sl0p25.csv
+[sample] WARNING 19921993_DJF 0p25: 175 points of 26 tracks are (within 500 km) outside the single-level area [90, -120, 10, 40]; their single-level samples are NaN
+[sample] OK 19921993_DJF 0p25 sl0p25: 117 tracks, 2114 points, 175 outside area (1.1 min) -> 19921993_DJF_0p25_vo_points_sl0p25.csv
+[sample] WARNING 19931994_DJF 0p25: 99 points of 16 tracks are (within 500 km) outside the single-level area [90, -120, 10, 40]; their single-level samples are NaN
+[sample] OK 19931994_DJF 0p25 sl0p25: 106 tracks, 1894 points, 99 outside area (1.3 min) -> 19931994_DJF_0p25_vo_points_sl0p25.csv
+[sample] WARNING 19941995_DJF 0p25: 85 points of 19 tracks are (within 500 km) outside the single-level area [90, -120, 10, 40]; their single-level samples are NaN
+[sample] OK 19941995_DJF 0p25 sl0p25: 111 tracks, 2145 points, 85 outside area (1.1 min) -> 19941995_DJF_0p25_vo_points_sl0p25.csv
+[sample] WARNING 19951996_DJF 0p25: 150 points of 23 tracks are (within 500 km) outside the single-level area [90, -120, 10, 40]; their single-level samples are NaN
+[sample] OK 19951996_DJF 0p25 sl0p25: 118 tracks, 2156 points, 150 outside area (1.2 min) -> 19951996_DJF_0p25_vo_points_sl0p25.csv
+[sample] WARNING 19961997_DJF 0p25: 132 points of 20 tracks are (within 500 km) outside the single-level area [90, -120, 10, 40]; their single-level samples are NaN
+[sample] OK 19961997_DJF 0p25 sl0p25: 108 tracks, 2200 points, 132 outside area (1.1 min) -> 19961997_DJF_0p25_vo_points_sl0p25.csv
+[sample] WARNING 19971998_DJF 0p25: 135 points of 24 tracks are (within 500 km) outside the single-level area [90, -120, 10, 40]; their single-level samples are NaN
+[sample] OK 19971998_DJF 0p25 sl0p25: 116 tracks, 2192 points, 135 outside area (1.1 min) -> 19971998_DJF_0p25_vo_points_sl0p25.csv
+[sample] SKIP 19981999_DJF 0p25 sl0p25 (exists)
+[sample] SKIP 19992000_DJF 0p25 sl0p25 (exists)
+[sample] SKIP 20002001_DJF 0p25 sl0p25 (exists)
+[sample] SKIP 20012002_DJF 0p25 sl0p25 (exists)
+[sample] SKIP 20022003_DJF 0p25 sl0p25 (exists)
+[sample] SKIP 20032004_DJF 0p25 sl0p25 (exists)
+[sample] SKIP 20042005_DJF 0p25 sl0p25 (exists)
+[sample] SKIP 20052006_DJF 0p25 sl0p25 (exists)
+[sample] SKIP 20062007_DJF 0p25 sl0p25 (exists)
+[sample] SKIP 20072008_DJF 0p25 sl0p25 (exists)
+[sample] SKIP 20082009_DJF 0p25 sl0p25 (exists)
+[sample] SKIP 20092010_DJF 0p25 sl0p25 (exists)
+[sample] SKIP 20102011_DJF 0p25 sl0p25 (exists)
+[sample] SKIP 20112012_DJF 0p25 sl0p25 (exists)
+[sample] SKIP 20122013_DJF 0p25 sl0p25 (exists)
+[sample] SKIP 20132014_DJF 0p25 sl0p25 (exists)
+[sample] SKIP 20142015_DJF 0p25 sl0p25 (exists)
+[sample] SKIP 20152016_DJF 0p25 sl0p25 (exists)
+[sample] SKIP 20162017_DJF 0p25 sl0p25 (exists)
+[sample] SKIP 20172018_DJF 0p25 sl0p25 (exists)
+[sample] SKIP 20182019_DJF 0p25 sl0p25 (exists)
+[sample] SKIP 20192020_DJF 0p25 sl0p25 (exists)
+[sample] SKIP 20202021_DJF 0p25 sl0p25 (exists)
+[sample] SKIP 20212022_DJF 0p25 sl0p25 (exists)
+[sample] SKIP 20222023_DJF 0p25 sl0p25 (exists)
+[sample] SKIP 20232024_DJF 0p25 sl0p25 (exists)
+[sample] SKIP 20242025_DJF 0p25 sl0p25 (exists)
+[sample] SKIP 20252026_DJF 0p25 sl0p25 (exists)
 [done] sampled tracks in /dmidata/users/asgtho/tracks
-Sampling 28 seasons x 1 track resolutions, fields on 1p25, {'radius_km': 500, 'samples': [('msl', 'min', 'msl_min'), ('msl', 'nearest', 'msl_center'), ('ws10', 'max', 'ws10_max'), ('ws10', 'mean', 'ws10_mean'), ('gust10', 'max', 'gust10_max'), ('gust10', 'mean', 'gust10_mean')], 'pl_samples': [('vo', 'max', 'vo850_unfilt_max'), ('ws850', 'max', 'ws850_max')], 'sample_res': 0.25}
-[sample] WARNING 19981999_DJF 0p25: 121 points of 25 tracks are (within 500 km) outside the single-level area [90, -120, 10, 40]; their single-level samples are NaN
-[sample] OK 19981999_DJF 0p25 sl1p25: 110 tracks, 2047 points, 121 outside area (1.7 min) -> 19981999_DJF_0p25_vo_points_sl1p25.csv
-[sample] WARNING 19992000_DJF 0p25: 157 points of 27 tracks are (within 500 km) outside the single-level area [90, -120, 10, 40]; their single-level samples are NaN
-[sample] OK 19992000_DJF 0p25 sl1p25: 117 tracks, 2229 points, 157 outside area (1.4 min) -> 19992000_DJF_0p25_vo_points_sl1p25.csv
-[sample] WARNING 20002001_DJF 0p25: 141 points of 22 tracks are (within 500 km) outside the single-level area [90, -120, 10, 40]; their single-level samples are NaN
-[sample] OK 20002001_DJF 0p25 sl1p25: 123 tracks, 2391 points, 141 outside area (1.5 min) -> 20002001_DJF_0p25_vo_points_sl1p25.csv
-[sample] WARNING 20012002_DJF 0p25: 214 points of 35 tracks are (within 500 km) outside the single-level area [90, -120, 10, 40]; their single-level samples are NaN
-[sample] OK 20012002_DJF 0p25 sl1p25: 110 tracks, 2308 points, 214 outside area (1.3 min) -> 20012002_DJF_0p25_vo_points_sl1p25.csv
-[sample] WARNING 20022003_DJF 0p25: 124 points of 28 tracks are (within 500 km) outside the single-level area [90, -120, 10, 40]; their single-level samples are NaN
-[sample] OK 20022003_DJF 0p25 sl1p25: 129 tracks, 2322 points, 124 outside area (1.2 min) -> 20022003_DJF_0p25_vo_points_sl1p25.csv
-[sample] WARNING 20032004_DJF 0p25: 132 points of 26 tracks are (within 500 km) outside the single-level area [90, -120, 10, 40]; their single-level samples are NaN
-[sample] OK 20032004_DJF 0p25 sl1p25: 117 tracks, 2220 points, 132 outside area (1.4 min) -> 20032004_DJF_0p25_vo_points_sl1p25.csv
-[sample] WARNING 20042005_DJF 0p25: 237 points of 35 tracks are (within 500 km) outside the single-level area [90, -120, 10, 40]; their single-level samples are NaN
-[sample] OK 20042005_DJF 0p25 sl1p25: 132 tracks, 2483 points, 237 outside area (1.3 min) -> 20042005_DJF_0p25_vo_points_sl1p25.csv
-[sample] WARNING 20052006_DJF 0p25: 176 points of 31 tracks are (within 500 km) outside the single-level area [90, -120, 10, 40]; their single-level samples are NaN
-[sample] OK 20052006_DJF 0p25 sl1p25: 138 tracks, 2640 points, 176 outside area (1.4 min) -> 20052006_DJF_0p25_vo_points_sl1p25.csv
-[sample] WARNING 20062007_DJF 0p25: 120 points of 24 tracks are (within 500 km) outside the single-level area [90, -120, 10, 40]; their single-level samples are NaN
-[sample] OK 20062007_DJF 0p25 sl1p25: 119 tracks, 2105 points, 120 outside area (1.4 min) -> 20062007_DJF_0p25_vo_points_sl1p25.csv
-[sample] WARNING 20072008_DJF 0p25: 220 points of 30 tracks are (within 500 km) outside the single-level area [90, -120, 10, 40]; their single-level samples are NaN
-[sample] OK 20072008_DJF 0p25 sl1p25: 119 tracks, 2323 points, 220 outside area (1.3 min) -> 20072008_DJF_0p25_vo_points_sl1p25.csv
-[sample] WARNING 20082009_DJF 0p25: 157 points of 24 tracks are (within 500 km) outside the single-level area [90, -120, 10, 40]; their single-level samples are NaN
-[sample] OK 20082009_DJF 0p25 sl1p25: 125 tracks, 2307 points, 157 outside area (1.4 min) -> 20082009_DJF_0p25_vo_points_sl1p25.csv
-[sample] WARNING 20092010_DJF 0p25: 99 points of 19 tracks are (within 500 km) outside the single-level area [90, -120, 10, 40]; their single-level samples are NaN
-[sample] OK 20092010_DJF 0p25 sl1p25: 110 tracks, 2260 points, 99 outside area (1.7 min) -> 20092010_DJF_0p25_vo_points_sl1p25.csv
-[sample] WARNING 20102011_DJF 0p25: 99 points of 20 tracks are (within 500 km) outside the single-level area [90, -120, 10, 40]; their single-level samples are NaN
-[sample] OK 20102011_DJF 0p25 sl1p25: 125 tracks, 2173 points, 99 outside area (1.3 min) -> 20102011_DJF_0p25_vo_points_sl1p25.csv
-[sample] WARNING 20112012_DJF 0p25: 125 points of 30 tracks are (within 500 km) outside the single-level area [90, -120, 10, 40]; their single-level samples are NaN
-[sample] OK 20112012_DJF 0p25 sl1p25: 123 tracks, 2370 points, 125 outside area (1.2 min) -> 20112012_DJF_0p25_vo_points_sl1p25.csv
-[sample] WARNING 20122013_DJF 0p25: 102 points of 20 tracks are (within 500 km) outside the single-level area [90, -120, 10, 40]; their single-level samples are NaN
-[sample] OK 20122013_DJF 0p25 sl1p25: 110 tracks, 2110 points, 102 outside area (1.3 min) -> 20122013_DJF_0p25_vo_points_sl1p25.csv
-[sample] WARNING 20132014_DJF 0p25: 191 points of 24 tracks are (within 500 km) outside the single-level area [90, -120, 10, 40]; their single-level samples are NaN
-[sample] OK 20132014_DJF 0p25 sl1p25: 109 tracks, 2073 points, 191 outside area (1.6 min) -> 20132014_DJF_0p25_vo_points_sl1p25.csv
-[sample] WARNING 20142015_DJF 0p25: 168 points of 33 tracks are (within 500 km) outside the single-level area [90, -120, 10, 40]; their single-level samples are NaN
-[sample] OK 20142015_DJF 0p25 sl1p25: 121 tracks, 2265 points, 168 outside area (1.6 min) -> 20142015_DJF_0p25_vo_points_sl1p25.csv
-[sample] WARNING 20152016_DJF 0p25: 144 points of 30 tracks are (within 500 km) outside the single-level area [90, -120, 10, 40]; their single-level samples are NaN
-[sample] OK 20152016_DJF 0p25 sl1p25: 120 tracks, 2189 points, 144 outside area (1.5 min) -> 20152016_DJF_0p25_vo_points_sl1p25.csv
-[sample] WARNING 20162017_DJF 0p25: 132 points of 20 tracks are (within 500 km) outside the single-level area [90, -120, 10, 40]; their single-level samples are NaN
-[sample] OK 20162017_DJF 0p25 sl1p25: 124 tracks, 2329 points, 132 outside area (1.7 min) -> 20162017_DJF_0p25_vo_points_sl1p25.csv
-[sample] WARNING 20172018_DJF 0p25: 162 points of 34 tracks are (within 500 km) outside the single-level area [90, -120, 10, 40]; their single-level samples are NaN
-[sample] OK 20172018_DJF 0p25 sl1p25: 125 tracks, 2220 points, 162 outside area (1.4 min) -> 20172018_DJF_0p25_vo_points_sl1p25.csv
-[sample] WARNING 20182019_DJF 0p25: 128 points of 22 tracks are (within 500 km) outside the single-level area [90, -120, 10, 40]; their single-level samples are NaN
-[sample] OK 20182019_DJF 0p25 sl1p25: 110 tracks, 2092 points, 128 outside area (1.6 min) -> 20182019_DJF_0p25_vo_points_sl1p25.csv
-[sample] WARNING 20192020_DJF 0p25: 141 points of 29 tracks are (within 500 km) outside the single-level area [90, -120, 10, 40]; their single-level samples are NaN
-[sample] OK 20192020_DJF 0p25 sl1p25: 119 tracks, 2282 points, 141 outside area (1.7 min) -> 20192020_DJF_0p25_vo_points_sl1p25.csv
-[sample] WARNING 20202021_DJF 0p25: 94 points of 23 tracks are (within 500 km) outside the single-level area [90, -120, 10, 40]; their single-level samples are NaN
-[sample] OK 20202021_DJF 0p25 sl1p25: 123 tracks, 2344 points, 94 outside area (1.6 min) -> 20202021_DJF_0p25_vo_points_sl1p25.csv
-[sample] WARNING 20212022_DJF 0p25: 182 points of 25 tracks are (within 500 km) outside the single-level area [90, -120, 10, 40]; their single-level samples are NaN
-[sample] OK 20212022_DJF 0p25 sl1p25: 115 tracks, 2227 points, 182 outside area (1.7 min) -> 20212022_DJF_0p25_vo_points_sl1p25.csv
-[sample] WARNING 20222023_DJF 0p25: 160 points of 29 tracks are (within 500 km) outside the single-level area [90, -120, 10, 40]; their single-level samples are NaN
-[sample] OK 20222023_DJF 0p25 sl1p25: 123 tracks, 2304 points, 160 outside area (1.9 min) -> 20222023_DJF_0p25_vo_points_sl1p25.csv
-[sample] WARNING 20232024_DJF 0p25: 161 points of 29 tracks are (within 500 km) outside the single-level area [90, -120, 10, 40]; their single-level samples are NaN
-[sample] OK 20232024_DJF 0p25 sl1p25: 125 tracks, 2433 points, 161 outside area (1.5 min) -> 20232024_DJF_0p25_vo_points_sl1p25.csv
-[sample] WARNING 20242025_DJF 0p25: 202 points of 27 tracks are (within 500 km) outside the single-level area [90, -120, 10, 40]; their single-level samples are NaN
-[sample] OK 20242025_DJF 0p25 sl1p25: 123 tracks, 2474 points, 202 outside area (1.6 min) -> 20242025_DJF_0p25_vo_points_sl1p25.csv
-[sample] WARNING 20252026_DJF 0p25: 119 points of 26 tracks are (within 500 km) outside the single-level area [90, -120, 10, 40]; their single-level samples are NaN
-[sample] OK 20252026_DJF 0p25 sl1p25: 118 tracks, 2230 points, 119 outside area (1.6 min) -> 20252026_DJF_0p25_vo_points_sl1p25.csv
-[done] sampled tracks in /dmidata/users/asgtho/tracks
-Sampling 28 seasons x 1 track resolutions, fields on 1p875, {'radius_km': 500, 'samples': [('msl', 'min', 'msl_min'), ('msl', 'nearest', 'msl_center'), ('ws10', 'max', 'ws10_max'), ('ws10', 'mean', 'ws10_mean'), ('gust10', 'max', 'gust10_max'), ('gust10', 'mean', 'gust10_mean')], 'pl_samples': [('vo', 'max', 'vo850_unfilt_max'), ('ws850', 'max', 'ws850_max')], 'sample_res': 0.25}
-[sample] WARNING 19981999_DJF 0p25: 121 points of 25 tracks are (within 500 km) outside the single-level area [90, -120, 10, 40]; their single-level samples are NaN
-[sample] OK 19981999_DJF 0p25 sl1p875: 110 tracks, 2047 points, 121 outside area (1.6 min) -> 19981999_DJF_0p25_vo_points_sl1p875.csv
-[sample] WARNING 19992000_DJF 0p25: 157 points of 27 tracks are (within 500 km) outside the single-level area [90, -120, 10, 40]; their single-level samples are NaN
-[sample] OK 19992000_DJF 0p25 sl1p875: 117 tracks, 2229 points, 157 outside area (1.0 min) -> 19992000_DJF_0p25_vo_points_sl1p875.csv
-[sample] WARNING 20002001_DJF 0p25: 141 points of 22 tracks are (within 500 km) outside the single-level area [90, -120, 10, 40]; their single-level samples are NaN
-[sample] OK 20002001_DJF 0p25 sl1p875: 123 tracks, 2391 points, 141 outside area (1.0 min) -> 20002001_DJF_0p25_vo_points_sl1p875.csv
-[sample] WARNING 20012002_DJF 0p25: 214 points of 35 tracks are (within 500 km) outside the single-level area [90, -120, 10, 40]; their single-level samples are NaN
-[sample] OK 20012002_DJF 0p25 sl1p875: 110 tracks, 2308 points, 214 outside area (1.1 min) -> 20012002_DJF_0p25_vo_points_sl1p875.csv
-[sample] WARNING 20022003_DJF 0p25: 124 points of 28 tracks are (within 500 km) outside the single-level area [90, -120, 10, 40]; their single-level samples are NaN
-[sample] OK 20022003_DJF 0p25 sl1p875: 129 tracks, 2322 points, 124 outside area (1.1 min) -> 20022003_DJF_0p25_vo_points_sl1p875.csv
-[sample] WARNING 20032004_DJF 0p25: 132 points of 26 tracks are (within 500 km) outside the single-level area [90, -120, 10, 40]; their single-level samples are NaN
-[sample] OK 20032004_DJF 0p25 sl1p875: 117 tracks, 2220 points, 132 outside area (1.1 min) -> 20032004_DJF_0p25_vo_points_sl1p875.csv
-[sample] WARNING 20042005_DJF 0p25: 237 points of 35 tracks are (within 500 km) outside the single-level area [90, -120, 10, 40]; their single-level samples are NaN
-[sample] OK 20042005_DJF 0p25 sl1p875: 132 tracks, 2483 points, 237 outside area (1.0 min) -> 20042005_DJF_0p25_vo_points_sl1p875.csv
-[sample] WARNING 20052006_DJF 0p25: 176 points of 31 tracks are (within 500 km) outside the single-level area [90, -120, 10, 40]; their single-level samples are NaN
-[sample] OK 20052006_DJF 0p25 sl1p875: 138 tracks, 2640 points, 176 outside area (0.9 min) -> 20052006_DJF_0p25_vo_points_sl1p875.csv
-[sample] WARNING 20062007_DJF 0p25: 120 points of 24 tracks are (within 500 km) outside the single-level area [90, -120, 10, 40]; their single-level samples are NaN
-[sample] OK 20062007_DJF 0p25 sl1p875: 119 tracks, 2105 points, 120 outside area (1.3 min) -> 20062007_DJF_0p25_vo_points_sl1p875.csv
-[sample] WARNING 20072008_DJF 0p25: 220 points of 30 tracks are (within 500 km) outside the single-level area [90, -120, 10, 40]; their single-level samples are NaN
-[sample] OK 20072008_DJF 0p25 sl1p875: 119 tracks, 2323 points, 220 outside area (1.6 min) -> 20072008_DJF_0p25_vo_points_sl1p875.csv
-[sample] WARNING 20082009_DJF 0p25: 157 points of 24 tracks are (within 500 km) outside the single-level area [90, -120, 10, 40]; their single-level samples are NaN
-[sample] OK 20082009_DJF 0p25 sl1p875: 125 tracks, 2307 points, 157 outside area (1.9 min) -> 20082009_DJF_0p25_vo_points_sl1p875.csv
-[sample] WARNING 20092010_DJF 0p25: 99 points of 19 tracks are (within 500 km) outside the single-level area [90, -120, 10, 40]; their single-level samples are NaN
-[sample] OK 20092010_DJF 0p25 sl1p875: 110 tracks, 2260 points, 99 outside area (1.6 min) -> 20092010_DJF_0p25_vo_points_sl1p875.csv
-[sample] WARNING 20102011_DJF 0p25: 99 points of 20 tracks are (within 500 km) outside the single-level area [90, -120, 10, 40]; their single-level samples are NaN
-[sample] OK 20102011_DJF 0p25 sl1p875: 125 tracks, 2173 points, 99 outside area (1.5 min) -> 20102011_DJF_0p25_vo_points_sl1p875.csv
-[sample] WARNING 20112012_DJF 0p25: 125 points of 30 tracks are (within 500 km) outside the single-level area [90, -120, 10, 40]; their single-level samples are NaN
-[sample] OK 20112012_DJF 0p25 sl1p875: 123 tracks, 2370 points, 125 outside area (1.5 min) -> 20112012_DJF_0p25_vo_points_sl1p875.csv
-[sample] WARNING 20122013_DJF 0p25: 102 points of 20 tracks are (within 500 km) outside the single-level area [90, -120, 10, 40]; their single-level samples are NaN
-[sample] OK 20122013_DJF 0p25 sl1p875: 110 tracks, 2110 points, 102 outside area (1.3 min) -> 20122013_DJF_0p25_vo_points_sl1p875.csv
-[sample] WARNING 20132014_DJF 0p25: 191 points of 24 tracks are (within 500 km) outside the single-level area [90, -120, 10, 40]; their single-level samples are NaN
-[sample] OK 20132014_DJF 0p25 sl1p875: 109 tracks, 2073 points, 191 outside area (1.3 min) -> 20132014_DJF_0p25_vo_points_sl1p875.csv
-[sample] WARNING 20142015_DJF 0p25: 168 points of 33 tracks are (within 500 km) outside the single-level area [90, -120, 10, 40]; their single-level samples are NaN
-[sample] OK 20142015_DJF 0p25 sl1p875: 121 tracks, 2265 points, 168 outside area (1.2 min) -> 20142015_DJF_0p25_vo_points_sl1p875.csv
-[sample] WARNING 20152016_DJF 0p25: 144 points of 30 tracks are (within 500 km) outside the single-level area [90, -120, 10, 40]; their single-level samples are NaN
-[sample] OK 20152016_DJF 0p25 sl1p875: 120 tracks, 2189 points, 144 outside area (1.3 min) -> 20152016_DJF_0p25_vo_points_sl1p875.csv
-[sample] WARNING 20162017_DJF 0p25: 132 points of 20 tracks are (within 500 km) outside the single-level area [90, -120, 10, 40]; their single-level samples are NaN
-[sample] OK 20162017_DJF 0p25 sl1p875: 124 tracks, 2329 points, 132 outside area (1.2 min) -> 20162017_DJF_0p25_vo_points_sl1p875.csv
-[sample] WARNING 20172018_DJF 0p25: 162 points of 34 tracks are (within 500 km) outside the single-level area [90, -120, 10, 40]; their single-level samples are NaN
-[sample] OK 20172018_DJF 0p25 sl1p875: 125 tracks, 2220 points, 162 outside area (1.2 min) -> 20172018_DJF_0p25_vo_points_sl1p875.csv
-[sample] WARNING 20182019_DJF 0p25: 128 points of 22 tracks are (within 500 km) outside the single-level area [90, -120, 10, 40]; their single-level samples are NaN
-[sample] OK 20182019_DJF 0p25 sl1p875: 110 tracks, 2092 points, 128 outside area (1.1 min) -> 20182019_DJF_0p25_vo_points_sl1p875.csv
-[sample] WARNING 20192020_DJF 0p25: 141 points of 29 tracks are (within 500 km) outside the single-level area [90, -120, 10, 40]; their single-level samples are NaN
-[sample] OK 20192020_DJF 0p25 sl1p875: 119 tracks, 2282 points, 141 outside area (1.2 min) -> 20192020_DJF_0p25_vo_points_sl1p875.csv
-[sample] WARNING 20202021_DJF 0p25: 94 points of 23 tracks are (within 500 km) outside the single-level area [90, -120, 10, 40]; their single-level samples are NaN
-[sample] OK 20202021_DJF 0p25 sl1p875: 123 tracks, 2344 points, 94 outside area (1.0 min) -> 20202021_DJF_0p25_vo_points_sl1p875.csv
-[sample] WARNING 20212022_DJF 0p25: 182 points of 25 tracks are (within 500 km) outside the single-level area [90, -120, 10, 40]; their single-level samples are NaN
-[sample] OK 20212022_DJF 0p25 sl1p875: 115 tracks, 2227 points, 182 outside area (1.0 min) -> 20212022_DJF_0p25_vo_points_sl1p875.csv
-[sample] WARNING 20222023_DJF 0p25: 160 points of 29 tracks are (within 500 km) outside the single-level area [90, -120, 10, 40]; their single-level samples are NaN
-[sample] OK 20222023_DJF 0p25 sl1p875: 123 tracks, 2304 points, 160 outside area (1.1 min) -> 20222023_DJF_0p25_vo_points_sl1p875.csv
-[sample] WARNING 20232024_DJF 0p25: 161 points of 29 tracks are (within 500 km) outside the single-level area [90, -120, 10, 40]; their single-level samples are NaN
-[sample] OK 20232024_DJF 0p25 sl1p875: 125 tracks, 2433 points, 161 outside area (1.0 min) -> 20232024_DJF_0p25_vo_points_sl1p875.csv
-[sample] WARNING 20242025_DJF 0p25: 202 points of 27 tracks are (within 500 km) outside the single-level area [90, -120, 10, 40]; their single-level samples are NaN
-[sample] OK 20242025_DJF 0p25 sl1p875: 123 tracks, 2474 points, 202 outside area (1.0 min) -> 20242025_DJF_0p25_vo_points_sl1p875.csv
-[sample] WARNING 20252026_DJF 0p25: 119 points of 26 tracks are (within 500 km) outside the single-level area [90, -120, 10, 40]; their single-level samples are NaN
-[sample] OK 20252026_DJF 0p25 sl1p875: 118 tracks, 2230 points, 119 outside area (1.0 min) -> 20252026_DJF_0p25_vo_points_sl1p875.csv
-[done] sampled tracks in /dmidata/users/asgtho/tracks
-Sampling 28 seasons x 1 track resolutions, fields on 2p5, {'radius_km': 500, 'samples': [('msl', 'min', 'msl_min'), ('msl', 'nearest', 'msl_center'), ('ws10', 'max', 'ws10_max'), ('ws10', 'mean', 'ws10_mean'), ('gust10', 'max', 'gust10_max'), ('gust10', 'mean', 'gust10_mean')], 'pl_samples': [('vo', 'max', 'vo850_unfilt_max'), ('ws850', 'max', 'ws850_max')], 'sample_res': 0.25}
-[sample] WARNING 19981999_DJF 0p25: 121 points of 25 tracks are (within 500 km) outside the single-level area [90, -120, 10, 40]; their single-level samples are NaN
-[sample] OK 19981999_DJF 0p25 sl2p5: 110 tracks, 2047 points, 121 outside area (1.0 min) -> 19981999_DJF_0p25_vo_points_sl2p5.csv
-[sample] WARNING 19992000_DJF 0p25: 157 points of 27 tracks are (within 500 km) outside the single-level area [90, -120, 10, 40]; their single-level samples are NaN
-[sample] OK 19992000_DJF 0p25 sl2p5: 117 tracks, 2229 points, 157 outside area (0.9 min) -> 19992000_DJF_0p25_vo_points_sl2p5.csv
-[sample] WARNING 20002001_DJF 0p25: 141 points of 22 tracks are (within 500 km) outside the single-level area [90, -120, 10, 40]; their single-level samples are NaN
-[sample] OK 20002001_DJF 0p25 sl2p5: 123 tracks, 2391 points, 141 outside area (0.8 min) -> 20002001_DJF_0p25_vo_points_sl2p5.csv
-[sample] WARNING 20012002_DJF 0p25: 214 points of 35 tracks are (within 500 km) outside the single-level area [90, -120, 10, 40]; their single-level samples are NaN
-[sample] OK 20012002_DJF 0p25 sl2p5: 110 tracks, 2308 points, 214 outside area (0.8 min) -> 20012002_DJF_0p25_vo_points_sl2p5.csv
-[sample] WARNING 20022003_DJF 0p25: 124 points of 28 tracks are (within 500 km) outside the single-level area [90, -120, 10, 40]; their single-level samples are NaN
-[sample] OK 20022003_DJF 0p25 sl2p5: 129 tracks, 2322 points, 124 outside area (0.7 min) -> 20022003_DJF_0p25_vo_points_sl2p5.csv
-[sample] WARNING 20032004_DJF 0p25: 132 points of 26 tracks are (within 500 km) outside the single-level area [90, -120, 10, 40]; their single-level samples are NaN
-[sample] OK 20032004_DJF 0p25 sl2p5: 117 tracks, 2220 points, 132 outside area (0.8 min) -> 20032004_DJF_0p25_vo_points_sl2p5.csv
-[sample] WARNING 20042005_DJF 0p25: 237 points of 35 tracks are (within 500 km) outside the single-level area [90, -120, 10, 40]; their single-level samples are NaN
-[sample] OK 20042005_DJF 0p25 sl2p5: 132 tracks, 2483 points, 237 outside area (0.8 min) -> 20042005_DJF_0p25_vo_points_sl2p5.csv
-[sample] WARNING 20052006_DJF 0p25: 176 points of 31 tracks are (within 500 km) outside the single-level area [90, -120, 10, 40]; their single-level samples are NaN
-[sample] OK 20052006_DJF 0p25 sl2p5: 138 tracks, 2640 points, 176 outside area (0.8 min) -> 20052006_DJF_0p25_vo_points_sl2p5.csv
-[sample] WARNING 20062007_DJF 0p25: 120 points of 24 tracks are (within 500 km) outside the single-level area [90, -120, 10, 40]; their single-level samples are NaN
-[sample] OK 20062007_DJF 0p25 sl2p5: 119 tracks, 2105 points, 120 outside area (0.8 min) -> 20062007_DJF_0p25_vo_points_sl2p5.csv
-[sample] WARNING 20072008_DJF 0p25: 220 points of 30 tracks are (within 500 km) outside the single-level area [90, -120, 10, 40]; their single-level samples are NaN
-[sample] OK 20072008_DJF 0p25 sl2p5: 119 tracks, 2323 points, 220 outside area (0.9 min) -> 20072008_DJF_0p25_vo_points_sl2p5.csv
-[sample] WARNING 20082009_DJF 0p25: 157 points of 24 tracks are (within 500 km) outside the single-level area [90, -120, 10, 40]; their single-level samples are NaN
-[sample] OK 20082009_DJF 0p25 sl2p5: 125 tracks, 2307 points, 157 outside area (0.8 min) -> 20082009_DJF_0p25_vo_points_sl2p5.csv
-[sample] WARNING 20092010_DJF 0p25: 99 points of 19 tracks are (within 500 km) outside the single-level area [90, -120, 10, 40]; their single-level samples are NaN
-[sample] OK 20092010_DJF 0p25 sl2p5: 110 tracks, 2260 points, 99 outside area (0.8 min) -> 20092010_DJF_0p25_vo_points_sl2p5.csv
-[sample] WARNING 20102011_DJF 0p25: 99 points of 20 tracks are (within 500 km) outside the single-level area [90, -120, 10, 40]; their single-level samples are NaN
-[sample] OK 20102011_DJF 0p25 sl2p5: 125 tracks, 2173 points, 99 outside area (0.8 min) -> 20102011_DJF_0p25_vo_points_sl2p5.csv
-[sample] WARNING 20112012_DJF 0p25: 125 points of 30 tracks are (within 500 km) outside the single-level area [90, -120, 10, 40]; their single-level samples are NaN
-[sample] OK 20112012_DJF 0p25 sl2p5: 123 tracks, 2370 points, 125 outside area (0.8 min) -> 20112012_DJF_0p25_vo_points_sl2p5.csv
-[sample] WARNING 20122013_DJF 0p25: 102 points of 20 tracks are (within 500 km) outside the single-level area [90, -120, 10, 40]; their single-level samples are NaN
-[sample] OK 20122013_DJF 0p25 sl2p5: 110 tracks, 2110 points, 102 outside area (0.9 min) -> 20122013_DJF_0p25_vo_points_sl2p5.csv
-[sample] WARNING 20132014_DJF 0p25: 191 points of 24 tracks are (within 500 km) outside the single-level area [90, -120, 10, 40]; their single-level samples are NaN
-[sample] OK 20132014_DJF 0p25 sl2p5: 109 tracks, 2073 points, 191 outside area (0.8 min) -> 20132014_DJF_0p25_vo_points_sl2p5.csv
-[sample] WARNING 20142015_DJF 0p25: 168 points of 33 tracks are (within 500 km) outside the single-level area [90, -120, 10, 40]; their single-level samples are NaN
-[sample] OK 20142015_DJF 0p25 sl2p5: 121 tracks, 2265 points, 168 outside area (0.8 min) -> 20142015_DJF_0p25_vo_points_sl2p5.csv
-[sample] WARNING 20152016_DJF 0p25: 144 points of 30 tracks are (within 500 km) outside the single-level area [90, -120, 10, 40]; their single-level samples are NaN
-[sample] OK 20152016_DJF 0p25 sl2p5: 120 tracks, 2189 points, 144 outside area (0.9 min) -> 20152016_DJF_0p25_vo_points_sl2p5.csv
-[sample] WARNING 20162017_DJF 0p25: 132 points of 20 tracks are (within 500 km) outside the single-level area [90, -120, 10, 40]; their single-level samples are NaN
-[sample] OK 20162017_DJF 0p25 sl2p5: 124 tracks, 2329 points, 132 outside area (0.8 min) -> 20162017_DJF_0p25_vo_points_sl2p5.csv
-[sample] WARNING 20172018_DJF 0p25: 162 points of 34 tracks are (within 500 km) outside the single-level area [90, -120, 10, 40]; their single-level samples are NaN
-[sample] OK 20172018_DJF 0p25 sl2p5: 125 tracks, 2220 points, 162 outside area (0.8 min) -> 20172018_DJF_0p25_vo_points_sl2p5.csv
-[sample] WARNING 20182019_DJF 0p25: 128 points of 22 tracks are (within 500 km) outside the single-level area [90, -120, 10, 40]; their single-level samples are NaN
-[sample] OK 20182019_DJF 0p25 sl2p5: 110 tracks, 2092 points, 128 outside area (0.9 min) -> 20182019_DJF_0p25_vo_points_sl2p5.csv
-[sample] WARNING 20192020_DJF 0p25: 141 points of 29 tracks are (within 500 km) outside the single-level area [90, -120, 10, 40]; their single-level samples are NaN
-[sample] OK 20192020_DJF 0p25 sl2p5: 119 tracks, 2282 points, 141 outside area (0.8 min) -> 20192020_DJF_0p25_vo_points_sl2p5.csv
-[sample] WARNING 20202021_DJF 0p25: 94 points of 23 tracks are (within 500 km) outside the single-level area [90, -120, 10, 40]; their single-level samples are NaN
-[sample] OK 20202021_DJF 0p25 sl2p5: 123 tracks, 2344 points, 94 outside area (0.9 min) -> 20202021_DJF_0p25_vo_points_sl2p5.csv
-[sample] WARNING 20212022_DJF 0p25: 182 points of 25 tracks are (within 500 km) outside the single-level area [90, -120, 10, 40]; their single-level samples are NaN
-[sample] OK 20212022_DJF 0p25 sl2p5: 115 tracks, 2227 points, 182 outside area (0.8 min) -> 20212022_DJF_0p25_vo_points_sl2p5.csv
-[sample] WARNING 20222023_DJF 0p25: 160 points of 29 tracks are (within 500 km) outside the single-level area [90, -120, 10, 40]; their single-level samples are NaN
-[sample] OK 20222023_DJF 0p25 sl2p5: 123 tracks, 2304 points, 160 outside area (0.9 min) -> 20222023_DJF_0p25_vo_points_sl2p5.csv
-[sample] WARNING 20232024_DJF 0p25: 161 points of 29 tracks are (within 500 km) outside the single-level area [90, -120, 10, 40]; their single-level samples are NaN
-[sample] OK 20232024_DJF 0p25 sl2p5: 125 tracks, 2433 points, 161 outside area (0.8 min) -> 20232024_DJF_0p25_vo_points_sl2p5.csv
-[sample] WARNING 20242025_DJF 0p25: 202 points of 27 tracks are (within 500 km) outside the single-level area [90, -120, 10, 40]; their single-level samples are NaN
-[sample] OK 20242025_DJF 0p25 sl2p5: 123 tracks, 2474 points, 202 outside area (0.8 min) -> 20242025_DJF_0p25_vo_points_sl2p5.csv
-[sample] WARNING 20252026_DJF 0p25: 119 points of 26 tracks are (within 500 km) outside the single-level area [90, -120, 10, 40]; their single-level samples are NaN
-[sample] OK 20252026_DJF 0p25 sl2p5: 118 tracks, 2230 points, 119 outside area (0.8 min) -> 20252026_DJF_0p25_vo_points_sl2p5.csv
-[done] sampled tracks in /dmidata/users/asgtho/tracks
-Sampling 28 seasons x 1 track resolutions, fields on 3p0, {'radius_km': 500, 'samples': [('msl', 'min', 'msl_min'), ('msl', 'nearest', 'msl_center'), ('ws10', 'max', 'ws10_max'), ('ws10', 'mean', 'ws10_mean'), ('gust10', 'max', 'gust10_max'), ('gust10', 'mean', 'gust10_mean')], 'pl_samples': [('vo', 'max', 'vo850_unfilt_max'), ('ws850', 'max', 'ws850_max')], 'sample_res': 0.25}
-[sample] WARNING 19981999_DJF 0p25: 121 points of 25 tracks are (within 500 km) outside the single-level area [90, -120, 10, 40]; their single-level samples are NaN
-[sample] OK 19981999_DJF 0p25 sl3p0: 110 tracks, 2047 points, 121 outside area (0.9 min) -> 19981999_DJF_0p25_vo_points_sl3p0.csv
-[sample] WARNING 19992000_DJF 0p25: 157 points of 27 tracks are (within 500 km) outside the single-level area [90, -120, 10, 40]; their single-level samples are NaN
-[sample] OK 19992000_DJF 0p25 sl3p0: 117 tracks, 2229 points, 157 outside area (0.8 min) -> 19992000_DJF_0p25_vo_points_sl3p0.csv
-[sample] WARNING 20002001_DJF 0p25: 141 points of 22 tracks are (within 500 km) outside the single-level area [90, -120, 10, 40]; their single-level samples are NaN
-[sample] OK 20002001_DJF 0p25 sl3p0: 123 tracks, 2391 points, 141 outside area (0.8 min) -> 20002001_DJF_0p25_vo_points_sl3p0.csv
-[sample] WARNING 20012002_DJF 0p25: 214 points of 35 tracks are (within 500 km) outside the single-level area [90, -120, 10, 40]; their single-level samples are NaN
-[sample] OK 20012002_DJF 0p25 sl3p0: 110 tracks, 2308 points, 214 outside area (0.7 min) -> 20012002_DJF_0p25_vo_points_sl3p0.csv
-[sample] WARNING 20022003_DJF 0p25: 124 points of 28 tracks are (within 500 km) outside the single-level area [90, -120, 10, 40]; their single-level samples are NaN
-[sample] OK 20022003_DJF 0p25 sl3p0: 129 tracks, 2322 points, 124 outside area (0.8 min) -> 20022003_DJF_0p25_vo_points_sl3p0.csv
-[sample] WARNING 20032004_DJF 0p25: 132 points of 26 tracks are (within 500 km) outside the single-level area [90, -120, 10, 40]; their single-level samples are NaN
-[sample] OK 20032004_DJF 0p25 sl3p0: 117 tracks, 2220 points, 132 outside area (1.0 min) -> 20032004_DJF_0p25_vo_points_sl3p0.csv
-[sample] WARNING 20042005_DJF 0p25: 237 points of 35 tracks are (within 500 km) outside the single-level area [90, -120, 10, 40]; their single-level samples are NaN
-[sample] OK 20042005_DJF 0p25 sl3p0: 132 tracks, 2483 points, 237 outside area (0.8 min) -> 20042005_DJF_0p25_vo_points_sl3p0.csv
-[sample] WARNING 20052006_DJF 0p25: 176 points of 31 tracks are (within 500 km) outside the single-level area [90, -120, 10, 40]; their single-level samples are NaN
-[sample] OK 20052006_DJF 0p25 sl3p0: 138 tracks, 2640 points, 176 outside area (0.9 min) -> 20052006_DJF_0p25_vo_points_sl3p0.csv
-[sample] WARNING 20062007_DJF 0p25: 120 points of 24 tracks are (within 500 km) outside the single-level area [90, -120, 10, 40]; their single-level samples are NaN
-[sample] OK 20062007_DJF 0p25 sl3p0: 119 tracks, 2105 points, 120 outside area (0.8 min) -> 20062007_DJF_0p25_vo_points_sl3p0.csv
-[sample] WARNING 20072008_DJF 0p25: 220 points of 30 tracks are (within 500 km) outside the single-level area [90, -120, 10, 40]; their single-level samples are NaN
-[sample] OK 20072008_DJF 0p25 sl3p0: 119 tracks, 2323 points, 220 outside area (0.9 min) -> 20072008_DJF_0p25_vo_points_sl3p0.csv
-[sample] WARNING 20082009_DJF 0p25: 157 points of 24 tracks are (within 500 km) outside the single-level area [90, -120, 10, 40]; their single-level samples are NaN
-[sample] OK 20082009_DJF 0p25 sl3p0: 125 tracks, 2307 points, 157 outside area (0.8 min) -> 20082009_DJF_0p25_vo_points_sl3p0.csv
-[sample] WARNING 20092010_DJF 0p25: 99 points of 19 tracks are (within 500 km) outside the single-level area [90, -120, 10, 40]; their single-level samples are NaN
-[sample] OK 20092010_DJF 0p25 sl3p0: 110 tracks, 2260 points, 99 outside area (1.0 min) -> 20092010_DJF_0p25_vo_points_sl3p0.csv
-[sample] WARNING 20102011_DJF 0p25: 99 points of 20 tracks are (within 500 km) outside the single-level area [90, -120, 10, 40]; their single-level samples are NaN
-[sample] OK 20102011_DJF 0p25 sl3p0: 125 tracks, 2173 points, 99 outside area (0.8 min) -> 20102011_DJF_0p25_vo_points_sl3p0.csv
-[sample] WARNING 20112012_DJF 0p25: 125 points of 30 tracks are (within 500 km) outside the single-level area [90, -120, 10, 40]; their single-level samples are NaN
-[sample] OK 20112012_DJF 0p25 sl3p0: 123 tracks, 2370 points, 125 outside area (1.1 min) -> 20112012_DJF_0p25_vo_points_sl3p0.csv
-[sample] WARNING 20122013_DJF 0p25: 102 points of 20 tracks are (within 500 km) outside the single-level area [90, -120, 10, 40]; their single-level samples are NaN
-[sample] OK 20122013_DJF 0p25 sl3p0: 110 tracks, 2110 points, 102 outside area (0.9 min) -> 20122013_DJF_0p25_vo_points_sl3p0.csv
-[sample] WARNING 20132014_DJF 0p25: 191 points of 24 tracks are (within 500 km) outside the single-level area [90, -120, 10, 40]; their single-level samples are NaN
-[sample] OK 20132014_DJF 0p25 sl3p0: 109 tracks, 2073 points, 191 outside area (0.9 min) -> 20132014_DJF_0p25_vo_points_sl3p0.csv
-[sample] WARNING 20142015_DJF 0p25: 168 points of 33 tracks are (within 500 km) outside the single-level area [90, -120, 10, 40]; their single-level samples are NaN
-[sample] OK 20142015_DJF 0p25 sl3p0: 121 tracks, 2265 points, 168 outside area (1.0 min) -> 20142015_DJF_0p25_vo_points_sl3p0.csv
-[sample] WARNING 20152016_DJF 0p25: 144 points of 30 tracks are (within 500 km) outside the single-level area [90, -120, 10, 40]; their single-level samples are NaN
-[sample] OK 20152016_DJF 0p25 sl3p0: 120 tracks, 2189 points, 144 outside area (1.0 min) -> 20152016_DJF_0p25_vo_points_sl3p0.csv
-[sample] WARNING 20162017_DJF 0p25: 132 points of 20 tracks are (within 500 km) outside the single-level area [90, -120, 10, 40]; their single-level samples are NaN
-[sample] OK 20162017_DJF 0p25 sl3p0: 124 tracks, 2329 points, 132 outside area (1.0 min) -> 20162017_DJF_0p25_vo_points_sl3p0.csv
-[sample] WARNING 20172018_DJF 0p25: 162 points of 34 tracks are (within 500 km) outside the single-level area [90, -120, 10, 40]; their single-level samples are NaN
-[sample] OK 20172018_DJF 0p25 sl3p0: 125 tracks, 2220 points, 162 outside area (0.9 min) -> 20172018_DJF_0p25_vo_points_sl3p0.csv
-[sample] WARNING 20182019_DJF 0p25: 128 points of 22 tracks are (within 500 km) outside the single-level area [90, -120, 10, 40]; their single-level samples are NaN
-[sample] OK 20182019_DJF 0p25 sl3p0: 110 tracks, 2092 points, 128 outside area (1.1 min) -> 20182019_DJF_0p25_vo_points_sl3p0.csv
-[sample] WARNING 20192020_DJF 0p25: 141 points of 29 tracks are (within 500 km) outside the single-level area [90, -120, 10, 40]; their single-level samples are NaN
-[sample] OK 20192020_DJF 0p25 sl3p0: 119 tracks, 2282 points, 141 outside area (1.0 min) -> 20192020_DJF_0p25_vo_points_sl3p0.csv
-[sample] WARNING 20202021_DJF 0p25: 94 points of 23 tracks are (within 500 km) outside the single-level area [90, -120, 10, 40]; their single-level samples are NaN
-[sample] OK 20202021_DJF 0p25 sl3p0: 123 tracks, 2344 points, 94 outside area (1.3 min) -> 20202021_DJF_0p25_vo_points_sl3p0.csv
-[sample] WARNING 20212022_DJF 0p25: 182 points of 25 tracks are (within 500 km) outside the single-level area [90, -120, 10, 40]; their single-level samples are NaN
-[sample] OK 20212022_DJF 0p25 sl3p0: 115 tracks, 2227 points, 182 outside area (1.3 min) -> 20212022_DJF_0p25_vo_points_sl3p0.csv
-[sample] WARNING 20222023_DJF 0p25: 160 points of 29 tracks are (within 500 km) outside the single-level area [90, -120, 10, 40]; their single-level samples are NaN
-[sample] OK 20222023_DJF 0p25 sl3p0: 123 tracks, 2304 points, 160 outside area (1.3 min) -> 20222023_DJF_0p25_vo_points_sl3p0.csv
-[sample] WARNING 20232024_DJF 0p25: 161 points of 29 tracks are (within 500 km) outside the single-level area [90, -120, 10, 40]; their single-level samples are NaN
-[sample] OK 20232024_DJF 0p25 sl3p0: 125 tracks, 2433 points, 161 outside area (1.4 min) -> 20232024_DJF_0p25_vo_points_sl3p0.csv
-[sample] WARNING 20242025_DJF 0p25: 202 points of 27 tracks are (within 500 km) outside the single-level area [90, -120, 10, 40]; their single-level samples are NaN
-[sample] OK 20242025_DJF 0p25 sl3p0: 123 tracks, 2474 points, 202 outside area (1.4 min) -> 20242025_DJF_0p25_vo_points_sl3p0.csv
-[sample] WARNING 20252026_DJF 0p25: 119 points of 26 tracks are (within 500 km) outside the single-level area [90, -120, 10, 40]; their single-level samples are NaN
-[sample] OK 20252026_DJF 0p25 sl3p0: 118 tracks, 2230 points, 119 outside area (1.4 min) -> 20252026_DJF_0p25_vo_points_sl3p0.csv
+Sampling 47 seasons x 1 track resolutions, fields on 1p25, {'radius_km': 500, 'samples': [('msl', 'min', 'msl_min'), ('msl', 'nearest', 'msl_center'), ('ws10', 'max', 'ws10_max'), ('ws10', 'mean', 'ws10_mean'), ('gust10', 'max', 'gust10_max'), ('gust10', 'mean', 'gust10_mean')], 'pl_samples': [('vo', 'max', 'vo850_unfilt_max'), ('ws850', 'max', 'ws850_max')], 'sample_res': 0.25}
+[sample] WARNING 19791980_DJF 0p25: 138 points of 24 tracks are (within 500 km) outside the single-level area [90, -120, 10, 40]; their single-level samples are NaN
+[sample] OK 19791980_DJF 0p25 sl1p25: 124 tracks, 2247 points, 138 outside area (1.0 min) -> 19791980_DJF_0p25_vo_points_sl1p25.csv
+[sample] WARNING 19801981_DJF 0p25: 162 points of 30 tracks are (within 500 km) outside the single-level area [90, -120, 10, 40]; their single-level samples are NaN
+[sample] OK 19801981_DJF 0p25 sl1p25: 122 tracks, 2330 points, 162 outside area (0.9 min) -> 19801981_DJF_0p25_vo_points_sl1p25.csv
+[sample] WARNING 19811982_DJF 0p25: 160 points of 22 tracks are (within 500 km) outside the single-level area [90, -120, 10, 40]; their single-level samples are NaN
+[sample] OK 19811982_DJF 0p25 sl1p25: 126 tracks, 2325 points, 160 outside area (0.8 min) -> 19811982_DJF_0p25_vo_points_sl1p25.csv
+[sample] WARNING 19821983_DJF 0p25: 115 points of 22 tracks are (within 500 km) outside the single-level area [90, -120, 10, 40]; their single-level samples are NaN
+[sample] OK 19821983_DJF 0p25 sl1p25: 116 tracks, 2104 points, 115 outside area (0.8 min) -> 19821983_DJF_0p25_vo_points_sl1p25.csv
+[sample] WARNING 19831984_DJF 0p25: 170 points of 28 tracks are (within 500 km) outside the single-level area [90, -120, 10, 40]; their single-level samples are NaN
+[sample] OK 19831984_DJF 0p25 sl1p25: 109 tracks, 2124 points, 170 outside area (1.0 min) -> 19831984_DJF_0p25_vo_points_sl1p25.csv
+[sample] WARNING 19841985_DJF 0p25: 132 points of 23 tracks are (within 500 km) outside the single-level area [90, -120, 10, 40]; their single-level samples are NaN
+[sample] OK 19841985_DJF 0p25 sl1p25: 116 tracks, 2204 points, 132 outside area (0.9 min) -> 19841985_DJF_0p25_vo_points_sl1p25.csv
+[sample] WARNING 19851986_DJF 0p25: 153 points of 26 tracks are (within 500 km) outside the single-level area [90, -120, 10, 40]; their single-level samples are NaN
+[sample] OK 19851986_DJF 0p25 sl1p25: 111 tracks, 2055 points, 153 outside area (1.1 min) -> 19851986_DJF_0p25_vo_points_sl1p25.csv
+[sample] WARNING 19861987_DJF 0p25: 198 points of 31 tracks are (within 500 km) outside the single-level area [90, -120, 10, 40]; their single-level samples are NaN
+[sample] OK 19861987_DJF 0p25 sl1p25: 114 tracks, 2186 points, 198 outside area (0.8 min) -> 19861987_DJF_0p25_vo_points_sl1p25.csv
+[sample] WARNING 19871988_DJF 0p25: 76 points of 14 tracks are (within 500 km) outside the single-level area [90, -120, 10, 40]; their single-level samples are NaN
+[sample] OK 19871988_DJF 0p25 sl1p25: 122 tracks, 2186 points, 76 outside area (0.8 min) -> 19871988_DJF_0p25_vo_points_sl1p25.csv
+[sample] WARNING 19881989_DJF 0p25: 86 points of 21 tracks are (within 500 km) outside the single-level area [90, -120, 10, 40]; their single-level samples are NaN
+[sample] OK 19881989_DJF 0p25 sl1p25: 100 tracks, 1806 points, 86 outside area (1.1 min) -> 19881989_DJF_0p25_vo_points_sl1p25.csv
+[sample] WARNING 19891990_DJF 0p25: 170 points of 31 tracks are (within 500 km) outside the single-level area [90, -120, 10, 40]; their single-level samples are NaN
+[sample] OK 19891990_DJF 0p25 sl1p25: 119 tracks, 2140 points, 170 outside area (0.8 min) -> 19891990_DJF_0p25_vo_points_sl1p25.csv
+[sample] WARNING 19901991_DJF 0p25: 110 points of 25 tracks are (within 500 km) outside the single-level area [90, -120, 10, 40]; their single-level samples are NaN
+[sample] OK 19901991_DJF 0p25 sl1p25: 117 tracks, 2113 points, 110 outside area (0.9 min) -> 19901991_DJF_0p25_vo_points_sl1p25.csv
+[sample] WARNING 19911992_DJF 0p25: 193 points of 32 tracks are (within 500 km) outside the single-level area [90, -120, 10, 40]; their single-level samples are NaN
+[sample] OK 19911992_DJF 0p25 sl1p25: 115 tracks, 2245 points, 193 outside area (1.0 min) -> 19911992_DJF_0p25_vo_points_sl1p25.csv
+[sample] WARNING 19921993_DJF 0p25: 175 points of 26 tracks are (within 500 km) outside the single-level area [90, -120, 10, 40]; their single-level samples are NaN
+[sample] OK 19921993_DJF 0p25 sl1p25: 117 tracks, 2114 points, 175 outside area (1.0 min) -> 19921993_DJF_0p25_vo_points_sl1p25.csv
+[sample] WARNING 19931994_DJF 0p25: 99 points of 16 tracks are (within 500 km) outside the single-level area [90, -120, 10, 40]; their single-level samples are NaN
+[sample] OK 19931994_DJF 0p25 sl1p25: 106 tracks, 1894 points, 99 outside area (1.2 min) -> 19931994_DJF_0p25_vo_points_sl1p25.csv
+[sample] WARNING 19941995_DJF 0p25: 85 points of 19 tracks are (within 500 km) outside the single-level area [90, -120, 10, 40]; their single-level samples are NaN
+[sample] OK 19941995_DJF 0p25 sl1p25: 111 tracks, 2145 points, 85 outside area (1.1 min) -> 19941995_DJF_0p25_vo_points_sl1p25.csv
+[sample] WARNING 19951996_DJF 0p25: 150 points of 23 tracks are (within 500 km) outside the single-level area [90, -120, 10, 40]; their single-level samples are NaN
+[sample] OK 19951996_DJF 0p25 sl1p25: 118 tracks, 2156 points, 150 outside area (1.0 min) -> 19951996_DJF_0p25_vo_points_sl1p25.csv
+[sample] WARNING 19961997_DJF 0p25: 132 points of 20 tracks are (within 500 km) outside the single-level area [90, -120, 10, 40]; their single-level samples are NaN
+[sample] OK 19961997_DJF 0p25 sl1p25: 108 tracks, 2200 points, 132 outside area (1.1 min) -> 19961997_DJF_0p25_vo_points_sl1p25.csv
+[sample] WARNING 19971998_DJF 0p25: 135 points of 24 tracks are (within 500 km) outside the single-level area [90, -120, 10, 40]; their single-level samples are NaN
+[sample] OK 19971998_DJF 0p25 sl1p25: 116 tracks, 2192 points, 135 outside area (1.2 min) -> 19971998_DJF_0p25_vo_points_sl1p25.csv
+[sample] SKIP 19981999_DJF 0p25 sl1p25 (exists)
+[sample] SKIP 19992000_DJF 0p25 sl1p25 (exists)
+[sample] SKIP 20002001_DJF 0p25 sl1p25 (exists)
+[sample] SKIP 20012002_DJF 0p25 sl1p25 (exists)
+[sample] SKIP 20022003_DJF 0p25 sl1p25 (exists)
+[sample] SKIP 20032004_DJF 0p25 sl1p25 (exists)
+[sample] SKIP 20042005_DJF 0p25 sl1p25 (exists)
+[sample] SKIP 20052006_DJF 0p25 sl1p25 (exists)
+[sample] SKIP 20062007_DJF 0p25 sl1p25 (exists)
+[sample] SKIP 20072008_DJF 0p25 sl1p25 (exists)
+[sample] SKIP 20082009_DJF 0p25 sl1p25 (exists)
+[sample] SKIP 20092010_DJF 0p25 sl1p25 (exists)
+[sample] SKIP 20102011_DJF 0p25 sl1p25 (exists)
+[sample] SKIP 20112012_DJF 0p25 sl1p25 (exists)
+[sample] SKIP 20122013_DJF 0p25 sl1p25 (exists)
+[sample] SKIP 20132014_DJF 0p25 sl1p25 (exists)
+[sample] SKIP 20142015_DJF 0p25 sl1p25 (exists)
+[sample] SKIP 20152016_DJF 0p25 sl1p25 (exists)
+[sample] SKIP 20162017_DJF 0p25 sl1p25 (exists)
+[sample] SKIP 20172018_DJF 0p25 sl1p25 (exists)
+[sample] SKIP 20182019_DJF 0p25 sl1p25 (exists)
+[sample] SKIP 20192020_DJF 0p25 sl1p25 (exists)
+[sample] SKIP 20202021_DJF 0p25 sl1p25 (exists)
+[sample] SKIP 20212022_DJF 0p25 sl1p25 (exists)
+[sample] SKIP 20222023_DJF 0p25 sl1p25 (exists)
+[sample] SKIP 20232024_DJF 0p25 sl1p25 (exists)
+[sample] SKIP 20242025_DJF 0p25 sl1p25 (exists)
+[sample] SKIP 20252026_DJF 0p25 sl1p25 (exists)
 [done] sampled tracks in /dmidata/users/asgtho/tracks

@@ -1,4 +1,421 @@
-Post-processing 28 seasons x 5 resolutions with {'region': (-80, 20, 30, 80), 'domain': (-90, 30, 20, 90), 'region_criterion': 'passes', 'min_points_in_region': 4, 'rsplice_min_points': 8, 'rsplice_max_points': None, 'rsplice_distance_degrees': 10.0, 'rsplice_distance_mode': 'endpoint', 'rsplice_cadence': np.timedelta64(6,'h'), 'min_peak': None, 'max_frac_at_edge': 0.5, 'edge_buffer_deg': 2.5, 'drop_time_truncated': False}
+Post-processing 47 seasons x 5 resolutions with {'region': (-80, 20, 30, 80), 'domain': (-90, 30, 20, 90), 'region_criterion': 'passes', 'min_points_in_region': 4, 'rsplice_min_points': 8, 'rsplice_max_points': None, 'rsplice_distance_degrees': 10.0, 'rsplice_distance_mode': 'endpoint', 'rsplice_cadence': np.timedelta64(6,'h'), 'min_peak': None, 'max_frac_at_edge': 0.5, 'edge_buffer_deg': 2.5, 'drop_time_truncated': False}
+[post] SKIP 19791980_DJF 0p25 (exists)
+[post] SKIP 19791980_DJF 1p25 (exists)
+[post] SKIP 19791980_DJF 1p875 (exists)
+[post] SKIP 19791980_DJF 2p5 (exists)
+[post] SKIP 19791980_DJF 3p0 (exists)
+[post] SKIP 19801981_DJF 0p25 (exists)
+[post] SKIP 19801981_DJF 1p25 (exists)
+[post] SKIP 19801981_DJF 1p875 (exists)
+[post] SKIP 19801981_DJF 2p5 (exists)
+[post] SKIP 19801981_DJF 3p0 (exists)
+[post] SKIP 19811982_DJF 0p25 (exists)
+[post] SKIP 19811982_DJF 1p25 (exists)
+[post] SKIP 19811982_DJF 1p875 (exists)
+[post] SKIP 19811982_DJF 2p5 (exists)
+[post] SKIP 19811982_DJF 3p0 (exists)
+[post] SKIP 19821983_DJF 0p25 (exists)
+[post] SKIP 19821983_DJF 1p25 (exists)
+[post] SKIP 19821983_DJF 1p875 (exists)
+[post] SKIP 19821983_DJF 2p5 (exists)
+[post] SKIP 19821983_DJF 3p0 (exists)
+[post] SKIP 19831984_DJF 0p25 (exists)
+[post] SKIP 19831984_DJF 1p25 (exists)
+[post] SKIP 19831984_DJF 1p875 (exists)
+[post] SKIP 19831984_DJF 2p5 (exists)
+[post] SKIP 19831984_DJF 3p0 (exists)
+[post] SKIP 19841985_DJF 0p25 (exists)
+[post] SKIP 19841985_DJF 1p25 (exists)
+[post] SKIP 19841985_DJF 1p875 (exists)
+[post] SKIP 19841985_DJF 2p5 (exists)
+[post] SKIP 19841985_DJF 3p0 (exists)
+[post] SKIP 19851986_DJF 0p25 (exists)
+[post] SKIP 19851986_DJF 1p25 (exists)
+[post] SKIP 19851986_DJF 1p875 (exists)
+[post] SKIP 19851986_DJF 2p5 (exists)
+[post] SKIP 19851986_DJF 3p0 (exists)
+[post] SKIP 19861987_DJF 0p25 (exists)
+[post] SKIP 19861987_DJF 1p25 (exists)
+[post] SKIP 19861987_DJF 1p875 (exists)
+[post] SKIP 19861987_DJF 2p5 (exists)
+[post] SKIP 19861987_DJF 3p0 (exists)
+[post] SKIP 19871988_DJF 0p25 (exists)
+[post] SKIP 19871988_DJF 1p25 (exists)
+[post] SKIP 19871988_DJF 1p875 (exists)
+[post] SKIP 19871988_DJF 2p5 (exists)
+[post] SKIP 19871988_DJF 3p0 (exists)
+[post] SKIP 19881989_DJF 0p25 (exists)
+[post] SKIP 19881989_DJF 1p25 (exists)
+[post] SKIP 19881989_DJF 1p875 (exists)
+[post] SKIP 19881989_DJF 2p5 (exists)
+raw tracks: 5955, kept: 38
+         removed_by_this_criterion  removed_only_by_this_criterion
+rsplice                       5694                             215
+region                        5697                               6
+edge                          5250                               5
+peak                             0                               0
+time                             0                               0
+[post] OK 19881989_DJF 3p0 (1988-12-01 00:00 -> 1989-02-28 18:00): raw 5955 -> clipped 5955 -> kept 38 -> /dmidata/users/asgtho/tracks/19881989_DJF/19881989_DJF_3p0_vo_filtered.trackjson
+raw tracks: 3786, kept: 119
+         removed_by_this_criterion  removed_only_by_this_criterion
+rsplice                       2873                             102
+region                        3549                              11
+edge                          3445                              16
+peak                             0                               0
+time                             0                               0
+[post] OK 19891990_DJF 0p25 (1989-12-01 00:00 -> 1990-02-28 18:00): raw 3786 -> clipped 3786 -> kept 119 -> /dmidata/users/asgtho/tracks/19891990_DJF/19891990_DJF_0p25_vo_filtered.trackjson
+raw tracks: 4473, kept: 118
+         removed_by_this_criterion  removed_only_by_this_criterion
+rsplice                       3642                             130
+region                        4216                              12
+edge                          4055                               9
+peak                             0                               0
+time                             0                               0
+[post] OK 19891990_DJF 1p25 (1989-12-01 00:00 -> 1990-02-28 18:00): raw 4473 -> clipped 4473 -> kept 118 -> /dmidata/users/asgtho/tracks/19891990_DJF/19891990_DJF_1p25_vo_filtered.trackjson
+raw tracks: 5214, kept: 81
+         removed_by_this_criterion  removed_only_by_this_criterion
+rsplice                       4574                             190
+region                        4936                              10
+edge                          4741                               7
+peak                             0                               0
+time                             0                               0
+[post] OK 19891990_DJF 1p875 (1989-12-01 00:00 -> 1990-02-28 18:00): raw 5214 -> clipped 5214 -> kept 81 -> /dmidata/users/asgtho/tracks/19891990_DJF/19891990_DJF_1p875_vo_filtered.trackjson
+raw tracks: 6044, kept: 46
+         removed_by_this_criterion  removed_only_by_this_criterion
+rsplice                       5665                             241
+region                        5751                              14
+edge                          5388                               6
+peak                             0                               0
+time                             0                               0
+[post] OK 19891990_DJF 2p5 (1989-12-01 00:00 -> 1990-02-28 18:00): raw 6044 -> clipped 6044 -> kept 46 -> /dmidata/users/asgtho/tracks/19891990_DJF/19891990_DJF_2p5_vo_filtered.trackjson
+raw tracks: 5907, kept: 31
+         removed_by_this_criterion  removed_only_by_this_criterion
+rsplice                       5662                             237
+region                        5639                               6
+edge                          5233                               0
+peak                             0                               0
+time                             0                               0
+[post] OK 19891990_DJF 3p0 (1989-12-01 00:00 -> 1990-02-28 18:00): raw 5907 -> clipped 5907 -> kept 31 -> /dmidata/users/asgtho/tracks/19891990_DJF/19891990_DJF_3p0_vo_filtered.trackjson
+raw tracks: 3730, kept: 117
+         removed_by_this_criterion  removed_only_by_this_criterion
+rsplice                       2768                             124
+region                        3473                              15
+edge                          3360                              16
+peak                             0                               0
+time                             0                               0
+[post] OK 19901991_DJF 0p25 (1990-12-01 00:00 -> 1991-02-28 18:00): raw 3730 -> clipped 3730 -> kept 117 -> /dmidata/users/asgtho/tracks/19901991_DJF/19901991_DJF_0p25_vo_filtered.trackjson
+raw tracks: 4447, kept: 105
+         removed_by_this_criterion  removed_only_by_this_criterion
+rsplice                       3636                             160
+region                        4166                              15
+edge                          4000                              16
+peak                             0                               0
+time                             0                               0
+[post] OK 19901991_DJF 1p25 (1990-12-01 00:00 -> 1991-02-28 18:00): raw 4447 -> clipped 4447 -> kept 105 -> /dmidata/users/asgtho/tracks/19901991_DJF/19901991_DJF_1p25_vo_filtered.trackjson
+raw tracks: 5287, kept: 92
+         removed_by_this_criterion  removed_only_by_this_criterion
+rsplice                       4644                             189
+region                        4996                               9
+edge                          4760                              10
+peak                             0                               0
+time                             0                               0
+[post] OK 19901991_DJF 1p875 (1990-12-01 00:00 -> 1991-02-28 18:00): raw 5287 -> clipped 5287 -> kept 92 -> /dmidata/users/asgtho/tracks/19901991_DJF/19901991_DJF_1p875_vo_filtered.trackjson
+raw tracks: 6059, kept: 42
+         removed_by_this_criterion  removed_only_by_this_criterion
+rsplice                       5694                             276
+region                        5735                               6
+edge                          5369                               6
+peak                             0                               0
+time                             0                               0
+[post] OK 19901991_DJF 2p5 (1990-12-01 00:00 -> 1991-02-28 18:00): raw 6059 -> clipped 6059 -> kept 42 -> /dmidata/users/asgtho/tracks/19901991_DJF/19901991_DJF_2p5_vo_filtered.trackjson
+raw tracks: 5905, kept: 40
+         removed_by_this_criterion  removed_only_by_this_criterion
+rsplice                       5660                             221
+region                        5643                               4
+edge                          5234                               1
+peak                             0                               0
+time                             0                               0
+[post] OK 19901991_DJF 3p0 (1990-12-01 00:00 -> 1991-02-28 18:00): raw 5905 -> clipped 5905 -> kept 40 -> /dmidata/users/asgtho/tracks/19901991_DJF/19901991_DJF_3p0_vo_filtered.trackjson
+raw tracks: 3806, kept: 115
+         removed_by_this_criterion  removed_only_by_this_criterion
+rsplice                       2853                             117
+region                        3554                              12
+edge                          3449                              20
+peak                             0                               0
+time                             0                               0
+[post] OK 19911992_DJF 0p25 (1991-12-01 00:00 -> 1992-02-29 18:00): raw 3806 -> clipped 3806 -> kept 115 -> /dmidata/users/asgtho/tracks/19911992_DJF/19911992_DJF_0p25_vo_filtered.trackjson
+raw tracks: 4635, kept: 120
+         removed_by_this_criterion  removed_only_by_this_criterion
+rsplice                       3803                             148
+region                        4353                              12
+edge                          4196                              14
+peak                             0                               0
+time                             0                               0
+[post] OK 19911992_DJF 1p25 (1991-12-01 00:00 -> 1992-02-29 18:00): raw 4635 -> clipped 4635 -> kept 120 -> /dmidata/users/asgtho/tracks/19911992_DJF/19911992_DJF_1p25_vo_filtered.trackjson
+raw tracks: 5288, kept: 91
+         removed_by_this_criterion  removed_only_by_this_criterion
+rsplice                       4620                             175
+region                        5012                              13
+edge                          4772                              10
+peak                             0                               0
+time                             0                               0
+[post] OK 19911992_DJF 1p875 (1991-12-01 00:00 -> 1992-02-29 18:00): raw 5288 -> clipped 5288 -> kept 91 -> /dmidata/users/asgtho/tracks/19911992_DJF/19911992_DJF_1p875_vo_filtered.trackjson
+raw tracks: 6171, kept: 54
+         removed_by_this_criterion  removed_only_by_this_criterion
+rsplice                       5780                             237
+region                        5875                              11
+edge                          5473                               5
+peak                             0                               0
+time                             0                               0
+[post] OK 19911992_DJF 2p5 (1991-12-01 00:00 -> 1992-02-29 18:00): raw 6171 -> clipped 6171 -> kept 54 -> /dmidata/users/asgtho/tracks/19911992_DJF/19911992_DJF_2p5_vo_filtered.trackjson
+raw tracks: 6009, kept: 35
+         removed_by_this_criterion  removed_only_by_this_criterion
+rsplice                       5756                             257
+region                        5714                               4
+edge                          5294                               3
+peak                             0                               0
+time                             0                               0
+[post] OK 19911992_DJF 3p0 (1991-12-01 00:00 -> 1992-02-29 18:00): raw 6009 -> clipped 6009 -> kept 35 -> /dmidata/users/asgtho/tracks/19911992_DJF/19911992_DJF_3p0_vo_filtered.trackjson
+raw tracks: 3812, kept: 117
+         removed_by_this_criterion  removed_only_by_this_criterion
+rsplice                       2823                             125
+region                        3554                              11
+edge                          3450                              16
+peak                             0                               0
+time                             0                               0
+[post] OK 19921993_DJF 0p25 (1992-12-01 00:00 -> 1993-02-28 18:00): raw 3812 -> clipped 3812 -> kept 117 -> /dmidata/users/asgtho/tracks/19921993_DJF/19921993_DJF_0p25_vo_filtered.trackjson
+raw tracks: 4558, kept: 110
+         removed_by_this_criterion  removed_only_by_this_criterion
+rsplice                       3708                             168
+region                        4271                              11
+edge                          4078                               9
+peak                             0                               0
+time                             0                               0
+[post] OK 19921993_DJF 1p25 (1992-12-01 00:00 -> 1993-02-28 18:00): raw 4558 -> clipped 4558 -> kept 110 -> /dmidata/users/asgtho/tracks/19921993_DJF/19921993_DJF_1p25_vo_filtered.trackjson
+raw tracks: 5357, kept: 85
+         removed_by_this_criterion  removed_only_by_this_criterion
+rsplice                       4739                             197
+region                        5072                               8
+edge                          4808                               3
+peak                             0                               0
+time                             0                               0
+[post] OK 19921993_DJF 1p875 (1992-12-01 00:00 -> 1993-02-28 18:00): raw 5357 -> clipped 5357 -> kept 85 -> /dmidata/users/asgtho/tracks/19921993_DJF/19921993_DJF_1p875_vo_filtered.trackjson
+raw tracks: 6131, kept: 42
+         removed_by_this_criterion  removed_only_by_this_criterion
+rsplice                       5752                             268
+region                        5817                              10
+edge                          5414                               4
+peak                             0                               0
+time                             0                               0
+[post] OK 19921993_DJF 2p5 (1992-12-01 00:00 -> 1993-02-28 18:00): raw 6131 -> clipped 6131 -> kept 42 -> /dmidata/users/asgtho/tracks/19921993_DJF/19921993_DJF_2p5_vo_filtered.trackjson
+raw tracks: 6035, kept: 42
+         removed_by_this_criterion  removed_only_by_this_criterion
+rsplice                       5808                             221
+region                        5768                               4
+edge                          5357                               4
+peak                             0                               0
+time                             0                               0
+[post] OK 19921993_DJF 3p0 (1992-12-01 00:00 -> 1993-02-28 18:00): raw 6035 -> clipped 6035 -> kept 42 -> /dmidata/users/asgtho/tracks/19921993_DJF/19921993_DJF_3p0_vo_filtered.trackjson
+raw tracks: 3728, kept: 106
+         removed_by_this_criterion  removed_only_by_this_criterion
+rsplice                       2769                             107
+region                        3495                              16
+edge                          3399                              19
+peak                             0                               0
+time                             0                               0
+[post] OK 19931994_DJF 0p25 (1993-12-01 00:00 -> 1994-02-28 18:00): raw 3728 -> clipped 3728 -> kept 106 -> /dmidata/users/asgtho/tracks/19931994_DJF/19931994_DJF_0p25_vo_filtered.trackjson
+raw tracks: 4500, kept: 100
+         removed_by_this_criterion  removed_only_by_this_criterion
+rsplice                       3691                             127
+region                        4256                              13
+edge                          4103                              16
+peak                             0                               0
+time                             0                               0
+[post] OK 19931994_DJF 1p25 (1993-12-01 00:00 -> 1994-02-28 18:00): raw 4500 -> clipped 4500 -> kept 100 -> /dmidata/users/asgtho/tracks/19931994_DJF/19931994_DJF_1p25_vo_filtered.trackjson
+raw tracks: 5267, kept: 78
+         removed_by_this_criterion  removed_only_by_this_criterion
+rsplice                       4633                             174
+region                        5009                              17
+edge                          4765                               6
+peak                             0                               0
+time                             0                               0
+[post] OK 19931994_DJF 1p875 (1993-12-01 00:00 -> 1994-02-28 18:00): raw 5267 -> clipped 5267 -> kept 78 -> /dmidata/users/asgtho/tracks/19931994_DJF/19931994_DJF_1p875_vo_filtered.trackjson
+raw tracks: 5991, kept: 53
+         removed_by_this_criterion  removed_only_by_this_criterion
+rsplice                       5599                             224
+region                        5714                              14
+edge                          5365                               0
+peak                             0                               0
+time                             0                               0
+[post] OK 19931994_DJF 2p5 (1993-12-01 00:00 -> 1994-02-28 18:00): raw 5991 -> clipped 5991 -> kept 53 -> /dmidata/users/asgtho/tracks/19931994_DJF/19931994_DJF_2p5_vo_filtered.trackjson
+raw tracks: 5907, kept: 27
+         removed_by_this_criterion  removed_only_by_this_criterion
+rsplice                       5682                             238
+region                        5641                              12
+edge                          5245                               1
+peak                             0                               0
+time                             0                               0
+[post] OK 19931994_DJF 3p0 (1993-12-01 00:00 -> 1994-02-28 18:00): raw 5907 -> clipped 5907 -> kept 27 -> /dmidata/users/asgtho/tracks/19931994_DJF/19931994_DJF_3p0_vo_filtered.trackjson
+raw tracks: 3831, kept: 111
+         removed_by_this_criterion  removed_only_by_this_criterion
+rsplice                       2880                             108
+region                        3585                              12
+edge                          3494                              27
+peak                             0                               0
+time                             0                               0
+[post] OK 19941995_DJF 0p25 (1994-12-01 00:00 -> 1995-02-28 18:00): raw 3831 -> clipped 3831 -> kept 111 -> /dmidata/users/asgtho/tracks/19941995_DJF/19941995_DJF_0p25_vo_filtered.trackjson
+raw tracks: 4490, kept: 114
+         removed_by_this_criterion  removed_only_by_this_criterion
+rsplice                       3632                             130
+region                        4227                              16
+edge                          4087                              19
+peak                             0                               0
+time                             0                               0
+[post] OK 19941995_DJF 1p25 (1994-12-01 00:00 -> 1995-02-28 18:00): raw 4490 -> clipped 4490 -> kept 114 -> /dmidata/users/asgtho/tracks/19941995_DJF/19941995_DJF_1p25_vo_filtered.trackjson
+raw tracks: 5377, kept: 89
+         removed_by_this_criterion  removed_only_by_this_criterion
+rsplice                       4734                             184
+region                        5099                               9
+edge                          4873                               5
+peak                             0                               0
+time                             0                               0
+[post] OK 19941995_DJF 1p875 (1994-12-01 00:00 -> 1995-02-28 18:00): raw 5377 -> clipped 5377 -> kept 89 -> /dmidata/users/asgtho/tracks/19941995_DJF/19941995_DJF_1p875_vo_filtered.trackjson
+raw tracks: 6070, kept: 44
+         removed_by_this_criterion  removed_only_by_this_criterion
+rsplice                       5667                             257
+region                        5763                               6
+edge                          5415                               6
+peak                             0                               0
+time                             0                               0
+[post] OK 19941995_DJF 2p5 (1994-12-01 00:00 -> 1995-02-28 18:00): raw 6070 -> clipped 6070 -> kept 44 -> /dmidata/users/asgtho/tracks/19941995_DJF/19941995_DJF_2p5_vo_filtered.trackjson
+raw tracks: 5922, kept: 37
+         removed_by_this_criterion  removed_only_by_this_criterion
+rsplice                       5672                             238
+region                        5646                               6
+edge                          5231                               1
+peak                             0                               0
+time                             0                               0
+[post] OK 19941995_DJF 3p0 (1994-12-01 00:00 -> 1995-02-28 18:00): raw 5922 -> clipped 5922 -> kept 37 -> /dmidata/users/asgtho/tracks/19941995_DJF/19941995_DJF_3p0_vo_filtered.trackjson
+raw tracks: 3806, kept: 118
+         removed_by_this_criterion  removed_only_by_this_criterion
+rsplice                       2861                             122
+region                        3545                              12
+edge                          3439                              20
+peak                             0                               0
+time                             0                               0
+[post] OK 19951996_DJF 0p25 (1995-12-01 00:00 -> 1996-02-29 18:00): raw 3806 -> clipped 3806 -> kept 118 -> /dmidata/users/asgtho/tracks/19951996_DJF/19951996_DJF_0p25_vo_filtered.trackjson
+raw tracks: 4445, kept: 109
+         removed_by_this_criterion  removed_only_by_this_criterion
+rsplice                       3612                             148
+region                        4167                               8
+edge                          4029                              20
+peak                             0                               0
+time                             0                               0
+[post] OK 19951996_DJF 1p25 (1995-12-01 00:00 -> 1996-02-29 18:00): raw 4445 -> clipped 4445 -> kept 109 -> /dmidata/users/asgtho/tracks/19951996_DJF/19951996_DJF_1p25_vo_filtered.trackjson
+raw tracks: 5263, kept: 92
+         removed_by_this_criterion  removed_only_by_this_criterion
+rsplice                       4631                             186
+region                        4976                               9
+edge                          4749                               9
+peak                             0                               0
+time                             0                               0
+[post] OK 19951996_DJF 1p875 (1995-12-01 00:00 -> 1996-02-29 18:00): raw 5263 -> clipped 5263 -> kept 92 -> /dmidata/users/asgtho/tracks/19951996_DJF/19951996_DJF_1p875_vo_filtered.trackjson
+raw tracks: 5960, kept: 39
+         removed_by_this_criterion  removed_only_by_this_criterion
+rsplice                       5574                             263
+region                        5651                               9
+edge                          5319                               7
+peak                             0                               0
+time                             0                               0
+[post] OK 19951996_DJF 2p5 (1995-12-01 00:00 -> 1996-02-29 18:00): raw 5960 -> clipped 5960 -> kept 39 -> /dmidata/users/asgtho/tracks/19951996_DJF/19951996_DJF_2p5_vo_filtered.trackjson
+raw tracks: 5864, kept: 26
+         removed_by_this_criterion  removed_only_by_this_criterion
+rsplice                       5622                             258
+region                        5578                               3
+edge                          5200                               2
+peak                             0                               0
+time                             0                               0
+[post] OK 19951996_DJF 3p0 (1995-12-01 00:00 -> 1996-02-29 18:00): raw 5864 -> clipped 5864 -> kept 26 -> /dmidata/users/asgtho/tracks/19951996_DJF/19951996_DJF_3p0_vo_filtered.trackjson
+raw tracks: 3783, kept: 108
+         removed_by_this_criterion  removed_only_by_this_criterion
+rsplice                       2802                              85
+region                        3566                              13
+edge                          3446                              24
+peak                             0                               0
+time                             0                               0
+[post] OK 19961997_DJF 0p25 (1996-12-01 00:00 -> 1997-02-28 18:00): raw 3783 -> clipped 3783 -> kept 108 -> /dmidata/users/asgtho/tracks/19961997_DJF/19961997_DJF_0p25_vo_filtered.trackjson
+raw tracks: 4526, kept: 101
+         removed_by_this_criterion  removed_only_by_this_criterion
+rsplice                       3704                             137
+region                        4266                              15
+edge                          4114                              22
+peak                             0                               0
+time                             0                               0
+[post] OK 19961997_DJF 1p25 (1996-12-01 00:00 -> 1997-02-28 18:00): raw 4526 -> clipped 4526 -> kept 101 -> /dmidata/users/asgtho/tracks/19961997_DJF/19961997_DJF_1p25_vo_filtered.trackjson
+raw tracks: 5230, kept: 80
+         removed_by_this_criterion  removed_only_by_this_criterion
+rsplice                       4577                             159
+region                        4979                              11
+edge                          4744                              12
+peak                             0                               0
+time                             0                               0
+[post] OK 19961997_DJF 1p875 (1996-12-01 00:00 -> 1997-02-28 18:00): raw 5230 -> clipped 5230 -> kept 80 -> /dmidata/users/asgtho/tracks/19961997_DJF/19961997_DJF_1p875_vo_filtered.trackjson
+raw tracks: 6029, kept: 53
+         removed_by_this_criterion  removed_only_by_this_criterion
+rsplice                       5621                             218
+region                        5755                               7
+edge                          5381                               3
+peak                             0                               0
+time                             0                               0
+[post] OK 19961997_DJF 2p5 (1996-12-01 00:00 -> 1997-02-28 18:00): raw 6029 -> clipped 6029 -> kept 53 -> /dmidata/users/asgtho/tracks/19961997_DJF/19961997_DJF_2p5_vo_filtered.trackjson
+raw tracks: 5823, kept: 37
+         removed_by_this_criterion  removed_only_by_this_criterion
+rsplice                       5570                             227
+region                        5559                              11
+edge                          5195                               0
+peak                             0                               0
+time                             0                               0
+[post] OK 19961997_DJF 3p0 (1996-12-01 00:00 -> 1997-02-28 18:00): raw 5823 -> clipped 5823 -> kept 37 -> /dmidata/users/asgtho/tracks/19961997_DJF/19961997_DJF_3p0_vo_filtered.trackjson
+raw tracks: 3772, kept: 116
+         removed_by_this_criterion  removed_only_by_this_criterion
+rsplice                       2805                              98
+region                        3534                              14
+edge                          3440                              23
+peak                             0                               0
+time                             0                               0
+[post] OK 19971998_DJF 0p25 (1997-12-01 00:00 -> 1998-02-28 18:00): raw 3772 -> clipped 3772 -> kept 116 -> /dmidata/users/asgtho/tracks/19971998_DJF/19971998_DJF_0p25_vo_filtered.trackjson
+raw tracks: 4513, kept: 108
+         removed_by_this_criterion  removed_only_by_this_criterion
+rsplice                       3669                             130
+region                        4249                              19
+edge                          4100                              26
+peak                             0                               0
+time                             0                               0
+[post] OK 19971998_DJF 1p25 (1997-12-01 00:00 -> 1998-02-28 18:00): raw 4513 -> clipped 4513 -> kept 108 -> /dmidata/users/asgtho/tracks/19971998_DJF/19971998_DJF_1p25_vo_filtered.trackjson
+raw tracks: 5243, kept: 85
+         removed_by_this_criterion  removed_only_by_this_criterion
+rsplice                       4589                             175
+region                        4972                               8
+edge                          4751                              11
+peak                             0                               0
+time                             0                               0
+[post] OK 19971998_DJF 1p875 (1997-12-01 00:00 -> 1998-02-28 18:00): raw 5243 -> clipped 5243 -> kept 85 -> /dmidata/users/asgtho/tracks/19971998_DJF/19971998_DJF_1p875_vo_filtered.trackjson
+raw tracks: 5893, kept: 40
+         removed_by_this_criterion  removed_only_by_this_criterion
+rsplice                       5516                             235
+region                        5612                              13
+edge                          5228                               6
+peak                             0                               0
+time                             0                               0
+[post] OK 19971998_DJF 2p5 (1997-12-01 00:00 -> 1998-02-28 18:00): raw 5893 -> clipped 5893 -> kept 40 -> /dmidata/users/asgtho/tracks/19971998_DJF/19971998_DJF_2p5_vo_filtered.trackjson
+raw tracks: 5778, kept: 32
+         removed_by_this_criterion  removed_only_by_this_criterion
+rsplice                       5546                             231
+region                        5512                               8
+edge                          5105                               3
+peak                             0                               0
+time                             0                               0
+[post] OK 19971998_DJF 3p0 (1997-12-01 00:00 -> 1998-02-28 18:00): raw 5778 -> clipped 5778 -> kept 32 -> /dmidata/users/asgtho/tracks/19971998_DJF/19971998_DJF_3p0_vo_filtered.trackjson
 [post] SKIP 19981999_DJF 0p25 (exists)
 [post] SKIP 19981999_DJF 1p25 (exists)
 [post] SKIP 19981999_DJF 1p875 (exists)
@@ -19,964 +436,124 @@ Post-processing 28 seasons x 5 resolutions with {'region': (-80, 20, 30, 80), 'd
 [post] SKIP 20012002_DJF 1p875 (exists)
 [post] SKIP 20012002_DJF 2p5 (exists)
 [post] SKIP 20012002_DJF 3p0 (exists)
-raw tracks: 3780, kept: 129
-         removed_by_this_criterion  removed_only_by_this_criterion
-rsplice                       2832                             103
-region                        3534                               8
-edge                          3449                              14
-peak                             0                               0
-time                             0                               0
-[post] OK 20022003_DJF 0p25 (2002-12-01 00:00 -> 2003-02-28 18:00): raw 3780 -> clipped 3780 -> kept 129 -> /dmidata/users/asgtho/tracks/20022003_DJF/20022003_DJF_0p25_vo_filtered.trackjson
-raw tracks: 4461, kept: 117
-         removed_by_this_criterion  removed_only_by_this_criterion
-rsplice                       3646                             141
-region                        4193                              11
-edge                          4056                              10
-peak                             0                               0
-time                             0                               0
-[post] OK 20022003_DJF 1p25 (2002-12-01 00:00 -> 2003-02-28 18:00): raw 4461 -> clipped 4461 -> kept 117 -> /dmidata/users/asgtho/tracks/20022003_DJF/20022003_DJF_1p25_vo_filtered.trackjson
-raw tracks: 5174, kept: 90
-         removed_by_this_criterion  removed_only_by_this_criterion
-rsplice                       4528                             186
-region                        4887                              10
-edge                          4681                              11
-peak                             0                               0
-time                             0                               0
-[post] OK 20022003_DJF 1p875 (2002-12-01 00:00 -> 2003-02-28 18:00): raw 5174 -> clipped 5174 -> kept 90 -> /dmidata/users/asgtho/tracks/20022003_DJF/20022003_DJF_1p875_vo_filtered.trackjson
-raw tracks: 5943, kept: 56
-         removed_by_this_criterion  removed_only_by_this_criterion
-rsplice                       5523                             238
-region                        5643                               4
-edge                          5315                               5
-peak                             0                               0
-time                             0                               0
-[post] OK 20022003_DJF 2p5 (2002-12-01 00:00 -> 2003-02-28 18:00): raw 5943 -> clipped 5943 -> kept 56 -> /dmidata/users/asgtho/tracks/20022003_DJF/20022003_DJF_2p5_vo_filtered.trackjson
-raw tracks: 5823, kept: 25
-         removed_by_this_criterion  removed_only_by_this_criterion
-rsplice                       5578                             248
-region                        5547                               6
-edge                          5150                               3
-peak                             0                               0
-time                             0                               0
-[post] OK 20022003_DJF 3p0 (2002-12-01 00:00 -> 2003-02-28 18:00): raw 5823 -> clipped 5823 -> kept 25 -> /dmidata/users/asgtho/tracks/20022003_DJF/20022003_DJF_3p0_vo_filtered.trackjson
-raw tracks: 3844, kept: 117
-         removed_by_this_criterion  removed_only_by_this_criterion
-rsplice                       2909                             103
-region                        3595                               4
-edge                          3507                              28
-peak                             0                               0
-time                             0                               0
-[post] OK 20032004_DJF 0p25 (2003-12-01 00:00 -> 2004-02-29 18:00): raw 3844 -> clipped 3844 -> kept 117 -> /dmidata/users/asgtho/tracks/20032004_DJF/20032004_DJF_0p25_vo_filtered.trackjson
-raw tracks: 4497, kept: 105
-         removed_by_this_criterion  removed_only_by_this_criterion
-rsplice                       3650                             144
-region                        4230                               7
-edge                          4082                              18
-peak                             0                               0
-time                             0                               0
-[post] OK 20032004_DJF 1p25 (2003-12-01 00:00 -> 2004-02-29 18:00): raw 4497 -> clipped 4497 -> kept 105 -> /dmidata/users/asgtho/tracks/20032004_DJF/20032004_DJF_1p25_vo_filtered.trackjson
-raw tracks: 5296, kept: 92
-         removed_by_this_criterion  removed_only_by_this_criterion
-rsplice                       4641                             187
-region                        5007                              13
-edge                          4789                              10
-peak                             0                               0
-time                             0                               0
-[post] OK 20032004_DJF 1p875 (2003-12-01 00:00 -> 2004-02-29 18:00): raw 5296 -> clipped 5296 -> kept 92 -> /dmidata/users/asgtho/tracks/20032004_DJF/20032004_DJF_1p875_vo_filtered.trackjson
-raw tracks: 6114, kept: 47
-         removed_by_this_criterion  removed_only_by_this_criterion
-rsplice                       5720                             240
-region                        5820                              14
-edge                          5435                               7
-peak                             0                               0
-time                             0                               0
-[post] OK 20032004_DJF 2p5 (2003-12-01 00:00 -> 2004-02-29 18:00): raw 6114 -> clipped 6114 -> kept 47 -> /dmidata/users/asgtho/tracks/20032004_DJF/20032004_DJF_2p5_vo_filtered.trackjson
-raw tracks: 5910, kept: 28
-         removed_by_this_criterion  removed_only_by_this_criterion
-rsplice                       5645                             235
-region                        5644                               6
-edge                          5232                               3
-peak                             0                               0
-time                             0                               0
-[post] OK 20032004_DJF 3p0 (2003-12-01 00:00 -> 2004-02-29 18:00): raw 5910 -> clipped 5910 -> kept 28 -> /dmidata/users/asgtho/tracks/20032004_DJF/20032004_DJF_3p0_vo_filtered.trackjson
-raw tracks: 3668, kept: 132
-         removed_by_this_criterion  removed_only_by_this_criterion
-rsplice                       2722                             115
-region                        3405                              10
-edge                          3304                              16
-peak                             0                               0
-time                             0                               0
-[post] OK 20042005_DJF 0p25 (2004-12-01 00:00 -> 2005-02-28 18:00): raw 3668 -> clipped 3668 -> kept 132 -> /dmidata/users/asgtho/tracks/20042005_DJF/20042005_DJF_0p25_vo_filtered.trackjson
-raw tracks: 4445, kept: 131
-         removed_by_this_criterion  removed_only_by_this_criterion
-rsplice                       3619                             137
-region                        4167                              10
-edge                          4004                              10
-peak                             0                               0
-time                             0                               0
-[post] OK 20042005_DJF 1p25 (2004-12-01 00:00 -> 2005-02-28 18:00): raw 4445 -> clipped 4445 -> kept 131 -> /dmidata/users/asgtho/tracks/20042005_DJF/20042005_DJF_1p25_vo_filtered.trackjson
-raw tracks: 5222, kept: 97
-         removed_by_this_criterion  removed_only_by_this_criterion
-rsplice                       4581                             190
-region                        4929                              10
-edge                          4690                               6
-peak                             0                               0
-time                             0                               0
-[post] OK 20042005_DJF 1p875 (2004-12-01 00:00 -> 2005-02-28 18:00): raw 5222 -> clipped 5222 -> kept 97 -> /dmidata/users/asgtho/tracks/20042005_DJF/20042005_DJF_1p875_vo_filtered.trackjson
-raw tracks: 6086, kept: 51
-         removed_by_this_criterion  removed_only_by_this_criterion
-rsplice                       5712                             239
-region                        5793                              12
-edge                          5388                               3
-peak                             0                               0
-time                             0                               0
-[post] OK 20042005_DJF 2p5 (2004-12-01 00:00 -> 2005-02-28 18:00): raw 6086 -> clipped 6086 -> kept 51 -> /dmidata/users/asgtho/tracks/20042005_DJF/20042005_DJF_2p5_vo_filtered.trackjson
-raw tracks: 5854, kept: 40
-         removed_by_this_criterion  removed_only_by_this_criterion
-rsplice                       5615                             224
-region                        5589                               5
-edge                          5144                               1
-peak                             0                               0
-time                             0                               0
-[post] OK 20042005_DJF 3p0 (2004-12-01 00:00 -> 2005-02-28 18:00): raw 5854 -> clipped 5854 -> kept 40 -> /dmidata/users/asgtho/tracks/20042005_DJF/20042005_DJF_3p0_vo_filtered.trackjson
-raw tracks: 3732, kept: 138
-         removed_by_this_criterion  removed_only_by_this_criterion
-rsplice                       2778                              97
-region                        3484                              14
-edge                          3401                              13
-peak                             0                               0
-time                             0                               0
-[post] OK 20052006_DJF 0p25 (2005-12-01 00:00 -> 2006-02-28 18:00): raw 3732 -> clipped 3732 -> kept 138 -> /dmidata/users/asgtho/tracks/20052006_DJF/20052006_DJF_0p25_vo_filtered.trackjson
-raw tracks: 4385, kept: 123
-         removed_by_this_criterion  removed_only_by_this_criterion
-rsplice                       3531                             127
-region                        4119                              12
-edge                          3998                              16
-peak                             0                               0
-time                             0                               0
-[post] OK 20052006_DJF 1p25 (2005-12-01 00:00 -> 2006-02-28 18:00): raw 4385 -> clipped 4385 -> kept 123 -> /dmidata/users/asgtho/tracks/20052006_DJF/20052006_DJF_1p25_vo_filtered.trackjson
-raw tracks: 5159, kept: 102
-         removed_by_this_criterion  removed_only_by_this_criterion
-rsplice                       4495                             172
-region                        4874                              10
-edge                          4655                              11
-peak                             0                               0
-time                             0                               0
-[post] OK 20052006_DJF 1p875 (2005-12-01 00:00 -> 2006-02-28 18:00): raw 5159 -> clipped 5159 -> kept 102 -> /dmidata/users/asgtho/tracks/20052006_DJF/20052006_DJF_1p875_vo_filtered.trackjson
-raw tracks: 6025, kept: 70
-         removed_by_this_criterion  removed_only_by_this_criterion
-rsplice                       5643                             215
-region                        5738                               8
-edge                          5393                               2
-peak                             0                               0
-time                             0                               0
-[post] OK 20052006_DJF 2p5 (2005-12-01 00:00 -> 2006-02-28 18:00): raw 6025 -> clipped 6025 -> kept 70 -> /dmidata/users/asgtho/tracks/20052006_DJF/20052006_DJF_2p5_vo_filtered.trackjson
-raw tracks: 5936, kept: 33
-         removed_by_this_criterion  removed_only_by_this_criterion
-rsplice                       5707                             250
-region                        5653                               6
-edge                          5271                               0
-peak                             0                               0
-time                             0                               0
-[post] OK 20052006_DJF 3p0 (2005-12-01 00:00 -> 2006-02-28 18:00): raw 5936 -> clipped 5936 -> kept 33 -> /dmidata/users/asgtho/tracks/20052006_DJF/20052006_DJF_3p0_vo_filtered.trackjson
-raw tracks: 3757, kept: 119
-         removed_by_this_criterion  removed_only_by_this_criterion
-rsplice                       2725                             114
-region                        3505                              15
-edge                          3416                              19
-peak                             0                               0
-time                             0                               0
-[post] OK 20062007_DJF 0p25 (2006-12-01 00:00 -> 2007-02-28 18:00): raw 3757 -> clipped 3757 -> kept 119 -> /dmidata/users/asgtho/tracks/20062007_DJF/20062007_DJF_0p25_vo_filtered.trackjson
-raw tracks: 4525, kept: 110
-         removed_by_this_criterion  removed_only_by_this_criterion
-rsplice                       3634                             141
-region                        4259                              13
-edge                          4112                              15
-peak                             0                               0
-time                             0                               0
-[post] OK 20062007_DJF 1p25 (2006-12-01 00:00 -> 2007-02-28 18:00): raw 4525 -> clipped 4525 -> kept 110 -> /dmidata/users/asgtho/tracks/20062007_DJF/20062007_DJF_1p25_vo_filtered.trackjson
-raw tracks: 5250, kept: 91
-         removed_by_this_criterion  removed_only_by_this_criterion
-rsplice                       4552                             193
-region                        4959                              12
-edge                          4734                               7
-peak                             0                               0
-time                             0                               0
-[post] OK 20062007_DJF 1p875 (2006-12-01 00:00 -> 2007-02-28 18:00): raw 5250 -> clipped 5250 -> kept 91 -> /dmidata/users/asgtho/tracks/20062007_DJF/20062007_DJF_1p875_vo_filtered.trackjson
-raw tracks: 6157, kept: 57
-         removed_by_this_criterion  removed_only_by_this_criterion
-rsplice                       5767                             236
-region                        5862                               6
-edge                          5499                               2
-peak                             0                               0
-time                             0                               0
-[post] OK 20062007_DJF 2p5 (2006-12-01 00:00 -> 2007-02-28 18:00): raw 6157 -> clipped 6157 -> kept 57 -> /dmidata/users/asgtho/tracks/20062007_DJF/20062007_DJF_2p5_vo_filtered.trackjson
-raw tracks: 5967, kept: 33
-         removed_by_this_criterion  removed_only_by_this_criterion
-rsplice                       5705                             231
-region                        5700                               6
-edge                          5253                               3
-peak                             0                               0
-time                             0                               0
-[post] OK 20062007_DJF 3p0 (2006-12-01 00:00 -> 2007-02-28 18:00): raw 5967 -> clipped 5967 -> kept 33 -> /dmidata/users/asgtho/tracks/20062007_DJF/20062007_DJF_3p0_vo_filtered.trackjson
-raw tracks: 3791, kept: 119
-         removed_by_this_criterion  removed_only_by_this_criterion
-rsplice                       2848                             117
-region                        3540                               8
-edge                          3431                              15
-peak                             0                               0
-time                             0                               0
-[post] OK 20072008_DJF 0p25 (2007-12-01 00:00 -> 2008-02-29 18:00): raw 3791 -> clipped 3791 -> kept 119 -> /dmidata/users/asgtho/tracks/20072008_DJF/20072008_DJF_0p25_vo_filtered.trackjson
-raw tracks: 4548, kept: 117
-         removed_by_this_criterion  removed_only_by_this_criterion
-rsplice                       3735                             141
-region                        4276                              12
-edge                          4111                              14
-peak                             0                               0
-time                             0                               0
-[post] OK 20072008_DJF 1p25 (2007-12-01 00:00 -> 2008-02-29 18:00): raw 4548 -> clipped 4548 -> kept 117 -> /dmidata/users/asgtho/tracks/20072008_DJF/20072008_DJF_1p25_vo_filtered.trackjson
-raw tracks: 5374, kept: 90
-         removed_by_this_criterion  removed_only_by_this_criterion
-rsplice                       4734                             177
-region                        5098                              15
-edge                          4863                               8
-peak                             0                               0
-time                             0                               0
-[post] OK 20072008_DJF 1p875 (2007-12-01 00:00 -> 2008-02-29 18:00): raw 5374 -> clipped 5374 -> kept 90 -> /dmidata/users/asgtho/tracks/20072008_DJF/20072008_DJF_1p875_vo_filtered.trackjson
-raw tracks: 6115, kept: 53
-         removed_by_this_criterion  removed_only_by_this_criterion
-rsplice                       5728                             234
-region                        5827                               9
-edge                          5464                               1
-peak                             0                               0
-time                             0                               0
-[post] OK 20072008_DJF 2p5 (2007-12-01 00:00 -> 2008-02-29 18:00): raw 6115 -> clipped 6115 -> kept 53 -> /dmidata/users/asgtho/tracks/20072008_DJF/20072008_DJF_2p5_vo_filtered.trackjson
-raw tracks: 5929, kept: 30
-         removed_by_this_criterion  removed_only_by_this_criterion
-rsplice                       5659                             253
-region                        5644                               6
-edge                          5241                               2
-peak                             0                               0
-time                             0                               0
-[post] OK 20072008_DJF 3p0 (2007-12-01 00:00 -> 2008-02-29 18:00): raw 5929 -> clipped 5929 -> kept 30 -> /dmidata/users/asgtho/tracks/20072008_DJF/20072008_DJF_3p0_vo_filtered.trackjson
-raw tracks: 3727, kept: 125
-         removed_by_this_criterion  removed_only_by_this_criterion
-rsplice                       2739                             109
-region                        3475                              19
-edge                          3381                              18
-peak                             0                               0
-time                             0                               0
-[post] OK 20082009_DJF 0p25 (2008-12-01 00:00 -> 2009-02-28 18:00): raw 3727 -> clipped 3727 -> kept 125 -> /dmidata/users/asgtho/tracks/20082009_DJF/20082009_DJF_0p25_vo_filtered.trackjson
-raw tracks: 4498, kept: 121
-         removed_by_this_criterion  removed_only_by_this_criterion
-rsplice                       3650                             161
-region                        4205                              12
-edge                          4053                              11
-peak                             0                               0
-time                             0                               0
-[post] OK 20082009_DJF 1p25 (2008-12-01 00:00 -> 2009-02-28 18:00): raw 4498 -> clipped 4498 -> kept 121 -> /dmidata/users/asgtho/tracks/20082009_DJF/20082009_DJF_1p25_vo_filtered.trackjson
-raw tracks: 5396, kept: 80
-         removed_by_this_criterion  removed_only_by_this_criterion
-rsplice                       4729                             210
-region                        5100                              20
-edge                          4854                               6
-peak                             0                               0
-time                             0                               0
-[post] OK 20082009_DJF 1p875 (2008-12-01 00:00 -> 2009-02-28 18:00): raw 5396 -> clipped 5396 -> kept 80 -> /dmidata/users/asgtho/tracks/20082009_DJF/20082009_DJF_1p875_vo_filtered.trackjson
-raw tracks: 6073, kept: 43
-         removed_by_this_criterion  removed_only_by_this_criterion
-rsplice                       5671                             252
-region                        5777                              14
-edge                          5396                               1
-peak                             0                               0
-time                             0                               0
-[post] OK 20082009_DJF 2p5 (2008-12-01 00:00 -> 2009-02-28 18:00): raw 6073 -> clipped 6073 -> kept 43 -> /dmidata/users/asgtho/tracks/20082009_DJF/20082009_DJF_2p5_vo_filtered.trackjson
-raw tracks: 5890, kept: 27
-         removed_by_this_criterion  removed_only_by_this_criterion
-rsplice                       5637                             234
-region                        5628                               6
-edge                          5227                               1
-peak                             0                               0
-time                             0                               0
-[post] OK 20082009_DJF 3p0 (2008-12-01 00:00 -> 2009-02-28 18:00): raw 5890 -> clipped 5890 -> kept 27 -> /dmidata/users/asgtho/tracks/20082009_DJF/20082009_DJF_3p0_vo_filtered.trackjson
-raw tracks: 3785, kept: 110
-         removed_by_this_criterion  removed_only_by_this_criterion
-rsplice                       2865                             114
-region                        3542                              13
-edge                          3457                              18
-peak                             0                               0
-time                             0                               0
-[post] OK 20092010_DJF 0p25 (2009-12-01 00:00 -> 2010-02-28 18:00): raw 3785 -> clipped 3785 -> kept 110 -> /dmidata/users/asgtho/tracks/20092010_DJF/20092010_DJF_0p25_vo_filtered.trackjson
-raw tracks: 4475, kept: 108
-         removed_by_this_criterion  removed_only_by_this_criterion
-rsplice                       3660                             141
-region                        4210                              10
-edge                          4079                              15
-peak                             0                               0
-time                             0                               0
-[post] OK 20092010_DJF 1p25 (2009-12-01 00:00 -> 2010-02-28 18:00): raw 4475 -> clipped 4475 -> kept 108 -> /dmidata/users/asgtho/tracks/20092010_DJF/20092010_DJF_1p25_vo_filtered.trackjson
-raw tracks: 5220, kept: 83
-         removed_by_this_criterion  removed_only_by_this_criterion
-rsplice                       4548                             185
-region                        4944                              11
-edge                          4723                               8
-peak                             0                               0
-time                             0                               0
-[post] OK 20092010_DJF 1p875 (2009-12-01 00:00 -> 2010-02-28 18:00): raw 5220 -> clipped 5220 -> kept 83 -> /dmidata/users/asgtho/tracks/20092010_DJF/20092010_DJF_1p875_vo_filtered.trackjson
-raw tracks: 6007, kept: 54
-         removed_by_this_criterion  removed_only_by_this_criterion
-rsplice                       5595                             245
-region                        5703                              10
-edge                          5365                               5
-peak                             0                               0
-time                             0                               0
-[post] OK 20092010_DJF 2p5 (2009-12-01 00:00 -> 2010-02-28 18:00): raw 6007 -> clipped 6007 -> kept 54 -> /dmidata/users/asgtho/tracks/20092010_DJF/20092010_DJF_2p5_vo_filtered.trackjson
-raw tracks: 5805, kept: 33
-         removed_by_this_criterion  removed_only_by_this_criterion
-rsplice                       5572                             232
-region                        5539                               6
-edge                          5142                               1
-peak                             0                               0
-time                             0                               0
-[post] OK 20092010_DJF 3p0 (2009-12-01 00:00 -> 2010-02-28 18:00): raw 5805 -> clipped 5805 -> kept 33 -> /dmidata/users/asgtho/tracks/20092010_DJF/20092010_DJF_3p0_vo_filtered.trackjson
-raw tracks: 3819, kept: 125
-         removed_by_this_criterion  removed_only_by_this_criterion
-rsplice                       2854                             100
-region                        3575                              16
-edge                          3476                              19
-peak                             0                               0
-time                             0                               0
-[post] OK 20102011_DJF 0p25 (2010-12-01 00:00 -> 2011-02-28 18:00): raw 3819 -> clipped 3819 -> kept 125 -> /dmidata/users/asgtho/tracks/20102011_DJF/20102011_DJF_0p25_vo_filtered.trackjson
-raw tracks: 4491, kept: 124
-         removed_by_this_criterion  removed_only_by_this_criterion
-rsplice                       3664                             122
-region                        4234                              11
-edge                          4084                              11
-peak                             0                               0
-time                             0                               0
-[post] OK 20102011_DJF 1p25 (2010-12-01 00:00 -> 2011-02-28 18:00): raw 4491 -> clipped 4491 -> kept 124 -> /dmidata/users/asgtho/tracks/20102011_DJF/20102011_DJF_1p25_vo_filtered.trackjson
-raw tracks: 5181, kept: 90
-         removed_by_this_criterion  removed_only_by_this_criterion
-rsplice                       4547                             190
-region                        4892                               8
-edge                          4682                               9
-peak                             0                               0
-time                             0                               0
-[post] OK 20102011_DJF 1p875 (2010-12-01 00:00 -> 2011-02-28 18:00): raw 5181 -> clipped 5181 -> kept 90 -> /dmidata/users/asgtho/tracks/20102011_DJF/20102011_DJF_1p875_vo_filtered.trackjson
-raw tracks: 6008, kept: 52
-         removed_by_this_criterion  removed_only_by_this_criterion
-rsplice                       5602                             245
-region                        5707                               9
-edge                          5351                               4
-peak                             0                               0
-time                             0                               0
-[post] OK 20102011_DJF 2p5 (2010-12-01 00:00 -> 2011-02-28 18:00): raw 6008 -> clipped 6008 -> kept 52 -> /dmidata/users/asgtho/tracks/20102011_DJF/20102011_DJF_2p5_vo_filtered.trackjson
-raw tracks: 5859, kept: 23
-         removed_by_this_criterion  removed_only_by_this_criterion
-rsplice                       5649                             243
-region                        5590                               8
-edge                          5213                               3
-peak                             0                               0
-time                             0                               0
-[post] OK 20102011_DJF 3p0 (2010-12-01 00:00 -> 2011-02-28 18:00): raw 5859 -> clipped 5859 -> kept 23 -> /dmidata/users/asgtho/tracks/20102011_DJF/20102011_DJF_3p0_vo_filtered.trackjson
-raw tracks: 3865, kept: 123
-         removed_by_this_criterion  removed_only_by_this_criterion
-rsplice                       2894                             109
-region                        3620                              20
-edge                          3495                              13
-peak                             0                               0
-time                             0                               0
-[post] OK 20112012_DJF 0p25 (2011-12-01 00:00 -> 2012-02-29 18:00): raw 3865 -> clipped 3865 -> kept 123 -> /dmidata/users/asgtho/tracks/20112012_DJF/20112012_DJF_0p25_vo_filtered.trackjson
-raw tracks: 4616, kept: 118
-         removed_by_this_criterion  removed_only_by_this_criterion
-rsplice                       3770                             140
-region                        4349                              20
-edge                          4163                               9
-peak                             0                               0
-time                             0                               0
-[post] OK 20112012_DJF 1p25 (2011-12-01 00:00 -> 2012-02-29 18:00): raw 4616 -> clipped 4616 -> kept 118 -> /dmidata/users/asgtho/tracks/20112012_DJF/20112012_DJF_1p25_vo_filtered.trackjson
-raw tracks: 5486, kept: 93
-         removed_by_this_criterion  removed_only_by_this_criterion
-rsplice                       4847                             181
-region                        5202                              10
-edge                          4945                              10
-peak                             0                               0
-time                             0                               0
-[post] OK 20112012_DJF 1p875 (2011-12-01 00:00 -> 2012-02-29 18:00): raw 5486 -> clipped 5486 -> kept 93 -> /dmidata/users/asgtho/tracks/20112012_DJF/20112012_DJF_1p875_vo_filtered.trackjson
-raw tracks: 6143, kept: 55
-         removed_by_this_criterion  removed_only_by_this_criterion
-rsplice                       5752                             228
-region                        5856                               8
-edge                          5487                               4
-peak                             0                               0
-time                             0                               0
-[post] OK 20112012_DJF 2p5 (2011-12-01 00:00 -> 2012-02-29 18:00): raw 6143 -> clipped 6143 -> kept 55 -> /dmidata/users/asgtho/tracks/20112012_DJF/20112012_DJF_2p5_vo_filtered.trackjson
-raw tracks: 6008, kept: 40
-         removed_by_this_criterion  removed_only_by_this_criterion
-rsplice                       5769                             247
-region                        5719                               6
-edge                          5280                               2
-peak                             0                               0
-time                             0                               0
-[post] OK 20112012_DJF 3p0 (2011-12-01 00:00 -> 2012-02-29 18:00): raw 6008 -> clipped 6008 -> kept 40 -> /dmidata/users/asgtho/tracks/20112012_DJF/20112012_DJF_3p0_vo_filtered.trackjson
-raw tracks: 3855, kept: 110
-         removed_by_this_criterion  removed_only_by_this_criterion
-rsplice                       2912                             105
-region                        3622                              19
-edge                          3520                              18
-peak                             0                               0
-time                             0                               0
-[post] OK 20122013_DJF 0p25 (2012-12-01 00:00 -> 2013-02-28 18:00): raw 3855 -> clipped 3855 -> kept 110 -> /dmidata/users/asgtho/tracks/20122013_DJF/20122013_DJF_0p25_vo_filtered.trackjson
-raw tracks: 4537, kept: 105
-         removed_by_this_criterion  removed_only_by_this_criterion
-rsplice                       3732                             140
-region                        4271                              15
-edge                          4130                              21
-peak                             0                               0
-time                             0                               0
-[post] OK 20122013_DJF 1p25 (2012-12-01 00:00 -> 2013-02-28 18:00): raw 4537 -> clipped 4537 -> kept 105 -> /dmidata/users/asgtho/tracks/20122013_DJF/20122013_DJF_1p25_vo_filtered.trackjson
-raw tracks: 5206, kept: 78
-         removed_by_this_criterion  removed_only_by_this_criterion
-rsplice                       4575                             170
-region                        4946                              18
-edge                          4731                              12
-peak                             0                               0
-time                             0                               0
-[post] OK 20122013_DJF 1p875 (2012-12-01 00:00 -> 2013-02-28 18:00): raw 5206 -> clipped 5206 -> kept 78 -> /dmidata/users/asgtho/tracks/20122013_DJF/20122013_DJF_1p875_vo_filtered.trackjson
-raw tracks: 6029, kept: 48
-         removed_by_this_criterion  removed_only_by_this_criterion
-rsplice                       5647                             244
-region                        5735                              10
-edge                          5355                               2
-peak                             0                               0
-time                             0                               0
-[post] OK 20122013_DJF 2p5 (2012-12-01 00:00 -> 2013-02-28 18:00): raw 6029 -> clipped 6029 -> kept 48 -> /dmidata/users/asgtho/tracks/20122013_DJF/20122013_DJF_2p5_vo_filtered.trackjson
-raw tracks: 5820, kept: 30
-         removed_by_this_criterion  removed_only_by_this_criterion
-rsplice                       5575                             229
-region                        5560                               9
-edge                          5110                               1
-peak                             0                               0
-time                             0                               0
-[post] OK 20122013_DJF 3p0 (2012-12-01 00:00 -> 2013-02-28 18:00): raw 5820 -> clipped 5820 -> kept 30 -> /dmidata/users/asgtho/tracks/20122013_DJF/20122013_DJF_3p0_vo_filtered.trackjson
-raw tracks: 3823, kept: 109
-         removed_by_this_criterion  removed_only_by_this_criterion
-rsplice                       2882                             126
-region                        3577                              18
-edge                          3470                              11
-peak                             0                               0
-time                             0                               0
-[post] OK 20132014_DJF 0p25 (2013-12-01 00:00 -> 2014-02-28 18:00): raw 3823 -> clipped 3823 -> kept 109 -> /dmidata/users/asgtho/tracks/20132014_DJF/20132014_DJF_0p25_vo_filtered.trackjson
-raw tracks: 4574, kept: 104
-         removed_by_this_criterion  removed_only_by_this_criterion
-rsplice                       3736                             130
-region                        4328                              18
-edge                          4168                              11
-peak                             0                               0
-time                             0                               0
-[post] OK 20132014_DJF 1p25 (2013-12-01 00:00 -> 2014-02-28 18:00): raw 4574 -> clipped 4574 -> kept 104 -> /dmidata/users/asgtho/tracks/20132014_DJF/20132014_DJF_1p25_vo_filtered.trackjson
-raw tracks: 5311, kept: 70
-         removed_by_this_criterion  removed_only_by_this_criterion
-rsplice                       4675                             194
-region                        5038                              16
-edge                          4795                               9
-peak                             0                               0
-time                             0                               0
-[post] OK 20132014_DJF 1p875 (2013-12-01 00:00 -> 2014-02-28 18:00): raw 5311 -> clipped 5311 -> kept 70 -> /dmidata/users/asgtho/tracks/20132014_DJF/20132014_DJF_1p875_vo_filtered.trackjson
-raw tracks: 6050, kept: 49
-         removed_by_this_criterion  removed_only_by_this_criterion
-rsplice                       5635                             225
-region                        5773                               9
-edge                          5398                               3
-peak                             0                               0
-time                             0                               0
-[post] OK 20132014_DJF 2p5 (2013-12-01 00:00 -> 2014-02-28 18:00): raw 6050 -> clipped 6050 -> kept 49 -> /dmidata/users/asgtho/tracks/20132014_DJF/20132014_DJF_2p5_vo_filtered.trackjson
-raw tracks: 5885, kept: 24
-         removed_by_this_criterion  removed_only_by_this_criterion
-rsplice                       5643                             219
-region                        5642                              11
-edge                          5220                               0
-peak                             0                               0
-time                             0                               0
-[post] OK 20132014_DJF 3p0 (2013-12-01 00:00 -> 2014-02-28 18:00): raw 5885 -> clipped 5885 -> kept 24 -> /dmidata/users/asgtho/tracks/20132014_DJF/20132014_DJF_3p0_vo_filtered.trackjson
-raw tracks: 3752, kept: 121
-         removed_by_this_criterion  removed_only_by_this_criterion
-rsplice                       2751                             121
-region                        3497                              15
-edge                          3369                              13
-peak                             0                               0
-time                             0                               0
-[post] OK 20142015_DJF 0p25 (2014-12-01 00:00 -> 2015-02-28 18:00): raw 3752 -> clipped 3752 -> kept 121 -> /dmidata/users/asgtho/tracks/20142015_DJF/20142015_DJF_0p25_vo_filtered.trackjson
-raw tracks: 4464, kept: 117
-         removed_by_this_criterion  removed_only_by_this_criterion
-rsplice                       3615                             144
-region                        4187                               7
-edge                          4019                              16
-peak                             0                               0
-time                             0                               0
-[post] OK 20142015_DJF 1p25 (2014-12-01 00:00 -> 2015-02-28 18:00): raw 4464 -> clipped 4464 -> kept 117 -> /dmidata/users/asgtho/tracks/20142015_DJF/20142015_DJF_1p25_vo_filtered.trackjson
-raw tracks: 5281, kept: 91
-         removed_by_this_criterion  removed_only_by_this_criterion
-rsplice                       4602                             189
-region                        4994                              15
-edge                          4749                               7
-peak                             0                               0
-time                             0                               0
-[post] OK 20142015_DJF 1p875 (2014-12-01 00:00 -> 2015-02-28 18:00): raw 5281 -> clipped 5281 -> kept 91 -> /dmidata/users/asgtho/tracks/20142015_DJF/20142015_DJF_1p875_vo_filtered.trackjson
-raw tracks: 5980, kept: 55
-         removed_by_this_criterion  removed_only_by_this_criterion
-rsplice                       5572                             229
-region                        5693                               7
-edge                          5330                               3
-peak                             0                               0
-time                             0                               0
-[post] OK 20142015_DJF 2p5 (2014-12-01 00:00 -> 2015-02-28 18:00): raw 5980 -> clipped 5980 -> kept 55 -> /dmidata/users/asgtho/tracks/20142015_DJF/20142015_DJF_2p5_vo_filtered.trackjson
-raw tracks: 5885, kept: 24
-         removed_by_this_criterion  removed_only_by_this_criterion
-rsplice                       5626                             222
-region                        5638                               9
-edge                          5162                               1
-peak                             0                               0
-time                             0                               0
-[post] OK 20142015_DJF 3p0 (2014-12-01 00:00 -> 2015-02-28 18:00): raw 5885 -> clipped 5885 -> kept 24 -> /dmidata/users/asgtho/tracks/20142015_DJF/20142015_DJF_3p0_vo_filtered.trackjson
-raw tracks: 3975, kept: 120
-         removed_by_this_criterion  removed_only_by_this_criterion
-rsplice                       3005                             116
-region                        3722                               7
-edge                          3596                              17
-peak                             0                               0
-time                             0                               0
-[post] OK 20152016_DJF 0p25 (2015-12-01 00:00 -> 2016-02-29 18:00): raw 3975 -> clipped 3975 -> kept 120 -> /dmidata/users/asgtho/tracks/20152016_DJF/20152016_DJF_0p25_vo_filtered.trackjson
-raw tracks: 4720, kept: 115
-         removed_by_this_criterion  removed_only_by_this_criterion
-rsplice                       3899                             154
-region                        4435                               9
-edge                          4278                              15
-peak                             0                               0
-time                             0                               0
-[post] OK 20152016_DJF 1p25 (2015-12-01 00:00 -> 2016-02-29 18:00): raw 4720 -> clipped 4720 -> kept 115 -> /dmidata/users/asgtho/tracks/20152016_DJF/20152016_DJF_1p25_vo_filtered.trackjson
-raw tracks: 5365, kept: 84
-         removed_by_this_criterion  removed_only_by_this_criterion
-rsplice                       4711                             194
-region                        5076                               8
-edge                          4844                              11
-peak                             0                               0
-time                             0                               0
-[post] OK 20152016_DJF 1p875 (2015-12-01 00:00 -> 2016-02-29 18:00): raw 5365 -> clipped 5365 -> kept 84 -> /dmidata/users/asgtho/tracks/20152016_DJF/20152016_DJF_1p875_vo_filtered.trackjson
-raw tracks: 6182, kept: 44
-         removed_by_this_criterion  removed_only_by_this_criterion
-rsplice                       5811                             262
-region                        5871                               7
-edge                          5500                               5
-peak                             0                               0
-time                             0                               0
-[post] OK 20152016_DJF 2p5 (2015-12-01 00:00 -> 2016-02-29 18:00): raw 6182 -> clipped 6182 -> kept 44 -> /dmidata/users/asgtho/tracks/20152016_DJF/20152016_DJF_2p5_vo_filtered.trackjson
-raw tracks: 5994, kept: 31
-         removed_by_this_criterion  removed_only_by_this_criterion
-rsplice                       5739                             252
-region                        5711                               7
-edge                          5305                               0
-peak                             0                               0
-time                             0                               0
-[post] OK 20152016_DJF 3p0 (2015-12-01 00:00 -> 2016-02-29 18:00): raw 5994 -> clipped 5994 -> kept 31 -> /dmidata/users/asgtho/tracks/20152016_DJF/20152016_DJF_3p0_vo_filtered.trackjson
-raw tracks: 3710, kept: 124
-         removed_by_this_criterion  removed_only_by_this_criterion
-rsplice                       2749                              99
-region                        3465                               8
-edge                          3385                              21
-peak                             0                               0
-time                             0                               0
-[post] OK 20162017_DJF 0p25 (2016-12-01 00:00 -> 2017-02-28 18:00): raw 3710 -> clipped 3710 -> kept 124 -> /dmidata/users/asgtho/tracks/20162017_DJF/20162017_DJF_0p25_vo_filtered.trackjson
-raw tracks: 4428, kept: 109
-         removed_by_this_criterion  removed_only_by_this_criterion
-rsplice                       3573                             138
-region                        4164                              13
-edge                          4026                              16
-peak                             0                               0
-time                             0                               0
-[post] OK 20162017_DJF 1p25 (2016-12-01 00:00 -> 2017-02-28 18:00): raw 4428 -> clipped 4428 -> kept 109 -> /dmidata/users/asgtho/tracks/20162017_DJF/20162017_DJF_1p25_vo_filtered.trackjson
-raw tracks: 5249, kept: 106
-         removed_by_this_criterion  removed_only_by_this_criterion
-rsplice                       4593                             159
-region                        4971                               5
-edge                          4756                              12
-peak                             0                               0
-time                             0                               0
-[post] OK 20162017_DJF 1p875 (2016-12-01 00:00 -> 2017-02-28 18:00): raw 5249 -> clipped 5249 -> kept 106 -> /dmidata/users/asgtho/tracks/20162017_DJF/20162017_DJF_1p875_vo_filtered.trackjson
-raw tracks: 5966, kept: 61
-         removed_by_this_criterion  removed_only_by_this_criterion
-rsplice                       5551                             229
-region                        5674                               7
-edge                          5316                               2
-peak                             0                               0
-time                             0                               0
-[post] OK 20162017_DJF 2p5 (2016-12-01 00:00 -> 2017-02-28 18:00): raw 5966 -> clipped 5966 -> kept 61 -> /dmidata/users/asgtho/tracks/20162017_DJF/20162017_DJF_2p5_vo_filtered.trackjson
-raw tracks: 5985, kept: 35
-         removed_by_this_criterion  removed_only_by_this_criterion
-rsplice                       5760                             236
-region                        5711                               4
-edge                          5326                               3
-peak                             0                               0
-time                             0                               0
-[post] OK 20162017_DJF 3p0 (2016-12-01 00:00 -> 2017-02-28 18:00): raw 5985 -> clipped 5985 -> kept 35 -> /dmidata/users/asgtho/tracks/20162017_DJF/20162017_DJF_3p0_vo_filtered.trackjson
-raw tracks: 3915, kept: 125
-         removed_by_this_criterion  removed_only_by_this_criterion
-rsplice                       2945                             115
-region                        3658                              13
-edge                          3566                              17
-peak                             0                               0
-time                             0                               0
-[post] OK 20172018_DJF 0p25 (2017-12-01 00:00 -> 2018-02-28 18:00): raw 3915 -> clipped 3915 -> kept 125 -> /dmidata/users/asgtho/tracks/20172018_DJF/20172018_DJF_0p25_vo_filtered.trackjson
-raw tracks: 4629, kept: 106
-         removed_by_this_criterion  removed_only_by_this_criterion
-rsplice                       3792                             151
-region                        4359                              17
-edge                          4192                              13
-peak                             0                               0
-time                             0                               0
-[post] OK 20172018_DJF 1p25 (2017-12-01 00:00 -> 2018-02-28 18:00): raw 4629 -> clipped 4629 -> kept 106 -> /dmidata/users/asgtho/tracks/20172018_DJF/20172018_DJF_1p25_vo_filtered.trackjson
-raw tracks: 5360, kept: 81
-         removed_by_this_criterion  removed_only_by_this_criterion
-rsplice                       4710                             190
-region                        5083                              18
-edge                          4850                               6
-peak                             0                               0
-time                             0                               0
-[post] OK 20172018_DJF 1p875 (2017-12-01 00:00 -> 2018-02-28 18:00): raw 5360 -> clipped 5360 -> kept 81 -> /dmidata/users/asgtho/tracks/20172018_DJF/20172018_DJF_1p875_vo_filtered.trackjson
-raw tracks: 6109, kept: 51
-         removed_by_this_criterion  removed_only_by_this_criterion
-rsplice                       5714                             234
-region                        5824                               4
-edge                          5446                               0
-peak                             0                               0
-time                             0                               0
-[post] OK 20172018_DJF 2p5 (2017-12-01 00:00 -> 2018-02-28 18:00): raw 6109 -> clipped 6109 -> kept 51 -> /dmidata/users/asgtho/tracks/20172018_DJF/20172018_DJF_2p5_vo_filtered.trackjson
-raw tracks: 5929, kept: 27
-         removed_by_this_criterion  removed_only_by_this_criterion
-rsplice                       5683                             230
-region                        5672                              11
-edge                          5252                               0
-peak                             0                               0
-time                             0                               0
-[post] OK 20172018_DJF 3p0 (2017-12-01 00:00 -> 2018-02-28 18:00): raw 5929 -> clipped 5929 -> kept 27 -> /dmidata/users/asgtho/tracks/20172018_DJF/20172018_DJF_3p0_vo_filtered.trackjson
-raw tracks: 3895, kept: 110
-         removed_by_this_criterion  removed_only_by_this_criterion
-rsplice                       2905                             113
-region                        3646                              14
-edge                          3559                              26
-peak                             0                               0
-time                             0                               0
-[post] OK 20182019_DJF 0p25 (2018-12-01 00:00 -> 2019-02-28 18:00): raw 3895 -> clipped 3895 -> kept 110 -> /dmidata/users/asgtho/tracks/20182019_DJF/20182019_DJF_0p25_vo_filtered.trackjson
-raw tracks: 4500, kept: 108
-         removed_by_this_criterion  removed_only_by_this_criterion
-rsplice                       3635                             142
-region                        4235                              16
-edge                          4103                              15
-peak                             0                               0
-time                             0                               0
-[post] OK 20182019_DJF 1p25 (2018-12-01 00:00 -> 2019-02-28 18:00): raw 4500 -> clipped 4500 -> kept 108 -> /dmidata/users/asgtho/tracks/20182019_DJF/20182019_DJF_1p25_vo_filtered.trackjson
-raw tracks: 5368, kept: 83
-         removed_by_this_criterion  removed_only_by_this_criterion
-rsplice                       4709                             176
-region                        5103                               8
-edge                          4868                               6
-peak                             0                               0
-time                             0                               0
-[post] OK 20182019_DJF 1p875 (2018-12-01 00:00 -> 2019-02-28 18:00): raw 5368 -> clipped 5368 -> kept 83 -> /dmidata/users/asgtho/tracks/20182019_DJF/20182019_DJF_1p875_vo_filtered.trackjson
-raw tracks: 6112, kept: 42
-         removed_by_this_criterion  removed_only_by_this_criterion
-rsplice                       5709                             255
-region                        5813                              15
-edge                          5452                               2
-peak                             0                               0
-time                             0                               0
-[post] OK 20182019_DJF 2p5 (2018-12-01 00:00 -> 2019-02-28 18:00): raw 6112 -> clipped 6112 -> kept 42 -> /dmidata/users/asgtho/tracks/20182019_DJF/20182019_DJF_2p5_vo_filtered.trackjson
-raw tracks: 5918, kept: 34
-         removed_by_this_criterion  removed_only_by_this_criterion
-rsplice                       5675                             229
-region                        5653                               2
-edge                          5239                               2
-peak                             0                               0
-time                             0                               0
-[post] OK 20182019_DJF 3p0 (2018-12-01 00:00 -> 2019-02-28 18:00): raw 5918 -> clipped 5918 -> kept 34 -> /dmidata/users/asgtho/tracks/20182019_DJF/20182019_DJF_3p0_vo_filtered.trackjson
-raw tracks: 3896, kept: 119
-         removed_by_this_criterion  removed_only_by_this_criterion
-rsplice                       2912                             110
-region                        3654                               6
-edge                          3536                              13
-peak                             0                               0
-time                             0                               0
-[post] OK 20192020_DJF 0p25 (2019-12-01 00:00 -> 2020-02-29 18:00): raw 3896 -> clipped 3896 -> kept 119 -> /dmidata/users/asgtho/tracks/20192020_DJF/20192020_DJF_0p25_vo_filtered.trackjson
-raw tracks: 4704, kept: 105
-         removed_by_this_criterion  removed_only_by_this_criterion
-rsplice                       3870                             161
-region                        4422                              11
-edge                          4239                              16
-peak                             0                               0
-time                             0                               0
-[post] OK 20192020_DJF 1p25 (2019-12-01 00:00 -> 2020-02-29 18:00): raw 4704 -> clipped 4704 -> kept 105 -> /dmidata/users/asgtho/tracks/20192020_DJF/20192020_DJF_1p25_vo_filtered.trackjson
-raw tracks: 5394, kept: 83
-         removed_by_this_criterion  removed_only_by_this_criterion
-rsplice                       4728                             198
-region                        5099                              11
-edge                          4842                              14
-peak                             0                               0
-time                             0                               0
-[post] OK 20192020_DJF 1p875 (2019-12-01 00:00 -> 2020-02-29 18:00): raw 5394 -> clipped 5394 -> kept 83 -> /dmidata/users/asgtho/tracks/20192020_DJF/20192020_DJF_1p875_vo_filtered.trackjson
-raw tracks: 6207, kept: 58
-         removed_by_this_criterion  removed_only_by_this_criterion
-rsplice                       5824                             243
-region                        5901                               7
-edge                          5507                               5
-peak                             0                               0
-time                             0                               0
-[post] OK 20192020_DJF 2p5 (2019-12-01 00:00 -> 2020-02-29 18:00): raw 6207 -> clipped 6207 -> kept 58 -> /dmidata/users/asgtho/tracks/20192020_DJF/20192020_DJF_2p5_vo_filtered.trackjson
-raw tracks: 5853, kept: 43
-         removed_by_this_criterion  removed_only_by_this_criterion
-rsplice                       5613                             225
-region                        5582                               3
-edge                          5182                               3
-peak                             0                               0
-time                             0                               0
-[post] OK 20192020_DJF 3p0 (2019-12-01 00:00 -> 2020-02-29 18:00): raw 5853 -> clipped 5853 -> kept 43 -> /dmidata/users/asgtho/tracks/20192020_DJF/20192020_DJF_3p0_vo_filtered.trackjson
-raw tracks: 3803, kept: 123
-         removed_by_this_criterion  removed_only_by_this_criterion
-rsplice                       2844                              94
-region                        3574                              13
-edge                          3467                              12
-peak                             0                               0
-time                             0                               0
-[post] OK 20202021_DJF 0p25 (2020-12-01 00:00 -> 2021-02-28 18:00): raw 3803 -> clipped 3803 -> kept 123 -> /dmidata/users/asgtho/tracks/20202021_DJF/20202021_DJF_0p25_vo_filtered.trackjson
-raw tracks: 4566, kept: 110
-         removed_by_this_criterion  removed_only_by_this_criterion
-rsplice                       3741                             124
-region                        4322                              11
-edge                          4155                              10
-peak                             0                               0
-time                             0                               0
-[post] OK 20202021_DJF 1p25 (2020-12-01 00:00 -> 2021-02-28 18:00): raw 4566 -> clipped 4566 -> kept 110 -> /dmidata/users/asgtho/tracks/20202021_DJF/20202021_DJF_1p25_vo_filtered.trackjson
-raw tracks: 5303, kept: 85
-         removed_by_this_criterion  removed_only_by_this_criterion
-rsplice                       4679                             177
-region                        5031                               7
-edge                          4832                              10
-peak                             0                               0
-time                             0                               0
-[post] OK 20202021_DJF 1p875 (2020-12-01 00:00 -> 2021-02-28 18:00): raw 5303 -> clipped 5303 -> kept 85 -> /dmidata/users/asgtho/tracks/20202021_DJF/20202021_DJF_1p875_vo_filtered.trackjson
-raw tracks: 6088, kept: 51
-         removed_by_this_criterion  removed_only_by_this_criterion
-rsplice                       5720                             230
-region                        5805                               8
-edge                          5460                               2
-peak                             0                               0
-time                             0                               0
-[post] OK 20202021_DJF 2p5 (2020-12-01 00:00 -> 2021-02-28 18:00): raw 6088 -> clipped 6088 -> kept 51 -> /dmidata/users/asgtho/tracks/20202021_DJF/20202021_DJF_2p5_vo_filtered.trackjson
-raw tracks: 5846, kept: 35
-         removed_by_this_criterion  removed_only_by_this_criterion
-rsplice                       5613                             211
-region                        5599                              12
-edge                          5195                               1
-peak                             0                               0
-time                             0                               0
-[post] OK 20202021_DJF 3p0 (2020-12-01 00:00 -> 2021-02-28 18:00): raw 5846 -> clipped 5846 -> kept 35 -> /dmidata/users/asgtho/tracks/20202021_DJF/20202021_DJF_3p0_vo_filtered.trackjson
-raw tracks: 3842, kept: 115
-         removed_by_this_criterion  removed_only_by_this_criterion
-rsplice                       2849                             111
-region                        3608                              11
-edge                          3496                               8
-peak                             0                               0
-time                             0                               0
-[post] OK 20212022_DJF 0p25 (2021-12-01 00:00 -> 2022-02-28 18:00): raw 3842 -> clipped 3842 -> kept 115 -> /dmidata/users/asgtho/tracks/20212022_DJF/20212022_DJF_0p25_vo_filtered.trackjson
-raw tracks: 4597, kept: 105
-         removed_by_this_criterion  removed_only_by_this_criterion
-rsplice                       3728                             152
-region                        4337                              12
-edge                          4180                               3
-peak                             0                               0
-time                             0                               0
-[post] OK 20212022_DJF 1p25 (2021-12-01 00:00 -> 2022-02-28 18:00): raw 4597 -> clipped 4597 -> kept 105 -> /dmidata/users/asgtho/tracks/20212022_DJF/20212022_DJF_1p25_vo_filtered.trackjson
-raw tracks: 5355, kept: 73
-         removed_by_this_criterion  removed_only_by_this_criterion
-rsplice                       4693                             215
-region                        5060                              13
-edge                          4827                               7
-peak                             0                               0
-time                             0                               0
-[post] OK 20212022_DJF 1p875 (2021-12-01 00:00 -> 2022-02-28 18:00): raw 5355 -> clipped 5355 -> kept 73 -> /dmidata/users/asgtho/tracks/20212022_DJF/20212022_DJF_1p875_vo_filtered.trackjson
-raw tracks: 6091, kept: 53
-         removed_by_this_criterion  removed_only_by_this_criterion
-rsplice                       5682                             233
-region                        5804                              10
-edge                          5411                               1
-peak                             0                               0
-time                             0                               0
-[post] OK 20212022_DJF 2p5 (2021-12-01 00:00 -> 2022-02-28 18:00): raw 6091 -> clipped 6091 -> kept 53 -> /dmidata/users/asgtho/tracks/20212022_DJF/20212022_DJF_2p5_vo_filtered.trackjson
-raw tracks: 5918, kept: 25
-         removed_by_this_criterion  removed_only_by_this_criterion
-rsplice                       5692                             239
-region                        5654                               9
-edge                          5245                               0
-peak                             0                               0
-time                             0                               0
-[post] OK 20212022_DJF 3p0 (2021-12-01 00:00 -> 2022-02-28 18:00): raw 5918 -> clipped 5918 -> kept 25 -> /dmidata/users/asgtho/tracks/20212022_DJF/20212022_DJF_3p0_vo_filtered.trackjson
-raw tracks: 3791, kept: 123
-         removed_by_this_criterion  removed_only_by_this_criterion
-rsplice                       2775                             103
-region                        3547                              12
-edge                          3444                              18
-peak                             0                               0
-time                             0                               0
-[post] OK 20222023_DJF 0p25 (2022-12-01 00:00 -> 2023-02-28 18:00): raw 3791 -> clipped 3791 -> kept 123 -> /dmidata/users/asgtho/tracks/20222023_DJF/20222023_DJF_0p25_vo_filtered.trackjson
-raw tracks: 4514, kept: 120
-         removed_by_this_criterion  removed_only_by_this_criterion
-rsplice                       3648                             136
-region                        4244                              14
-edge                          4073                              14
-peak                             0                               0
-time                             0                               0
-[post] OK 20222023_DJF 1p25 (2022-12-01 00:00 -> 2023-02-28 18:00): raw 4514 -> clipped 4514 -> kept 120 -> /dmidata/users/asgtho/tracks/20222023_DJF/20222023_DJF_1p25_vo_filtered.trackjson
-raw tracks: 5292, kept: 96
-         removed_by_this_criterion  removed_only_by_this_criterion
-rsplice                       4622                             174
-region                        5011                              15
-edge                          4784                              11
-peak                             0                               0
-time                             0                               0
-[post] OK 20222023_DJF 1p875 (2022-12-01 00:00 -> 2023-02-28 18:00): raw 5292 -> clipped 5292 -> kept 96 -> /dmidata/users/asgtho/tracks/20222023_DJF/20222023_DJF_1p875_vo_filtered.trackjson
-raw tracks: 6198, kept: 45
-         removed_by_this_criterion  removed_only_by_this_criterion
-rsplice                       5807                             227
-region                        5920                               7
-edge                          5519                               6
-peak                             0                               0
-time                             0                               0
-[post] OK 20222023_DJF 2p5 (2022-12-01 00:00 -> 2023-02-28 18:00): raw 6198 -> clipped 6198 -> kept 45 -> /dmidata/users/asgtho/tracks/20222023_DJF/20222023_DJF_2p5_vo_filtered.trackjson
-raw tracks: 5940, kept: 35
-         removed_by_this_criterion  removed_only_by_this_criterion
-rsplice                       5694                             222
-region                        5683                              12
-edge                          5261                               0
-peak                             0                               0
-time                             0                               0
-[post] OK 20222023_DJF 3p0 (2022-12-01 00:00 -> 2023-02-28 18:00): raw 5940 -> clipped 5940 -> kept 35 -> /dmidata/users/asgtho/tracks/20222023_DJF/20222023_DJF_3p0_vo_filtered.trackjson
-raw tracks: 3845, kept: 125
-         removed_by_this_criterion  removed_only_by_this_criterion
-rsplice                       2865                              85
-region                        3613                              17
-edge                          3498                              22
-peak                             0                               0
-time                             0                               0
-[post] OK 20232024_DJF 0p25 (2023-12-01 00:00 -> 2024-02-29 18:00): raw 3845 -> clipped 3845 -> kept 125 -> /dmidata/users/asgtho/tracks/20232024_DJF/20232024_DJF_0p25_vo_filtered.trackjson
-raw tracks: 4611, kept: 124
-         removed_by_this_criterion  removed_only_by_this_criterion
-rsplice                       3773                             129
-region                        4338                              18
-edge                          4163                              19
-peak                             0                               0
-time                             0                               0
-[post] OK 20232024_DJF 1p25 (2023-12-01 00:00 -> 2024-02-29 18:00): raw 4611 -> clipped 4611 -> kept 124 -> /dmidata/users/asgtho/tracks/20232024_DJF/20232024_DJF_1p25_vo_filtered.trackjson
-raw tracks: 5297, kept: 84
-         removed_by_this_criterion  removed_only_by_this_criterion
-rsplice                       4634                             188
-region                        5013                              18
-edge                          4773                              12
-peak                             0                               0
-time                             0                               0
-[post] OK 20232024_DJF 1p875 (2023-12-01 00:00 -> 2024-02-29 18:00): raw 5297 -> clipped 5297 -> kept 84 -> /dmidata/users/asgtho/tracks/20232024_DJF/20232024_DJF_1p875_vo_filtered.trackjson
-raw tracks: 6070, kept: 49
-         removed_by_this_criterion  removed_only_by_this_criterion
-rsplice                       5671                             242
-region                        5777                              12
-edge                          5383                               2
-peak                             0                               0
-time                             0                               0
-[post] OK 20232024_DJF 2p5 (2023-12-01 00:00 -> 2024-02-29 18:00): raw 6070 -> clipped 6070 -> kept 49 -> /dmidata/users/asgtho/tracks/20232024_DJF/20232024_DJF_2p5_vo_filtered.trackjson
-raw tracks: 5948, kept: 36
-         removed_by_this_criterion  removed_only_by_this_criterion
-rsplice                       5712                             225
-region                        5684                               6
-edge                          5234                               3
-peak                             0                               0
-time                             0                               0
-[post] OK 20232024_DJF 3p0 (2023-12-01 00:00 -> 2024-02-29 18:00): raw 5948 -> clipped 5948 -> kept 36 -> /dmidata/users/asgtho/tracks/20232024_DJF/20232024_DJF_3p0_vo_filtered.trackjson
-raw tracks: 3932, kept: 123
-         removed_by_this_criterion  removed_only_by_this_criterion
-rsplice                       2953                             107
-region                        3690                              10
-edge                          3589                              11
-peak                             0                               0
-time                             0                               0
-[post] OK 20242025_DJF 0p25 (2024-12-01 00:00 -> 2025-02-28 18:00): raw 3932 -> clipped 3932 -> kept 123 -> /dmidata/users/asgtho/tracks/20242025_DJF/20242025_DJF_0p25_vo_filtered.trackjson
-raw tracks: 4590, kept: 110
-         removed_by_this_criterion  removed_only_by_this_criterion
-rsplice                       3743                             138
-region                        4329                              12
-edge                          4197                              12
-peak                             0                               0
-time                             0                               0
-[post] OK 20242025_DJF 1p25 (2024-12-01 00:00 -> 2025-02-28 18:00): raw 4590 -> clipped 4590 -> kept 110 -> /dmidata/users/asgtho/tracks/20242025_DJF/20242025_DJF_1p25_vo_filtered.trackjson
-raw tracks: 5371, kept: 85
-         removed_by_this_criterion  removed_only_by_this_criterion
-rsplice                       4737                             170
-region                        5104                              13
-edge                          4893                              11
-peak                             0                               0
-time                             0                               0
-[post] OK 20242025_DJF 1p875 (2024-12-01 00:00 -> 2025-02-28 18:00): raw 5371 -> clipped 5371 -> kept 85 -> /dmidata/users/asgtho/tracks/20242025_DJF/20242025_DJF_1p875_vo_filtered.trackjson
-raw tracks: 6137, kept: 51
-         removed_by_this_criterion  removed_only_by_this_criterion
-rsplice                       5735                             202
-region                        5882                              10
-edge                          5519                               2
-peak                             0                               0
-time                             0                               0
-[post] OK 20242025_DJF 2p5 (2024-12-01 00:00 -> 2025-02-28 18:00): raw 6137 -> clipped 6137 -> kept 51 -> /dmidata/users/asgtho/tracks/20242025_DJF/20242025_DJF_2p5_vo_filtered.trackjson
-raw tracks: 6022, kept: 35
-         removed_by_this_criterion  removed_only_by_this_criterion
-rsplice                       5776                             236
-region                        5749                               3
-edge                          5350                               2
-peak                             0                               0
-time                             0                               0
-[post] OK 20242025_DJF 3p0 (2024-12-01 00:00 -> 2025-02-28 18:00): raw 6022 -> clipped 6022 -> kept 35 -> /dmidata/users/asgtho/tracks/20242025_DJF/20242025_DJF_3p0_vo_filtered.trackjson
-raw tracks: 3846, kept: 118
-         removed_by_this_criterion  removed_only_by_this_criterion
-rsplice                       2882                             109
-region                        3611                              13
-edge                          3495                               8
-peak                             0                               0
-time                             0                               0
-[post] OK 20252026_DJF 0p25 (2025-12-01 00:00 -> 2026-02-28 18:00): raw 3846 -> clipped 3846 -> kept 118 -> /dmidata/users/asgtho/tracks/20252026_DJF/20252026_DJF_0p25_vo_filtered.trackjson
-raw tracks: 4559, kept: 112
-         removed_by_this_criterion  removed_only_by_this_criterion
-rsplice                       3728                             146
-region                        4293                              13
-edge                          4140                               8
-peak                             0                               0
-time                             0                               0
-[post] OK 20252026_DJF 1p25 (2025-12-01 00:00 -> 2026-02-28 18:00): raw 4559 -> clipped 4559 -> kept 112 -> /dmidata/users/asgtho/tracks/20252026_DJF/20252026_DJF_1p25_vo_filtered.trackjson
-raw tracks: 5301, kept: 78
-         removed_by_this_criterion  removed_only_by_this_criterion
-rsplice                       4657                             168
-region                        5046                              15
-edge                          4800                               9
-peak                             0                               0
-time                             0                               0
-[post] OK 20252026_DJF 1p875 (2025-12-01 00:00 -> 2026-02-28 18:00): raw 5301 -> clipped 5301 -> kept 78 -> /dmidata/users/asgtho/tracks/20252026_DJF/20252026_DJF_1p875_vo_filtered.trackjson
-raw tracks: 6173, kept: 49
-         removed_by_this_criterion  removed_only_by_this_criterion
-rsplice                       5772                             247
-region                        5874                              11
-edge                          5509                               3
-peak                             0                               0
-time                             0                               0
-[post] OK 20252026_DJF 2p5 (2025-12-01 00:00 -> 2026-02-28 18:00): raw 6173 -> clipped 6173 -> kept 49 -> /dmidata/users/asgtho/tracks/20252026_DJF/20252026_DJF_2p5_vo_filtered.trackjson
-raw tracks: 5960, kept: 26
-         removed_by_this_criterion  removed_only_by_this_criterion
-rsplice                       5734                             222
-region                        5711                               4
-edge                          5291                               1
-peak                             0                               0
-time                             0                               0
-[post] OK 20252026_DJF 3p0 (2025-12-01 00:00 -> 2026-02-28 18:00): raw 5960 -> clipped 5960 -> kept 26 -> /dmidata/users/asgtho/tracks/20252026_DJF/20252026_DJF_3p0_vo_filtered.trackjson
+[post] SKIP 20022003_DJF 0p25 (exists)
+[post] SKIP 20022003_DJF 1p25 (exists)
+[post] SKIP 20022003_DJF 1p875 (exists)
+[post] SKIP 20022003_DJF 2p5 (exists)
+[post] SKIP 20022003_DJF 3p0 (exists)
+[post] SKIP 20032004_DJF 0p25 (exists)
+[post] SKIP 20032004_DJF 1p25 (exists)
+[post] SKIP 20032004_DJF 1p875 (exists)
+[post] SKIP 20032004_DJF 2p5 (exists)
+[post] SKIP 20032004_DJF 3p0 (exists)
+[post] SKIP 20042005_DJF 0p25 (exists)
+[post] SKIP 20042005_DJF 1p25 (exists)
+[post] SKIP 20042005_DJF 1p875 (exists)
+[post] SKIP 20042005_DJF 2p5 (exists)
+[post] SKIP 20042005_DJF 3p0 (exists)
+[post] SKIP 20052006_DJF 0p25 (exists)
+[post] SKIP 20052006_DJF 1p25 (exists)
+[post] SKIP 20052006_DJF 1p875 (exists)
+[post] SKIP 20052006_DJF 2p5 (exists)
+[post] SKIP 20052006_DJF 3p0 (exists)
+[post] SKIP 20062007_DJF 0p25 (exists)
+[post] SKIP 20062007_DJF 1p25 (exists)
+[post] SKIP 20062007_DJF 1p875 (exists)
+[post] SKIP 20062007_DJF 2p5 (exists)
+[post] SKIP 20062007_DJF 3p0 (exists)
+[post] SKIP 20072008_DJF 0p25 (exists)
+[post] SKIP 20072008_DJF 1p25 (exists)
+[post] SKIP 20072008_DJF 1p875 (exists)
+[post] SKIP 20072008_DJF 2p5 (exists)
+[post] SKIP 20072008_DJF 3p0 (exists)
+[post] SKIP 20082009_DJF 0p25 (exists)
+[post] SKIP 20082009_DJF 1p25 (exists)
+[post] SKIP 20082009_DJF 1p875 (exists)
+[post] SKIP 20082009_DJF 2p5 (exists)
+[post] SKIP 20082009_DJF 3p0 (exists)
+[post] SKIP 20092010_DJF 0p25 (exists)
+[post] SKIP 20092010_DJF 1p25 (exists)
+[post] SKIP 20092010_DJF 1p875 (exists)
+[post] SKIP 20092010_DJF 2p5 (exists)
+[post] SKIP 20092010_DJF 3p0 (exists)
+[post] SKIP 20102011_DJF 0p25 (exists)
+[post] SKIP 20102011_DJF 1p25 (exists)
+[post] SKIP 20102011_DJF 1p875 (exists)
+[post] SKIP 20102011_DJF 2p5 (exists)
+[post] SKIP 20102011_DJF 3p0 (exists)
+[post] SKIP 20112012_DJF 0p25 (exists)
+[post] SKIP 20112012_DJF 1p25 (exists)
+[post] SKIP 20112012_DJF 1p875 (exists)
+[post] SKIP 20112012_DJF 2p5 (exists)
+[post] SKIP 20112012_DJF 3p0 (exists)
+[post] SKIP 20122013_DJF 0p25 (exists)
+[post] SKIP 20122013_DJF 1p25 (exists)
+[post] SKIP 20122013_DJF 1p875 (exists)
+[post] SKIP 20122013_DJF 2p5 (exists)
+[post] SKIP 20122013_DJF 3p0 (exists)
+[post] SKIP 20132014_DJF 0p25 (exists)
+[post] SKIP 20132014_DJF 1p25 (exists)
+[post] SKIP 20132014_DJF 1p875 (exists)
+[post] SKIP 20132014_DJF 2p5 (exists)
+[post] SKIP 20132014_DJF 3p0 (exists)
+[post] SKIP 20142015_DJF 0p25 (exists)
+[post] SKIP 20142015_DJF 1p25 (exists)
+[post] SKIP 20142015_DJF 1p875 (exists)
+[post] SKIP 20142015_DJF 2p5 (exists)
+[post] SKIP 20142015_DJF 3p0 (exists)
+[post] SKIP 20152016_DJF 0p25 (exists)
+[post] SKIP 20152016_DJF 1p25 (exists)
+[post] SKIP 20152016_DJF 1p875 (exists)
+[post] SKIP 20152016_DJF 2p5 (exists)
+[post] SKIP 20152016_DJF 3p0 (exists)
+[post] SKIP 20162017_DJF 0p25 (exists)
+[post] SKIP 20162017_DJF 1p25 (exists)
+[post] SKIP 20162017_DJF 1p875 (exists)
+[post] SKIP 20162017_DJF 2p5 (exists)
+[post] SKIP 20162017_DJF 3p0 (exists)
+[post] SKIP 20172018_DJF 0p25 (exists)
+[post] SKIP 20172018_DJF 1p25 (exists)
+[post] SKIP 20172018_DJF 1p875 (exists)
+[post] SKIP 20172018_DJF 2p5 (exists)
+[post] SKIP 20172018_DJF 3p0 (exists)
+[post] SKIP 20182019_DJF 0p25 (exists)
+[post] SKIP 20182019_DJF 1p25 (exists)
+[post] SKIP 20182019_DJF 1p875 (exists)
+[post] SKIP 20182019_DJF 2p5 (exists)
+[post] SKIP 20182019_DJF 3p0 (exists)
+[post] SKIP 20192020_DJF 0p25 (exists)
+[post] SKIP 20192020_DJF 1p25 (exists)
+[post] SKIP 20192020_DJF 1p875 (exists)
+[post] SKIP 20192020_DJF 2p5 (exists)
+[post] SKIP 20192020_DJF 3p0 (exists)
+[post] SKIP 20202021_DJF 0p25 (exists)
+[post] SKIP 20202021_DJF 1p25 (exists)
+[post] SKIP 20202021_DJF 1p875 (exists)
+[post] SKIP 20202021_DJF 2p5 (exists)
+[post] SKIP 20202021_DJF 3p0 (exists)
+[post] SKIP 20212022_DJF 0p25 (exists)
+[post] SKIP 20212022_DJF 1p25 (exists)
+[post] SKIP 20212022_DJF 1p875 (exists)
+[post] SKIP 20212022_DJF 2p5 (exists)
+[post] SKIP 20212022_DJF 3p0 (exists)
+[post] SKIP 20222023_DJF 0p25 (exists)
+[post] SKIP 20222023_DJF 1p25 (exists)
+[post] SKIP 20222023_DJF 1p875 (exists)
+[post] SKIP 20222023_DJF 2p5 (exists)
+[post] SKIP 20222023_DJF 3p0 (exists)
+[post] SKIP 20232024_DJF 0p25 (exists)
+[post] SKIP 20232024_DJF 1p25 (exists)
+[post] SKIP 20232024_DJF 1p875 (exists)
+[post] SKIP 20232024_DJF 2p5 (exists)
+[post] SKIP 20232024_DJF 3p0 (exists)
+[post] SKIP 20242025_DJF 0p25 (exists)
+[post] SKIP 20242025_DJF 1p25 (exists)
+[post] SKIP 20242025_DJF 1p875 (exists)
+[post] SKIP 20242025_DJF 2p5 (exists)
+[post] SKIP 20242025_DJF 3p0 (exists)
+[post] SKIP 20252026_DJF 0p25 (exists)
+[post] SKIP 20252026_DJF 1p25 (exists)
+[post] SKIP 20252026_DJF 1p875 (exists)
+[post] SKIP 20252026_DJF 2p5 (exists)
+[post] SKIP 20252026_DJF 3p0 (exists)
 [done] filtered tracks in /dmidata/users/asgtho/tracks
