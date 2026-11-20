@@ -1,0 +1,9 @@
+gridtype = lonlat
+xname    = longitude
+yname    = latitude
+xsize    = 120
+ysize    = 61
+xfirst   = 0
+xinc     = 3.0
+yfirst   = 90
+yinc     = -3.0
