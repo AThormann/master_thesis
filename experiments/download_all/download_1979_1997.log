@@ -1,0 +1,145 @@
+Seasons 1979/1980 -> 1997/1998, days 1-31 (31), output in /Users/annasophiamaxen/Desktop/PYTHON/master_thesis/reanalysis_data/ERA5/ERA5_pressure_levels
+[download] SKIP pl year 1979 (exists)
+[download] SKIP pl year 1980 (exists)
+[download] SKIP pl year 1981 (exists)
+[download] SKIP pl year 1983 (exists)
+[download] SKIP pl year 1982 (exists)
+[download] SKIP pl year 1984 (exists)
+[download] SKIP pl year 1986 (exists)
+[download] SKIP pl year 1985 (exists)
+[download] SKIP pl year 1990 (exists)
+[download] SKIP pl year 1987 (exists)
+[download] SKIP pl year 1988 (exists)
+[download] SKIP pl year 1989 (exists)
+[download] SKIP pl year 1991 (exists)
+[download] SKIP pl year 1992 (exists)
+[download] SKIP pl year 1995 (exists)
+[download] SKIP pl year 1997 (exists)
+[download] SKIP pl year 1996 (exists)
+[download] SKIP sl year 1979 (exists)[download] SKIP pl year 1993 (exists)
+[download] SKIP pl year 1998 (exists)
+
+[download] SKIP sl year 1980 (exists)
+[download] SKIP sl year 1982 (exists)
+[download] SKIP sl year 1983 (exists)
+[download] SKIP sl year 1981 (exists)
+[download] SKIP sl year 1985 (exists)
+[download] SKIP sl year 1986 (exists)[download] SKIP sl year 1984 (exists)
+[download] SKIP sl year 1987 (exists)
+[download] SKIP sl year 1988 (exists)
+[download] SKIP sl year 1990 (exists)[download] SKIP sl year 1989 (exists)
+[download] SKIP sl year 1991 (exists)
+[download] SKIP sl year 1992 (exists)
+
+[download] SKIP pl year 1994 (exists)
+[download] SKIP sl year 1993 (exists)
+
+[download] SKIP sl year 1994 (exists)
+[download] START sl year 1995 (months ['01', '02', '12'], attempt 1)
+[download] START sl year 1997 (months ['01', '02', '12'], attempt 1)
+[download] START sl year 1996 (months ['01', '02', '12'], attempt 1)
+[download] START sl year 1998 (months ['01', '02'], attempt 1)
+[download] OK sl year 1996 -> /Users/annasophiamaxen/Desktop/PYTHON/master_thesis/reanalysis_data/ERA5/ERA5_pressure_levels/raw/era5_sl_1996.nc (0.55 GB)
+[download] OK sl year 1995 -> /Users/annasophiamaxen/Desktop/PYTHON/master_thesis/reanalysis_data/ERA5/ERA5_pressure_levels/raw/era5_sl_1995.nc (0.54 GB)
+[download] OK sl year 1998 -> /Users/annasophiamaxen/Desktop/PYTHON/master_thesis/reanalysis_data/ERA5/ERA5_pressure_levels/raw/era5_sl_1998.nc (0.36 GB)
+[download] OK sl year 1997 -> /Users/annasophiamaxen/Desktop/PYTHON/master_thesis/reanalysis_data/ERA5/ERA5_pressure_levels/raw/era5_sl_1997.nc (0.54 GB)
+[merge] OK pl 1979/1980: 1979-12-01T00 -> 1980-02-29T18 (364 steps) -> /Users/annasophiamaxen/Desktop/PYTHON/master_thesis/reanalysis_data/ERA5/ERA5_pressure_levels/19791980_DJF/19791980_DJF_0p25.nc
+[cleanup] removed era5_pl850_1979.nc
+[merge] OK sl 1979/1980: 1979-12-01T00 -> 1980-02-29T18 (364 steps) -> /Users/annasophiamaxen/Desktop/PYTHON/master_thesis/reanalysis_data/ERA5/ERA5_pressure_levels/19791980_DJF/19791980_DJF_sl_0p25.nc
+[cleanup] removed era5_sl_1979.nc
+[error] sl season 1979/1980: [Errno 2] No such file or directory: '/usr/local/Caskroom/miniconda/base/envs/pystormtracker/bin/cdo'
+[merge] OK pl 1980/1981: 1980-12-01T00 -> 1981-02-28T18 (360 steps) -> /Users/annasophiamaxen/Desktop/PYTHON/master_thesis/reanalysis_data/ERA5/ERA5_pressure_levels/19801981_DJF/19801981_DJF_0p25.nc
+[cleanup] removed era5_pl850_1980.nc
+[merge] OK sl 1980/1981: 1980-12-01T00 -> 1981-02-28T18 (360 steps) -> /Users/annasophiamaxen/Desktop/PYTHON/master_thesis/reanalysis_data/ERA5/ERA5_pressure_levels/19801981_DJF/19801981_DJF_sl_0p25.nc
+[cleanup] removed era5_sl_1980.nc
+[error] sl season 1980/1981: [Errno 2] No such file or directory: '/usr/local/Caskroom/miniconda/base/envs/pystormtracker/bin/cdo'
+[merge] OK pl 1981/1982: 1981-12-01T00 -> 1982-02-28T18 (360 steps) -> /Users/annasophiamaxen/Desktop/PYTHON/master_thesis/reanalysis_data/ERA5/ERA5_pressure_levels/19811982_DJF/19811982_DJF_0p25.nc
+[cleanup] removed era5_pl850_1981.nc
+[merge] OK sl 1981/1982: 1981-12-01T00 -> 1982-02-28T18 (360 steps) -> /Users/annasophiamaxen/Desktop/PYTHON/master_thesis/reanalysis_data/ERA5/ERA5_pressure_levels/19811982_DJF/19811982_DJF_sl_0p25.nc
+[cleanup] removed era5_sl_1981.nc
+[error] sl season 1981/1982: [Errno 2] No such file or directory: '/usr/local/Caskroom/miniconda/base/envs/pystormtracker/bin/cdo'
+[merge] OK pl 1982/1983: 1982-12-01T00 -> 1983-02-28T18 (360 steps) -> /Users/annasophiamaxen/Desktop/PYTHON/master_thesis/reanalysis_data/ERA5/ERA5_pressure_levels/19821983_DJF/19821983_DJF_0p25.nc
+[cleanup] removed era5_pl850_1982.nc
+[merge] OK sl 1982/1983: 1982-12-01T00 -> 1983-02-28T18 (360 steps) -> /Users/annasophiamaxen/Desktop/PYTHON/master_thesis/reanalysis_data/ERA5/ERA5_pressure_levels/19821983_DJF/19821983_DJF_sl_0p25.nc
+[cleanup] removed era5_sl_1982.nc
+[error] sl season 1982/1983: [Errno 2] No such file or directory: '/usr/local/Caskroom/miniconda/base/envs/pystormtracker/bin/cdo'
+[merge] OK pl 1983/1984: 1983-12-01T00 -> 1984-02-29T18 (364 steps) -> /Users/annasophiamaxen/Desktop/PYTHON/master_thesis/reanalysis_data/ERA5/ERA5_pressure_levels/19831984_DJF/19831984_DJF_0p25.nc
+[cleanup] removed era5_pl850_1983.nc
+[merge] OK sl 1983/1984: 1983-12-01T00 -> 1984-02-29T18 (364 steps) -> /Users/annasophiamaxen/Desktop/PYTHON/master_thesis/reanalysis_data/ERA5/ERA5_pressure_levels/19831984_DJF/19831984_DJF_sl_0p25.nc
+[cleanup] removed era5_sl_1983.nc
+[error] sl season 1983/1984: [Errno 2] No such file or directory: '/usr/local/Caskroom/miniconda/base/envs/pystormtracker/bin/cdo'
+[merge] OK pl 1984/1985: 1984-12-01T00 -> 1985-02-28T18 (360 steps) -> /Users/annasophiamaxen/Desktop/PYTHON/master_thesis/reanalysis_data/ERA5/ERA5_pressure_levels/19841985_DJF/19841985_DJF_0p25.nc
+[cleanup] removed era5_pl850_1984.nc
+[merge] OK sl 1984/1985: 1984-12-01T00 -> 1985-02-28T18 (360 steps) -> /Users/annasophiamaxen/Desktop/PYTHON/master_thesis/reanalysis_data/ERA5/ERA5_pressure_levels/19841985_DJF/19841985_DJF_sl_0p25.nc
+[cleanup] removed era5_sl_1984.nc
+[error] sl season 1984/1985: [Errno 2] No such file or directory: '/usr/local/Caskroom/miniconda/base/envs/pystormtracker/bin/cdo'
+[merge] OK pl 1985/1986: 1985-12-01T00 -> 1986-02-28T18 (360 steps) -> /Users/annasophiamaxen/Desktop/PYTHON/master_thesis/reanalysis_data/ERA5/ERA5_pressure_levels/19851986_DJF/19851986_DJF_0p25.nc
+[cleanup] removed era5_pl850_1985.nc
+[merge] OK sl 1985/1986: 1985-12-01T00 -> 1986-02-28T18 (360 steps) -> /Users/annasophiamaxen/Desktop/PYTHON/master_thesis/reanalysis_data/ERA5/ERA5_pressure_levels/19851986_DJF/19851986_DJF_sl_0p25.nc
+[cleanup] removed era5_sl_1985.nc
+[error] sl season 1985/1986: [Errno 2] No such file or directory: '/usr/local/Caskroom/miniconda/base/envs/pystormtracker/bin/cdo'
+[merge] OK pl 1986/1987: 1986-12-01T00 -> 1987-02-28T18 (360 steps) -> /Users/annasophiamaxen/Desktop/PYTHON/master_thesis/reanalysis_data/ERA5/ERA5_pressure_levels/19861987_DJF/19861987_DJF_0p25.nc
+[cleanup] removed era5_pl850_1986.nc
+[merge] OK sl 1986/1987: 1986-12-01T00 -> 1987-02-28T18 (360 steps) -> /Users/annasophiamaxen/Desktop/PYTHON/master_thesis/reanalysis_data/ERA5/ERA5_pressure_levels/19861987_DJF/19861987_DJF_sl_0p25.nc
+[cleanup] removed era5_sl_1986.nc
+[error] sl season 1986/1987: [Errno 2] No such file or directory: '/usr/local/Caskroom/miniconda/base/envs/pystormtracker/bin/cdo'
+[merge] OK pl 1987/1988: 1987-12-01T00 -> 1988-02-29T18 (364 steps) -> /Users/annasophiamaxen/Desktop/PYTHON/master_thesis/reanalysis_data/ERA5/ERA5_pressure_levels/19871988_DJF/19871988_DJF_0p25.nc
+[cleanup] removed era5_pl850_1987.nc
+[merge] OK sl 1987/1988: 1987-12-01T00 -> 1988-02-29T18 (364 steps) -> /Users/annasophiamaxen/Desktop/PYTHON/master_thesis/reanalysis_data/ERA5/ERA5_pressure_levels/19871988_DJF/19871988_DJF_sl_0p25.nc
+[cleanup] removed era5_sl_1987.nc
+[error] sl season 1987/1988: [Errno 2] No such file or directory: '/usr/local/Caskroom/miniconda/base/envs/pystormtracker/bin/cdo'
+[merge] OK pl 1988/1989: 1988-12-01T00 -> 1989-02-28T18 (360 steps) -> /Users/annasophiamaxen/Desktop/PYTHON/master_thesis/reanalysis_data/ERA5/ERA5_pressure_levels/19881989_DJF/19881989_DJF_0p25.nc
+[cleanup] removed era5_pl850_1988.nc
+[merge] OK sl 1988/1989: 1988-12-01T00 -> 1989-02-28T18 (360 steps) -> /Users/annasophiamaxen/Desktop/PYTHON/master_thesis/reanalysis_data/ERA5/ERA5_pressure_levels/19881989_DJF/19881989_DJF_sl_0p25.nc
+[cleanup] removed era5_sl_1988.nc
+[error] sl season 1988/1989: [Errno 2] No such file or directory: '/usr/local/Caskroom/miniconda/base/envs/pystormtracker/bin/cdo'
+[merge] OK pl 1989/1990: 1989-12-01T00 -> 1990-02-28T18 (360 steps) -> /Users/annasophiamaxen/Desktop/PYTHON/master_thesis/reanalysis_data/ERA5/ERA5_pressure_levels/19891990_DJF/19891990_DJF_0p25.nc
+[cleanup] removed era5_pl850_1989.nc
+[merge] OK sl 1989/1990: 1989-12-01T00 -> 1990-02-28T18 (360 steps) -> /Users/annasophiamaxen/Desktop/PYTHON/master_thesis/reanalysis_data/ERA5/ERA5_pressure_levels/19891990_DJF/19891990_DJF_sl_0p25.nc
+[cleanup] removed era5_sl_1989.nc
+[error] sl season 1989/1990: [Errno 2] No such file or directory: '/usr/local/Caskroom/miniconda/base/envs/pystormtracker/bin/cdo'
+[merge] OK pl 1990/1991: 1990-12-01T00 -> 1991-02-28T18 (360 steps) -> /Users/annasophiamaxen/Desktop/PYTHON/master_thesis/reanalysis_data/ERA5/ERA5_pressure_levels/19901991_DJF/19901991_DJF_0p25.nc
+[cleanup] removed era5_pl850_1990.nc
+[merge] OK sl 1990/1991: 1990-12-01T00 -> 1991-02-28T18 (360 steps) -> /Users/annasophiamaxen/Desktop/PYTHON/master_thesis/reanalysis_data/ERA5/ERA5_pressure_levels/19901991_DJF/19901991_DJF_sl_0p25.nc
+[cleanup] removed era5_sl_1990.nc
+[error] sl season 1990/1991: [Errno 2] No such file or directory: '/usr/local/Caskroom/miniconda/base/envs/pystormtracker/bin/cdo'
+[merge] OK pl 1991/1992: 1991-12-01T00 -> 1992-02-29T18 (364 steps) -> /Users/annasophiamaxen/Desktop/PYTHON/master_thesis/reanalysis_data/ERA5/ERA5_pressure_levels/19911992_DJF/19911992_DJF_0p25.nc
+[cleanup] removed era5_pl850_1991.nc
+[merge] OK sl 1991/1992: 1991-12-01T00 -> 1992-02-29T18 (364 steps) -> /Users/annasophiamaxen/Desktop/PYTHON/master_thesis/reanalysis_data/ERA5/ERA5_pressure_levels/19911992_DJF/19911992_DJF_sl_0p25.nc
+[cleanup] removed era5_sl_1991.nc
+[error] sl season 1991/1992: [Errno 2] No such file or directory: '/usr/local/Caskroom/miniconda/base/envs/pystormtracker/bin/cdo'
+[merge] OK pl 1992/1993: 1992-12-01T00 -> 1993-02-28T18 (360 steps) -> /Users/annasophiamaxen/Desktop/PYTHON/master_thesis/reanalysis_data/ERA5/ERA5_pressure_levels/19921993_DJF/19921993_DJF_0p25.nc
+[cleanup] removed era5_pl850_1992.nc
+[merge] OK sl 1992/1993: 1992-12-01T00 -> 1993-02-28T18 (360 steps) -> /Users/annasophiamaxen/Desktop/PYTHON/master_thesis/reanalysis_data/ERA5/ERA5_pressure_levels/19921993_DJF/19921993_DJF_sl_0p25.nc
+[cleanup] removed era5_sl_1992.nc
+[error] sl season 1992/1993: [Errno 2] No such file or directory: '/usr/local/Caskroom/miniconda/base/envs/pystormtracker/bin/cdo'
+[merge] OK pl 1993/1994: 1993-12-01T00 -> 1994-02-28T18 (360 steps) -> /Users/annasophiamaxen/Desktop/PYTHON/master_thesis/reanalysis_data/ERA5/ERA5_pressure_levels/19931994_DJF/19931994_DJF_0p25.nc
+[cleanup] removed era5_pl850_1993.nc
+[merge] OK sl 1993/1994: 1993-12-01T00 -> 1994-02-28T18 (360 steps) -> /Users/annasophiamaxen/Desktop/PYTHON/master_thesis/reanalysis_data/ERA5/ERA5_pressure_levels/19931994_DJF/19931994_DJF_sl_0p25.nc
+[cleanup] removed era5_sl_1993.nc
+[error] sl season 1993/1994: [Errno 2] No such file or directory: '/usr/local/Caskroom/miniconda/base/envs/pystormtracker/bin/cdo'
+[merge] OK pl 1994/1995: 1994-12-01T00 -> 1995-02-28T18 (360 steps) -> /Users/annasophiamaxen/Desktop/PYTHON/master_thesis/reanalysis_data/ERA5/ERA5_pressure_levels/19941995_DJF/19941995_DJF_0p25.nc
+[cleanup] removed era5_pl850_1994.nc
+[merge] OK sl 1994/1995: 1994-12-01T00 -> 1995-02-28T18 (360 steps) -> /Users/annasophiamaxen/Desktop/PYTHON/master_thesis/reanalysis_data/ERA5/ERA5_pressure_levels/19941995_DJF/19941995_DJF_sl_0p25.nc
+[cleanup] removed era5_sl_1994.nc
+[error] sl season 1994/1995: [Errno 2] No such file or directory: '/usr/local/Caskroom/miniconda/base/envs/pystormtracker/bin/cdo'
+[merge] OK pl 1995/1996: 1995-12-01T00 -> 1996-02-29T18 (364 steps) -> /Users/annasophiamaxen/Desktop/PYTHON/master_thesis/reanalysis_data/ERA5/ERA5_pressure_levels/19951996_DJF/19951996_DJF_0p25.nc
+[cleanup] removed era5_pl850_1995.nc
+[merge] OK sl 1995/1996: 1995-12-01T00 -> 1996-02-29T18 (364 steps) -> /Users/annasophiamaxen/Desktop/PYTHON/master_thesis/reanalysis_data/ERA5/ERA5_pressure_levels/19951996_DJF/19951996_DJF_sl_0p25.nc
+[cleanup] removed era5_sl_1995.nc
+[error] sl season 1995/1996: [Errno 2] No such file or directory: '/usr/local/Caskroom/miniconda/base/envs/pystormtracker/bin/cdo'
+[merge] OK pl 1996/1997: 1996-12-01T00 -> 1997-02-28T18 (360 steps) -> /Users/annasophiamaxen/Desktop/PYTHON/master_thesis/reanalysis_data/ERA5/ERA5_pressure_levels/19961997_DJF/19961997_DJF_0p25.nc
+[cleanup] removed era5_pl850_1996.nc
+[merge] OK sl 1996/1997: 1996-12-01T00 -> 1997-02-28T18 (360 steps) -> /Users/annasophiamaxen/Desktop/PYTHON/master_thesis/reanalysis_data/ERA5/ERA5_pressure_levels/19961997_DJF/19961997_DJF_sl_0p25.nc
+[cleanup] removed era5_sl_1996.nc
+[error] sl season 1996/1997: [Errno 2] No such file or directory: '/usr/local/Caskroom/miniconda/base/envs/pystormtracker/bin/cdo'
+[merge] OK pl 1997/1998: 1997-12-01T00 -> 1998-02-28T18 (360 steps) -> /Users/annasophiamaxen/Desktop/PYTHON/master_thesis/reanalysis_data/ERA5/ERA5_pressure_levels/19971998_DJF/19971998_DJF_0p25.nc
+[cleanup] removed era5_pl850_1997.nc
+[cleanup] removed era5_pl850_1998.nc
+[merge] OK sl 1997/1998: 1997-12-01T00 -> 1998-02-28T18 (360 steps) -> /Users/annasophiamaxen/Desktop/PYTHON/master_thesis/reanalysis_data/ERA5/ERA5_pressure_levels/19971998_DJF/19971998_DJF_sl_0p25.nc
+[cleanup] removed era5_sl_1997.nc
+[cleanup] removed era5_sl_1998.nc
+[error] sl season 1997/1998: [Errno 2] No such file or directory: '/usr/local/Caskroom/miniconda/base/envs/pystormtracker/bin/cdo'
+[done] pl: 19 seasons, 19 files in /Users/annasophiamaxen/Desktop/PYTHON/master_thesis/reanalysis_data/ERA5/ERA5_pressure_levels (expected 19)
+[done] sl: 19 seasons, 19 files in /Users/annasophiamaxen/Desktop/PYTHON/master_thesis/reanalysis_data/ERA5/ERA5_pressure_levels (expected 95)
+[done] FAILED: ['sl 1979', 'sl 1980', 'sl 1981', 'sl 1982', 'sl 1983', 'sl 1984', 'sl 1985', 'sl 1986', 'sl 1987', 'sl 1988', 'sl 1989', 'sl 1990', 'sl 1991', 'sl 1992', 'sl 1993', 'sl 1994', 'sl 1995', 'sl 1996', 'sl 1997']  (failed downloads: []) - rerun to retry

@@ -1,0 +1,66 @@
+Sampling 19 seasons x 1 track resolutions, fields on 1p875, {'radius_km': 500, 'samples': [('msl', 'min', 'msl_min'), ('msl', 'nearest', 'msl_center'), ('ws10', 'max', 'ws10_max'), ('ws10', 'mean', 'ws10_mean'), ('gust10', 'max', 'gust10_max'), ('gust10', 'mean', 'gust10_mean')], 'pl_samples': [('vo', 'max', 'vo850_unfilt_max'), ('ws850', 'max', 'ws850_max')], 'sample_res': 0.25}
+[sample] SKIP 19791980_DJF 0p25 sl1p875 (exists)
+[sample] SKIP 19801981_DJF 0p25 sl1p875 (exists)
+[error] 19811982_DJF 0p25: Missing original season file: /Users/annasophiamaxen/Desktop/PYTHON/master_thesis/reanalysis_data/ERA5/ERA5_pressure_levels/19811982_DJF/19811982_DJF_sl_0p25.nc
+[error] 19821983_DJF 0p25: Missing original season file: /Users/annasophiamaxen/Desktop/PYTHON/master_thesis/reanalysis_data/ERA5/ERA5_pressure_levels/19821983_DJF/19821983_DJF_sl_0p25.nc
+[error] 19831984_DJF 0p25: Missing original season file: /Users/annasophiamaxen/Desktop/PYTHON/master_thesis/reanalysis_data/ERA5/ERA5_pressure_levels/19831984_DJF/19831984_DJF_sl_0p25.nc
+[error] 19841985_DJF 0p25: Missing original season file: /Users/annasophiamaxen/Desktop/PYTHON/master_thesis/reanalysis_data/ERA5/ERA5_pressure_levels/19841985_DJF/19841985_DJF_sl_0p25.nc
+[error] 19851986_DJF 0p25: Missing original season file: /Users/annasophiamaxen/Desktop/PYTHON/master_thesis/reanalysis_data/ERA5/ERA5_pressure_levels/19851986_DJF/19851986_DJF_sl_0p25.nc
+[error] 19861987_DJF 0p25: Missing original season file: /Users/annasophiamaxen/Desktop/PYTHON/master_thesis/reanalysis_data/ERA5/ERA5_pressure_levels/19861987_DJF/19861987_DJF_sl_0p25.nc
+[error] 19871988_DJF 0p25: Missing original season file: /Users/annasophiamaxen/Desktop/PYTHON/master_thesis/reanalysis_data/ERA5/ERA5_pressure_levels/19871988_DJF/19871988_DJF_sl_0p25.nc
+[error] 19881989_DJF 0p25: Missing original season file: /Users/annasophiamaxen/Desktop/PYTHON/master_thesis/reanalysis_data/ERA5/ERA5_pressure_levels/19881989_DJF/19881989_DJF_sl_0p25.nc
+[error] 19891990_DJF 0p25: Missing original season file: /Users/annasophiamaxen/Desktop/PYTHON/master_thesis/reanalysis_data/ERA5/ERA5_pressure_levels/19891990_DJF/19891990_DJF_sl_0p25.nc
+[error] 19901991_DJF 0p25: Missing original season file: /Users/annasophiamaxen/Desktop/PYTHON/master_thesis/reanalysis_data/ERA5/ERA5_pressure_levels/19901991_DJF/19901991_DJF_sl_0p25.nc
+[error] 19911992_DJF 0p25: Missing original season file: /Users/annasophiamaxen/Desktop/PYTHON/master_thesis/reanalysis_data/ERA5/ERA5_pressure_levels/19911992_DJF/19911992_DJF_sl_0p25.nc
+[error] 19921993_DJF 0p25: Missing original season file: /Users/annasophiamaxen/Desktop/PYTHON/master_thesis/reanalysis_data/ERA5/ERA5_pressure_levels/19921993_DJF/19921993_DJF_sl_0p25.nc
+[error] 19931994_DJF 0p25: Missing original season file: /Users/annasophiamaxen/Desktop/PYTHON/master_thesis/reanalysis_data/ERA5/ERA5_pressure_levels/19931994_DJF/19931994_DJF_sl_0p25.nc
+[error] 19941995_DJF 0p25: Missing original season file: /Users/annasophiamaxen/Desktop/PYTHON/master_thesis/reanalysis_data/ERA5/ERA5_pressure_levels/19941995_DJF/19941995_DJF_sl_0p25.nc
+[error] 19951996_DJF 0p25: Missing original season file: /Users/annasophiamaxen/Desktop/PYTHON/master_thesis/reanalysis_data/ERA5/ERA5_pressure_levels/19951996_DJF/19951996_DJF_sl_0p25.nc
+[error] 19961997_DJF 0p25: Missing original season file: /Users/annasophiamaxen/Desktop/PYTHON/master_thesis/reanalysis_data/ERA5/ERA5_pressure_levels/19961997_DJF/19961997_DJF_sl_0p25.nc
+[error] 19971998_DJF 0p25: Missing original season file: /Users/annasophiamaxen/Desktop/PYTHON/master_thesis/reanalysis_data/ERA5/ERA5_pressure_levels/19971998_DJF/19971998_DJF_sl_0p25.nc
+[done] sampled tracks in ../../trackjson/regrid_exp
+[done] FAILED: ['19811982_DJF_0p25', '19821983_DJF_0p25', '19831984_DJF_0p25', '19841985_DJF_0p25', '19851986_DJF_0p25', '19861987_DJF_0p25', '19871988_DJF_0p25', '19881989_DJF_0p25', '19891990_DJF_0p25', '19901991_DJF_0p25', '19911992_DJF_0p25', '19921993_DJF_0p25', '19931994_DJF_0p25', '19941995_DJF_0p25', '19951996_DJF_0p25', '19961997_DJF_0p25', '19971998_DJF_0p25']
+Sampling 19 seasons x 1 track resolutions, fields on 2p5, {'radius_km': 500, 'samples': [('msl', 'min', 'msl_min'), ('msl', 'nearest', 'msl_center'), ('ws10', 'max', 'ws10_max'), ('ws10', 'mean', 'ws10_mean'), ('gust10', 'max', 'gust10_max'), ('gust10', 'mean', 'gust10_mean')], 'pl_samples': [('vo', 'max', 'vo850_unfilt_max'), ('ws850', 'max', 'ws850_max')], 'sample_res': 0.25}
+[error] 19791980_DJF 0p25: Missing original season file: /Users/annasophiamaxen/Desktop/PYTHON/master_thesis/reanalysis_data/ERA5/ERA5_pressure_levels/19791980_DJF/19791980_DJF_sl_0p25.nc
+[error] 19801981_DJF 0p25: Missing original season file: /Users/annasophiamaxen/Desktop/PYTHON/master_thesis/reanalysis_data/ERA5/ERA5_pressure_levels/19801981_DJF/19801981_DJF_sl_0p25.nc
+[error] 19811982_DJF 0p25: Missing original season file: /Users/annasophiamaxen/Desktop/PYTHON/master_thesis/reanalysis_data/ERA5/ERA5_pressure_levels/19811982_DJF/19811982_DJF_sl_0p25.nc
+[error] 19821983_DJF 0p25: Missing original season file: /Users/annasophiamaxen/Desktop/PYTHON/master_thesis/reanalysis_data/ERA5/ERA5_pressure_levels/19821983_DJF/19821983_DJF_sl_0p25.nc
+[error] 19831984_DJF 0p25: Missing original season file: /Users/annasophiamaxen/Desktop/PYTHON/master_thesis/reanalysis_data/ERA5/ERA5_pressure_levels/19831984_DJF/19831984_DJF_sl_0p25.nc
+[error] 19841985_DJF 0p25: Missing original season file: /Users/annasophiamaxen/Desktop/PYTHON/master_thesis/reanalysis_data/ERA5/ERA5_pressure_levels/19841985_DJF/19841985_DJF_sl_0p25.nc
+[error] 19851986_DJF 0p25: Missing original season file: /Users/annasophiamaxen/Desktop/PYTHON/master_thesis/reanalysis_data/ERA5/ERA5_pressure_levels/19851986_DJF/19851986_DJF_sl_0p25.nc
+[error] 19861987_DJF 0p25: Missing original season file: /Users/annasophiamaxen/Desktop/PYTHON/master_thesis/reanalysis_data/ERA5/ERA5_pressure_levels/19861987_DJF/19861987_DJF_sl_0p25.nc
+[error] 19871988_DJF 0p25: Missing original season file: /Users/annasophiamaxen/Desktop/PYTHON/master_thesis/reanalysis_data/ERA5/ERA5_pressure_levels/19871988_DJF/19871988_DJF_sl_0p25.nc
+[error] 19881989_DJF 0p25: Missing original season file: /Users/annasophiamaxen/Desktop/PYTHON/master_thesis/reanalysis_data/ERA5/ERA5_pressure_levels/19881989_DJF/19881989_DJF_sl_0p25.nc
+[error] 19891990_DJF 0p25: Missing original season file: /Users/annasophiamaxen/Desktop/PYTHON/master_thesis/reanalysis_data/ERA5/ERA5_pressure_levels/19891990_DJF/19891990_DJF_sl_0p25.nc
+[error] 19901991_DJF 0p25: Missing original season file: /Users/annasophiamaxen/Desktop/PYTHON/master_thesis/reanalysis_data/ERA5/ERA5_pressure_levels/19901991_DJF/19901991_DJF_sl_0p25.nc
+[error] 19911992_DJF 0p25: Missing original season file: /Users/annasophiamaxen/Desktop/PYTHON/master_thesis/reanalysis_data/ERA5/ERA5_pressure_levels/19911992_DJF/19911992_DJF_sl_0p25.nc
+[error] 19921993_DJF 0p25: Missing original season file: /Users/annasophiamaxen/Desktop/PYTHON/master_thesis/reanalysis_data/ERA5/ERA5_pressure_levels/19921993_DJF/19921993_DJF_sl_0p25.nc
+[error] 19931994_DJF 0p25: Missing original season file: /Users/annasophiamaxen/Desktop/PYTHON/master_thesis/reanalysis_data/ERA5/ERA5_pressure_levels/19931994_DJF/19931994_DJF_sl_0p25.nc
+[error] 19941995_DJF 0p25: Missing original season file: /Users/annasophiamaxen/Desktop/PYTHON/master_thesis/reanalysis_data/ERA5/ERA5_pressure_levels/19941995_DJF/19941995_DJF_sl_0p25.nc
+[error] 19951996_DJF 0p25: Missing original season file: /Users/annasophiamaxen/Desktop/PYTHON/master_thesis/reanalysis_data/ERA5/ERA5_pressure_levels/19951996_DJF/19951996_DJF_sl_0p25.nc
+[error] 19961997_DJF 0p25: Missing original season file: /Users/annasophiamaxen/Desktop/PYTHON/master_thesis/reanalysis_data/ERA5/ERA5_pressure_levels/19961997_DJF/19961997_DJF_sl_0p25.nc
+[error] 19971998_DJF 0p25: Missing original season file: /Users/annasophiamaxen/Desktop/PYTHON/master_thesis/reanalysis_data/ERA5/ERA5_pressure_levels/19971998_DJF/19971998_DJF_sl_0p25.nc
+[done] sampled tracks in ../../trackjson/regrid_exp
+[done] FAILED: ['19791980_DJF_0p25', '19801981_DJF_0p25', '19811982_DJF_0p25', '19821983_DJF_0p25', '19831984_DJF_0p25', '19841985_DJF_0p25', '19851986_DJF_0p25', '19861987_DJF_0p25', '19871988_DJF_0p25', '19881989_DJF_0p25', '19891990_DJF_0p25', '19901991_DJF_0p25', '19911992_DJF_0p25', '19921993_DJF_0p25', '19931994_DJF_0p25', '19941995_DJF_0p25', '19951996_DJF_0p25', '19961997_DJF_0p25', '19971998_DJF_0p25']
+Sampling 19 seasons x 1 track resolutions, fields on 3p0, {'radius_km': 500, 'samples': [('msl', 'min', 'msl_min'), ('msl', 'nearest', 'msl_center'), ('ws10', 'max', 'ws10_max'), ('ws10', 'mean', 'ws10_mean'), ('gust10', 'max', 'gust10_max'), ('gust10', 'mean', 'gust10_mean')], 'pl_samples': [('vo', 'max', 'vo850_unfilt_max'), ('ws850', 'max', 'ws850_max')], 'sample_res': 0.25}
+[error] 19791980_DJF 0p25: Missing original season file: /Users/annasophiamaxen/Desktop/PYTHON/master_thesis/reanalysis_data/ERA5/ERA5_pressure_levels/19791980_DJF/19791980_DJF_sl_0p25.nc
+[error] 19801981_DJF 0p25: Missing original season file: /Users/annasophiamaxen/Desktop/PYTHON/master_thesis/reanalysis_data/ERA5/ERA5_pressure_levels/19801981_DJF/19801981_DJF_sl_0p25.nc
+[error] 19811982_DJF 0p25: Missing original season file: /Users/annasophiamaxen/Desktop/PYTHON/master_thesis/reanalysis_data/ERA5/ERA5_pressure_levels/19811982_DJF/19811982_DJF_sl_0p25.nc
+[error] 19821983_DJF 0p25: Missing original season file: /Users/annasophiamaxen/Desktop/PYTHON/master_thesis/reanalysis_data/ERA5/ERA5_pressure_levels/19821983_DJF/19821983_DJF_sl_0p25.nc
+[error] 19831984_DJF 0p25: Missing original season file: /Users/annasophiamaxen/Desktop/PYTHON/master_thesis/reanalysis_data/ERA5/ERA5_pressure_levels/19831984_DJF/19831984_DJF_sl_0p25.nc
+[error] 19841985_DJF 0p25: Missing original season file: /Users/annasophiamaxen/Desktop/PYTHON/master_thesis/reanalysis_data/ERA5/ERA5_pressure_levels/19841985_DJF/19841985_DJF_sl_0p25.nc
+[error] 19851986_DJF 0p25: Missing original season file: /Users/annasophiamaxen/Desktop/PYTHON/master_thesis/reanalysis_data/ERA5/ERA5_pressure_levels/19851986_DJF/19851986_DJF_sl_0p25.nc
+[error] 19861987_DJF 0p25: Missing original season file: /Users/annasophiamaxen/Desktop/PYTHON/master_thesis/reanalysis_data/ERA5/ERA5_pressure_levels/19861987_DJF/19861987_DJF_sl_0p25.nc
+[error] 19871988_DJF 0p25: Missing original season file: /Users/annasophiamaxen/Desktop/PYTHON/master_thesis/reanalysis_data/ERA5/ERA5_pressure_levels/19871988_DJF/19871988_DJF_sl_0p25.nc
+[error] 19881989_DJF 0p25: Missing original season file: /Users/annasophiamaxen/Desktop/PYTHON/master_thesis/reanalysis_data/ERA5/ERA5_pressure_levels/19881989_DJF/19881989_DJF_sl_0p25.nc
+[error] 19891990_DJF 0p25: Missing original season file: /Users/annasophiamaxen/Desktop/PYTHON/master_thesis/reanalysis_data/ERA5/ERA5_pressure_levels/19891990_DJF/19891990_DJF_sl_0p25.nc
+[error] 19901991_DJF 0p25: Missing original season file: /Users/annasophiamaxen/Desktop/PYTHON/master_thesis/reanalysis_data/ERA5/ERA5_pressure_levels/19901991_DJF/19901991_DJF_sl_0p25.nc
+[error] 19911992_DJF 0p25: Missing original season file: /Users/annasophiamaxen/Desktop/PYTHON/master_thesis/reanalysis_data/ERA5/ERA5_pressure_levels/19911992_DJF/19911992_DJF_sl_0p25.nc
+[error] 19921993_DJF 0p25: Missing original season file: /Users/annasophiamaxen/Desktop/PYTHON/master_thesis/reanalysis_data/ERA5/ERA5_pressure_levels/19921993_DJF/19921993_DJF_sl_0p25.nc
+[error] 19931994_DJF 0p25: Missing original season file: /Users/annasophiamaxen/Desktop/PYTHON/master_thesis/reanalysis_data/ERA5/ERA5_pressure_levels/19931994_DJF/19931994_DJF_sl_0p25.nc
+[error] 19941995_DJF 0p25: Missing original season file: /Users/annasophiamaxen/Desktop/PYTHON/master_thesis/reanalysis_data/ERA5/ERA5_pressure_levels/19941995_DJF/19941995_DJF_sl_0p25.nc
+[error] 19951996_DJF 0p25: Missing original season file: /Users/annasophiamaxen/Desktop/PYTHON/master_thesis/reanalysis_data/ERA5/ERA5_pressure_levels/19951996_DJF/19951996_DJF_sl_0p25.nc
+[error] 19961997_DJF 0p25: Missing original season file: /Users/annasophiamaxen/Desktop/PYTHON/master_thesis/reanalysis_data/ERA5/ERA5_pressure_levels/19961997_DJF/19961997_DJF_sl_0p25.nc
+[error] 19971998_DJF 0p25: Missing original season file: /Users/annasophiamaxen/Desktop/PYTHON/master_thesis/reanalysis_data/ERA5/ERA5_pressure_levels/19971998_DJF/19971998_DJF_sl_0p25.nc
+[done] sampled tracks in ../../trackjson/regrid_exp
+[done] FAILED: ['19791980_DJF_0p25', '19801981_DJF_0p25', '19811982_DJF_0p25', '19821983_DJF_0p25', '19831984_DJF_0p25', '19841985_DJF_0p25', '19851986_DJF_0p25', '19861987_DJF_0p25', '19871988_DJF_0p25', '19881989_DJF_0p25', '19891990_DJF_0p25', '19901991_DJF_0p25', '19911992_DJF_0p25', '19921993_DJF_0p25', '19931994_DJF_0p25', '19941995_DJF_0p25', '19951996_DJF_0p25', '19961997_DJF_0p25', '19971998_DJF_0p25']
