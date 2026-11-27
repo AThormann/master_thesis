@@ -41,6 +41,11 @@ TRACK_CONFIGS = dict(min_track_points=3,
 track_variable = 'vo'
 object_threshold=1e-5
 
+# Seasons (DJF, MAM, JJA, SON): the season files (tracking field + single levels) cover the season
+# plus this many days on either side. A track belongs to the season if its peak vorticity lies in
+# the season itself (experiments/download_all/seasons.py, postprocess_on_seasons.py).
+SEASON_BUFFER_DAYS = 10
+
 # ERA5 single levels: area of the CDS request (north, west, south, east).
 # Larger than DOMAIN so that sampling within radius_km of any track point stays inside the field.
 SL_AREA = [90, -120, 10, 40]
@@ -57,5 +62,8 @@ SAMPLE_CONFIG = dict(radius_km=500,
                      # same, from the 0.25 degree pressure-level file (850 hPa)
                      pl_samples=[("vo",    "max", "vo850_unfilt_max"),  # unfiltered vorticity (s-1)
                                  ("ws850", "max", "ws850_max")],        # ws850 = hypot(u, v) on the grid (m s-1)
+                     # outputs (max/min samples) whose grid location is also stored (<output>_lat/_lon) and
+                     # summarised per track (location of the maximum 10 m wind)
+                     locate=["ws10_max"],
                      sample_res=0.25,  # grid of the sampled fields, 0.25 (native) or one of regrid_era5.RESOLUTIONS
 )

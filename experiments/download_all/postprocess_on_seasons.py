@@ -1,21 +1,25 @@
 """
-Filter the raw tracks of every DJF season and resolution with POSTPROCESS_CONFIG from algorithms/configs.py.
+Filter the raw tracks of every season (DJF, MAM, JJA, SON) and resolution with POSTPROCESS_CONFIG
+from algorithms/configs.py.
 
-Input:  <track_dir>/<S><S+1>_DJF/<S><S+1>_DJF_<res>_vo_raw.trackjson   (from track_on_seasons.py)
-Output: <track_dir>/<S><S+1>_DJF/<S><S+1>_DJF_<res>_vo_filtered.trackjson
+Input:  <track_dir>/<season>/<season>_<res>_vo_raw.trackjson   (from track_on_seasons.py)
+Output: <track_dir>/<season>/<season>_<res>_vo_filtered.trackjson
         (--track-dir, default <out_root>/trackjson)
 
 Tracks are kept at full length (global tracking, no clipping). A track is kept if its
 maximum vorticity lies in REGION and it has at least 4 points (24 h) in REGION
 (region_criterion=("passes", "peak") in POSTPROCESS_CONFIG); the edge filter is off.
+A track belongs to the season if its peak vorticity lies in the season itself (ok_season): the
+season files include a buffer of SEASON_BUFFER_DAYS on both sides, and tracks peaking in the buffer
+belong to the previous or next season (they are kept there).
 
 Steps per file:
 1. load the raw tracks
-2. time range of the season = first and last time step of the season's .nc file
-   (replaces the hard-coded TIME_RANGE, handles leap years and test runs with --days)
+2. time range of the file = first and last time step of the season's .nc file (incl. buffer, used for
+   the truncation flags); season range = the season without buffer (seasons.core_range of the folder name)
 3. (disabled, kept as commented-out code) clip the global tracks to DOMAIN and that time range
    (validation.clip_to_domain), keeping every variable of the tracks (vo, raw_value, object_*)
-4. processing.postprocess_tracks with POSTPROCESS_CONFIG, time_range set per season
+4. processing.postprocess_tracks with POSTPROCESS_CONFIG, time_range and season_range set per season
 5. print the filter report and write the filtered tracks
 
 Examples:
@@ -39,6 +43,7 @@ import validation as val
 from configs import DOMAIN, POSTPROCESS_CONFIG, track_variable
 
 from regrid_era5 import RESOLUTIONS, res_tag, season_file
+from seasons import SEASON_BUFFER_DAYS, buffered_range, core_range, parse_season
 
 
 def season_time_range(season_dir, res):
@@ -88,6 +93,13 @@ def postprocess_season(season_dir, res, track_dir, overwrite=False):
 
     tracks = pst.load_tracks(raw)
     time_range = season_time_range(season_dir, res)
+    year, stype = parse_season(season_dir)
+    season_range = tuple(f"{t:%Y-%m-%d %H:%M}" for t in core_range(year, stype))
+    buf_start, buf_end = buffered_range(year, stype)
+    if pd.Timestamp(time_range[0]) > buf_start or pd.Timestamp(time_range[1]) < buf_end:
+        print(f"[post] WARNING {season_dir.name}: data file covers {time_range[0]} -> {time_range[1]}, "
+              f"not the {SEASON_BUFFER_DAYS}-day buffer {buf_start} -> {buf_end}; tracks crossing the season "
+              f"boundary may get a wrong peak (rebuild the season with ERA5_download_seasons.py)")
 
     # clipping to DOMAIN disabled: full-length tracks are kept (selection by peak and >= 4 points in REGION)
     # df = helpers.tracks_to_points(tracks)
@@ -97,7 +109,7 @@ def postprocess_season(season_dir, res, track_dir, overwrite=False):
     #     return None
     # clipped = points_to_tracks(df, tracks.metadata)  # vo already in s^-1
 
-    config = {**POSTPROCESS_CONFIG, "time_range": time_range}
+    config = {**POSTPROCESS_CONFIG, "time_range": time_range, "season_range": season_range}
     filtered, summary, _ = pro.postprocess_tracks(tracks, **config)
     print(pro.filter_report(summary).to_string())
 
@@ -105,7 +117,7 @@ def postprocess_season(season_dir, res, track_dir, overwrite=False):
     tmp = out.with_name(out.name + ".part")
     filtered.write(tmp, format="json")
     tmp.replace(out)
-    print(f"[post] OK {season_dir.name} {res_tag(res)} ({time_range[0]} -> {time_range[1]}): "
+    print(f"[post] OK {season_dir.name} {res_tag(res)} (peak in {season_range[0]} -> {season_range[1]}): "
           f"raw {len(tracks)} -> kept {len(filtered)} -> {out}")
     return len(filtered)
 
@@ -119,9 +131,9 @@ def main():
     if unknown:
         parser.error(f"unknown resolutions {unknown}, choose from {list(RESOLUTIONS)}")
 
-    dirs = season_dirs(args.out_root, args.seasons)
+    dirs = season_dirs(args.out_root, args.seasons, args.season_types)
     track_dir = get_track_dir(args)
-    shown = {k: v for k, v in POSTPROCESS_CONFIG.items() if k != "time_range"}
+    shown = {k: v for k, v in POSTPROCESS_CONFIG.items() if k not in ("time_range", "season_range")}
     print(f"Post-processing {len(dirs)} seasons x {len(args.resolutions)} resolutions with {shown}")
 
     failed = []

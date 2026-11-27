@@ -1,8 +1,8 @@
 """
-Conservative regridding of the merged ERA5 DJF season files with CDO.
+Regridding of the merged ERA5 season files (DJF, MAM, JJA, SON) with CDO.
 
-Every season folder <S><S+1>_DJF/ contains <S><S+1>_DJF_0p25.nc (pressure levels, kind="pl")
-and optionally <S><S+1>_DJF_sl_0p25.nc (single levels, kind="sl"), both on the original ERA5 grid.
+Every season folder <season>/ (e.g. 19981999_DJF, 1999_MAM, see seasons.py) contains <season>_0p25.nc
+(pressure levels, kind="pl") and optionally <season>_sl_0p25.nc (single levels, kind="sl"), both on the original ERA5 grid.
 regrid_season() adds one file per resolution in RESOLUTIONS for the chosen kind.
 Single-level files cover a limited area: they are regridded to the same global grids and
 then cut back to that area (sellonlatbox), so the grid points match the pressure-level grids.
@@ -15,7 +15,8 @@ The weights are stored in a _regrid_weights folder next to the season folders.
 
 Usage (standalone):
     python regrid_era5.py <out_root>                 # all season folders in out_root
-    python regrid_era5.py <out_root> --seasons 1998  # only 19981999_DJF
+    python regrid_era5.py <out_root> --seasons 1998  # only the 1998 seasons (19981999_DJF, 1998_MAM, ...)
+    python regrid_era5.py <out_root> --season-types MAM JJA
     python regrid_era5.py <out_root> --kind sl       # single-level files instead of 850 hPa
 """
 
@@ -155,18 +156,19 @@ def regrid_season(season_dir, resolutions=RESOLUTIONS, weights_dir=None, threads
 
 
 def main():
-    parser = argparse.ArgumentParser(description="Regrid ERA5 DJF season folders with cdo remapcon.")
-    parser.add_argument("out_root", type=Path, help="folder containing the <S><S+1>_DJF season folders")
-    parser.add_argument("--seasons", type=int, nargs="+", help="season start years (default: all folders)")
+    from seasons import SEASON_TYPES, season_dirs
+    parser = argparse.ArgumentParser(description="Regrid ERA5 season folders with cdo.")
+    parser.add_argument("out_root", type=Path, help="folder containing the season folders")
+    parser.add_argument("--seasons", type=int, nargs="+",
+                        help="season years, the December year for DJF (default: all folders)")
+    parser.add_argument("--season-types", nargs="+", choices=SEASON_TYPES, default=SEASON_TYPES,
+                        help="season types (default: all four)")
     parser.add_argument("--threads", type=int, default=4, help="cdo -P threads")
     parser.add_argument("--kind", choices=["pl", "sl"], default="pl",
                         help="pl: 850 hPa files (global), sl: single-level files (cut to configs.SL_AREA)")
     args = parser.parse_args()
 
-    if args.seasons:
-        dirs = [args.out_root / f"{s}{s + 1}_DJF" for s in args.seasons]
-    else:
-        dirs = sorted(d for d in args.out_root.glob("*_DJF") if d.is_dir())
+    dirs = [d for d in season_dirs(args.out_root, args.seasons, args.season_types) if d.is_dir()]
 
     area = None
     if args.kind == "sl":

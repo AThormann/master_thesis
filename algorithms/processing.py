@@ -151,7 +151,7 @@ def postprocess_tracks(tracks, region, domain, time_range=None,
                        rsplice_distance_degrees=10.0, rsplice_distance_mode="endpoint",
                        rsplice_cadence=np.timedelta64(6, "h"),
                        min_peak=None, max_frac_at_edge=0.5,
-                       edge_buffer_deg=2.5, drop_time_truncated=False):
+                       edge_buffer_deg=2.5, drop_time_truncated=False, season_range=None):
     """
     Filter raw Hodges tracks down to the storms we want in the region.
 
@@ -171,6 +171,10 @@ def postprocess_tracks(tracks, region, domain, time_range=None,
     max_frac_at_edge  : maximum fraction of points within `edge_buffer_deg` of the domain edge;
                         None disables the edge filter
     drop_time_truncated : also remove tracks touching the first/last time step
+    season_range      : (first, last) time of the season without buffer; keep only tracks whose peak
+                        (time_peak, maximum vo / minimum msl) lies in it (ok_season). None: no season criterion.
+                        Used with season files that have a buffer on both sides (time_range is then the
+                        buffered range of the file).
 
     Returns (filtered Tracks, summary DataFrame for all tracks, per-point DataFrame for all tracks)
     """
@@ -205,6 +209,9 @@ def postprocess_tracks(tracks, region, domain, time_range=None,
         summary["ok_time"] = ~(summary["starts_at_first_frame"] | summary["ends_at_last_frame"])
     else:
         summary["ok_time"] = True
+    if season_range is not None:
+        s0, s1 = pd.Timestamp(season_range[0]), pd.Timestamp(season_range[1])
+        summary["ok_season"] = summary["time_peak"].between(s0, s1)
 
     ok_cols = [c for c in summary.columns if c.startswith("ok_")]
     summary["keep"] = summary[ok_cols].all(axis=1)

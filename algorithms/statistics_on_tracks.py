@@ -96,7 +96,7 @@ def area_mask(lats, lons, area, radius_km):
             & (lons - dlon >= west) & (lons + dlon <= east))
 
 
-def sample_fields(points, ds, samples, radius_km, mask=None):
+def sample_fields(points, ds, samples, radius_km, mask=None, locate=()):
     """
     Sample (field, method, output) from ds at every point of the per-point DataFrame
     (columns time, lat, lon). Same methods as pystormtracker.sample.sample_tracks, but vectorised
@@ -104,6 +104,8 @@ def sample_fields(points, ds, samples, radius_km, mask=None):
       nearest       value at the nearest grid point
       mean/max/min  over all grid points within radius_km (great-circle distance)
     Points where mask is False get NaN. Pressure fields (PA_FIELDS) are returned in hPa.
+    locate : output names of max/min samples whose grid location is also returned, as
+             <output>_lat and <output>_lon (longitude in -180..180, like the tracks).
     Returns {output: values in the row order of points}.
     """
     for field, method, name in samples:
@@ -121,6 +123,10 @@ def sample_fields(points, ds, samples, radius_km, mask=None):
 
     n = len(points)
     out = {name: np.full(n, np.nan) for _, _, name in samples}
+    locate = [name for _, method, name in samples if name in set(locate) and method in ("max", "min")]
+    for name in locate:
+        out[f"{name}_lat"] = np.full(n, np.nan)
+        out[f"{name}_lon"] = np.full(n, np.nan)
     p_lat, p_lon = points["lat"].to_numpy(float), points["lon"].to_numpy(float)
     for i in range(n):
         if mask is not None and not mask[i]:
@@ -144,6 +150,11 @@ def sample_fields(points, ds, samples, radius_km, mask=None):
             elif in_circle.any():
                 vals = sub[in_circle]
                 out[name][i] = {"mean": np.nanmean, "max": np.nanmax, "min": np.nanmin}[method](vals)
+                if name in locate and not np.isnan(vals).all():
+                    k = np.nanargmax(vals) if method == "max" else np.nanargmin(vals)
+                    r, c = np.argwhere(in_circle)[k]
+                    out[f"{name}_lat"][i] = lats[rows[r]]
+                    out[f"{name}_lon"][i] = wrap_lon(lons[cols[c]], to="-180")
     for field, _, name in samples:
         if field in PA_FIELDS:
             out[name] = out[name] / 100.0   # Pa -> hPa
@@ -234,13 +245,14 @@ def sample_along_tracks(tracks, sl_ds, pl_ds=None, config=SAMPLE_CONFIG, area=SL
                       f"the single-level area {area}; their single-level samples are NaN")
 
     samples = list(config["samples"])
+    locate = config.get("locate") or ()
     sl = prepare_field(sl_ds, {s[0] for s in samples}, track_times)
-    sampled = sample_fields(points, sl, samples, radius, mask=inside)
+    sampled = sample_fields(points, sl, samples, radius, mask=inside, locate=locate)
 
     pl_samples = list(config.get("pl_samples") or []) if pl_ds is not None else []
     if pl_samples:
         pl = prepare_field(pl_ds, {s[0] for s in pl_samples}, track_times)
-        sampled.update(sample_fields(points, pl, pl_samples, radius))
+        sampled.update(sample_fields(points, pl, pl_samples, radius, locate=locate))
 
     for name, values in sampled.items():
         points[name] = values
@@ -249,8 +261,28 @@ def sample_along_tracks(tracks, sl_ds, pl_ds=None, config=SAMPLE_CONFIG, area=SL
     return add_track_kinematics(points)
 
 
-def summarise_points(points):
-    """One row per track: lifetime, genesis/lysis and extremes of the per-point columns."""
+def _point_at_extreme(points, g_index, col, agg="max"):
+    """Rows of points (one per track, index = track_id) where `col` has its max/min; NaN rows for all-NaN tracks."""
+    valid = points.dropna(subset=[col])
+    vg = valid.groupby("track_id", sort=False)[col]
+    idx = vg.idxmax() if agg == "max" else vg.idxmin()
+    rows = points.loc[idx.values].set_index("track_id")
+    return rows.reindex(g_index)
+
+
+def summarise_points(points, locate=None):
+    """
+    One row per track: lifetime, genesis/lysis and extremes of the per-point columns, plus
+
+      vo_peak_time, vo_peak_lat, vo_peak_lon         track point of the peak (maximum) tracked vorticity
+      <c>_time, <c>_track_lat, <c>_track_lon          track centre at the time of the maximum of <c>
+      <c>_lat, <c>_lon                                grid point of that maximum (from the points columns)
+
+    for every <c> in locate (default SAMPLE_CONFIG["locate"], e.g. ws10_max) that has the columns
+    <c>_lat/<c>_lon in points. Tracks without a valid <c> get NaN.
+    """
+    if locate is None:
+        locate = SAMPLE_CONFIG.get("locate") or ()
     g = points.groupby("track_id", sort=False)
     s = pd.DataFrame({
         "n_points": g.size(),
@@ -262,7 +294,27 @@ def summarise_points(points):
         "lon_lysis": g["lon"].last(),
     })
     s["duration_h"] = (s["end_time"] - s["start_time"]) / pd.Timedelta(hours=1)
-    skip = {"track_id", "time", "lat", "lon", "inside_area", "direction_deg"}
+
+    # location of the peak vorticity
+    if "vo" in points:
+        peak = _point_at_extreme(points, s.index, "vo", "max")
+        s["vo_peak_time"] = peak["time"]
+        s["vo_peak_lat"] = peak["lat"]
+        s["vo_peak_lon"] = peak["lon"]
+    # location of the maximum of the located samples (e.g. ws10_max)
+    loc_cols = set()
+    for c in locate:
+        if c not in points or f"{c}_lat" not in points:
+            continue
+        top = _point_at_extreme(points, s.index, c, "max")
+        s[f"{c}_time"] = top["time"]
+        s[f"{c}_track_lat"] = top["lat"]
+        s[f"{c}_track_lon"] = top["lon"]
+        s[f"{c}_lat"] = top[f"{c}_lat"]
+        s[f"{c}_lon"] = top[f"{c}_lon"]
+        loc_cols |= {f"{c}_lat", f"{c}_lon"}
+
+    skip = {"track_id", "time", "lat", "lon", "inside_area", "direction_deg"} | loc_cols
     for col in points.columns:
         if col in skip or not pd.api.types.is_numeric_dtype(points[col]):
             continue

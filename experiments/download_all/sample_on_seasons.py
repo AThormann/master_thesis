@@ -1,11 +1,13 @@
 """
-Sample ERA5 fields along every point of the filtered tracks of every DJF season and resolution.
+Sample ERA5 fields along every point of the filtered tracks of every season (DJF, MAM, JJA, SON) and resolution.
 
-Input:  <track_dir>/<S><S+1>_DJF/<S><S+1>_DJF_<res>_vo_filtered.trackjson   (from postprocess_on_seasons.py)
-        <out_root>/<S><S+1>_DJF/<S><S+1>_DJF_sl_<sample_res>.nc            single levels (u10, v10, msl)
-        <out_root>/<S><S+1>_DJF/<S><S+1>_DJF_0p25.nc                       850 hPa (u, v, vo)
-Output: <track_dir>/<S><S+1>_DJF/<S><S+1>_DJF_<res>_vo_points_sl<sample_res>.csv   one row per track point
-        <track_dir>/<S><S+1>_DJF/<S><S+1>_DJF_<res>_vo_summary_sl<sample_res>.csv  one row per track
+Input:  <track_dir>/<season>/<season>_<res>_vo_filtered.trackjson   (from postprocess_on_seasons.py)
+        <out_root>/<season>/<season>_sl_<sample_res>.nc            single levels (u10, v10, msl, gust)
+        <out_root>/<season>/<season>_0p25.nc                       850 hPa (u, v, vo)
+Output: <track_dir>/<season>/<season>_<res>_vo_points_sl<sample_res>.csv   one row per track point
+        <track_dir>/<season>/<season>_<res>_vo_summary_sl<sample_res>.csv  one row per track
+        (summary includes the location of the peak vorticity and of the maximum 10 m wind)
+<season> = 19981999_DJF, 1999_MAM, 1999_JJA, 1999_SON (seasons.py)
 
 What is sampled is set by SAMPLE_CONFIG in algorithms/configs.py (statistics_on_tracks.sample_along_tracks).
 --sample-res other than 0.25 regrids the single-level file first (cdo remapcon, regrid_era5.py), so the
@@ -84,7 +86,7 @@ def main():
         if r not in RESOLUTIONS:
             parser.error(f"unknown resolution {r}, choose from {list(RESOLUTIONS)}")
 
-    dirs = season_dirs(args.out_root, args.seasons)
+    dirs = season_dirs(args.out_root, args.seasons, args.season_types)
     track_dir = get_track_dir(args)
     print(f"Sampling {len(dirs)} seasons x {len(args.resolutions)} track resolutions, "
           f"fields on {res_tag(args.sample_res)}, {SAMPLE_CONFIG}")

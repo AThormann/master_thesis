@@ -1,32 +1,36 @@
 """
-Download ERA5 (6-hourly) and build one file per DJF season, for two datasets:
-    pl: 850 hPa u, v and vorticity (global)          -> <out_root>/<S><S+1>_DJF/<S><S+1>_DJF_0p25.nc
-    sl: 10 m u, v and mean sea level pressure        -> <out_root>/<S><S+1>_DJF/<S><S+1>_DJF_sl_0p25.nc
+Download ERA5 (6-hourly) and build one file per season (DJF, MAM, JJA, SON), for two datasets:
+    pl: 850 hPa u, v and vorticity (global)          -> <out_root>/<season>/<season>_0p25.nc
+    sl: 10 m u, v, mean sea level pressure and gust  -> <out_root>/<season>/<season>_sl_0p25.nc
         (limited area configs.SL_AREA, used for sampling along the tracks)
 
-Season S = December of year S + January and February of year S+1.
+Season folders (seasons.py): 19981999_DJF (Dec 1998 + Jan/Feb 1999), 1999_MAM, 1999_JJA, 1999_SON.
+Every season file covers the season plus SEASON_BUFFER_DAYS (configs.py, 10 days) on both sides,
+e.g. 19981999_DJF: 1998-11-21 00:00 -> 1999-03-10 18:00. The buffer lets the tracker follow storms
+across the season boundary, so a storm can be assigned to the season holding its peak vorticity
+(postprocess_on_seasons.py). The sl files get the same buffer, so every point of a kept track can be sampled.
 The pl files are regridded to the resolutions in regrid_era5.RESOLUTIONS (sl only with --regrid-sl).
 
 Steps:
-1. Download one request per year (only the months a season still needs) to <out_root>/raw/.
+1. Download one request per dataset and month (only the days the seasons still need) to <out_root>/raw/.
+   Monthly requests follow the ERA5 storage on the CDS (fastest) and keep each file small.
    Several requests run at the same time, as the CDS time is mostly queueing.
-2. Merge Dec S + Jan/Feb S+1, check the first/last timestep and write the season file.
-   Yearly raw files are deleted as soon as both seasons using them are written.
+2. Merge the months of each season (with the buffer), check every time step and write the season file.
+   Raw months are deleted as soon as every season of the run that uses them is written.
 3. Regrid each season (regrid_era5.regrid_season).
 
 Already downloaded / merged / regridded files are skipped, so a run can be restarted.
 
 Examples:
-    # test on a small subset (two seasons, two days per month)
-    python ERA5_download_seasons.py --first-season 1998 --last-season 1999 --days 1 2 --out-root /tmp/era5_test
-    # everything
+    # test on a small subset (MAM 1998, days 1, 2 and 25 of each month)
+    python ERA5_download_seasons.py --first-season 1998 --last-season 1998 --season-types MAM --days 1 2 25 --out-root /tmp/era5_test
+    # everything (all four seasons)
     python ERA5_download_seasons.py --out-root /Volumes/<drive>/ERA5_pressure_levels
     # only the single levels for seasons that already have the 850 hPa files
     python ERA5_download_seasons.py --datasets sl --out-root /Volumes/<drive>/ERA5_pressure_levels
 """
 
 import argparse
-import calendar
 import sys
 import time
 from concurrent.futures import ThreadPoolExecutor, as_completed
@@ -36,6 +40,8 @@ import pandas as pd
 import xarray as xr
 
 from regrid_era5 import NATIVE_RES, RESOLUTIONS, regrid_season, season_file
+from seasons import (HOURS, SEASON_BUFFER_DAYS, SEASON_TYPES, buffered_range, months_needed,
+                     season_list, season_name, season_times)
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[2] / "algorithms"))
 from configs import SL_AREA
@@ -65,63 +71,75 @@ DATASETS = {
                         "area": SL_AREA},
                raw="era5_sl"),
 }
-HOURS = [0, 6, 12, 18]
 TIME = "valid_time"
+
+
+def file_times(path):
+    with xr.open_dataset(path) as ds:
+        return pd.DatetimeIndex(ds[TIME].values)
+
+
+def season_out(out_root, year, stype, key="pl"):
+    return season_file(Path(out_root) / season_name(year, stype), NATIVE_RES, key)
 
 
 # DOWNLOAD
 
-def raw_file(out_root, year, key="pl"):
-    return Path(out_root) / "raw" / f"{DATASETS[key]['raw']}_{year}.nc"
+def raw_file(out_root, year, month, key="pl"):
+    return Path(out_root) / "raw" / f"{DATASETS[key]['raw']}_{year}_{month:02d}.nc"
 
 
-def needed_months(out_root, seasons, key="pl"):
-    """{year: months} still needed to build the seasons whose 0.25 degree file of this dataset does not exist yet."""
+def needed_months(out_root, seasons, days, key="pl"):
+    """{(year, month): days} still needed to build the seasons whose 0.25 degree file of this dataset does not exist yet."""
     months = {}
-    for s in seasons:
-        if season_file(Path(out_root) / f"{s}{s + 1}_DJF", NATIVE_RES, key).exists():
+    for y, t in seasons:
+        if season_out(out_root, y, t, key).exists():
             continue
-        months.setdefault(s, set()).add(12)
-        months.setdefault(s + 1, set()).update([1, 2])
-    return {y: sorted(m) for y, m in sorted(months.items())}
+        for ym, d in months_needed(y, t, days).items():
+            months.setdefault(ym, set()).update(d)
+    return {ym: sorted(d) for ym, d in sorted(months.items())}
 
 
-def download_year(year, months, days, out_root, key="pl", retries=3):
-    """Download one year (the given months) of one dataset to raw/<prefix>_<year>.nc. Skips if it exists."""
-    target = raw_file(out_root, year, key)
+def download_month(year, month, days, out_root, key="pl", retries=3):
+    """
+    Download the given days of one month of one dataset to raw/<prefix>_<year>_<month>.nc.
+    Skips if the file exists and holds all requested days (e.g. a kept raw file from an earlier run).
+    """
+    target = raw_file(out_root, year, month, key)
+    wanted = pd.DatetimeIndex([pd.Timestamp(year, month, d, h) for d in days for h in HOURS])
     if target.exists():
-        print(f"[download] SKIP {key} year {year} (exists)")
-        return target
+        if wanted.difference(file_times(target)).empty:
+            print(f"[download] SKIP {key} {year}-{month:02d} (exists)")
+            return target
+        print(f"[download] {key} {year}-{month:02d}: existing raw file lacks some days, downloading again")
     import cdsapi
     target.parent.mkdir(parents=True, exist_ok=True)
     part = target.with_suffix(".nc.part")
 
-    request = dict(DATASETS[key]["request"],
-                   year=[str(year)],
-                   month=[f"{m:02d}" for m in months],
+    request = dict(DATASETS[key]["request"], year=[str(year)], month=[f"{month:02d}"],
                    day=[f"{d:02d}" for d in days])
 
     for attempt in range(1, retries + 1):
-        print(f"[download] START {key} year {year} (months {request['month']}, attempt {attempt})")
+        print(f"[download] START {key} {year}-{month:02d} (days {days[0]}-{days[-1]}, {len(days)} days, attempt {attempt})")
         try:
             client = cdsapi.Client(quiet=True, progress=False)
             client.retrieve(DATASETS[key]["dataset"], request).download(str(part))
-            part.rename(target)
-            print(f"[download] OK {key} year {year} -> {target} ({target.stat().st_size / 1e9:.2f} GB)")
+            part.replace(target)
+            print(f"[download] OK {key} {year}-{month:02d} -> {target} ({target.stat().st_size / 1e9:.2f} GB)")
             return target
         except Exception as e:
-            print(f"[download] FAILED {key} year {year} (attempt {attempt}): {e}")
+            print(f"[download] FAILED {key} {year}-{month:02d} (attempt {attempt}): {e}")
             part.unlink(missing_ok=True)
             if attempt < retries:
                 time.sleep(60 * attempt)
-    raise RuntimeError(f"Download of {key} year {year} failed after {retries} attempts")
+    raise RuntimeError(f"Download of {key} {year}-{month:02d} failed after {retries} attempts")
 
 
-def download_all(tasks, days, out_root, workers):
-    """Download all (key, year, months) tasks concurrently. Returns the (key, year) pairs that failed."""
+def download_all(tasks, out_root, workers):
+    """Download all (key, (year, month), days) tasks concurrently. Returns the (key, year, month) that failed."""
     failed = []
     with ThreadPoolExecutor(max_workers=workers) as pool:
-        futures = {pool.submit(download_year, y, m, days, out_root, key): (key, y) for key, y, m in tasks}
+        futures = {pool.submit(download_month, y, m, d, out_root, key): (key, y, m) for key, (y, m), d in tasks}
         for f in as_completed(futures):
             try:
                 f.result()
@@ -133,30 +151,31 @@ def download_all(tasks, days, out_root, workers):
 
 # MERGE
 
-def expected_times(season, days):
-    """All 6-hourly timesteps of the season, restricted to the requested days."""
-    times = []
-    for year, month in [(season, 12), (season + 1, 1), (season + 1, 2)]:
-        n_days = calendar.monthrange(year, month)[1]
-        for d in days:
-            if d <= n_days:
-                times += [pd.Timestamp(year, month, d, h) for h in HOURS]
-    return pd.DatetimeIndex(times)
+def check_existing(path, year, stype, days):
+    """Warn if an existing season file does not have the expected (buffered) time steps, e.g. an old DJF file."""
+    times = file_times(path)
+    expected = season_times(year, stype, days)
+    if not times.equals(expected):
+        print(f"[merge] WARNING {path.name} exists but has {len(times)} steps {times[0]} -> {times[-1]}, "
+              f"expected {len(expected)} steps {expected[0]} -> {expected[-1]} "
+              f"(with the {SEASON_BUFFER_DAYS}-day buffer). Delete the season's files (and its tracks) to rebuild it.")
 
 
-def merge_season(season, days, out_root, key="pl"):
-    """Combine Dec <season> and Jan/Feb <season+1> of one dataset into one checked season file."""
-    out = season_file(Path(out_root) / f"{season}{season + 1}_DJF", NATIVE_RES, key)
+def merge_season(year, stype, days, out_root, key="pl"):
+    """Combine the months of one buffered season of one dataset into one checked season file."""
+    out = season_out(out_root, year, stype, key)
+    name = season_name(year, stype)
     if out.exists():
-        print(f"[merge] SKIP {key} {season}/{season + 1} (exists)")
+        print(f"[merge] SKIP {key} {name} (exists)")
+        check_existing(out, year, stype, days)
         return out
     out.parent.mkdir(parents=True, exist_ok=True)
 
-    with xr.open_dataset(raw_file(out_root, season, key)) as ds_dec, \
-         xr.open_dataset(raw_file(out_root, season + 1, key)) as ds_jf:
-        dec = ds_dec.sel({TIME: ds_dec[TIME].dt.month == 12})
-        jf = ds_jf.sel({TIME: ds_jf[TIME].dt.month.isin([1, 2])})
-        ds = xr.concat([dec, jf], dim=TIME).sortby(TIME)
+    expected = season_times(year, stype, days)
+    start, end = expected[0], expected[-1]
+    parts = [xr.open_dataset(raw_file(out_root, y, m, key)) for y, m in months_needed(year, stype, days)]
+    try:
+        ds = xr.concat([p.sel({TIME: slice(start, end)}) for p in parts], dim=TIME).sortby(TIME)
         ds = ds.drop_vars([c for c in ("expver", "number") if c in ds.variables])
         # make sure cdo recognises the grid and does not look for the dropped variables
         for v in ds.variables:
@@ -164,31 +183,32 @@ def merge_season(season, days, out_root, key="pl"):
         ds["latitude"].attrs.setdefault("units", "degrees_north")
         ds["longitude"].attrs.setdefault("units", "degrees_east")
 
-        # check first/last timestep (Feb 28 or 29) and that no timestep is missing
+        # check first/last time step and that no time step is missing or duplicated
         times = pd.DatetimeIndex(ds[TIME].values)
-        expected = expected_times(season, days)
         if not times.equals(expected):
             missing = expected.difference(times)
             raise ValueError(
-                f"Season {season}/{season + 1} ({key}): got {len(times)} steps {times[0]} -> {times[-1]}, "
+                f"Season {name} ({key}): got {len(times)} steps {times[0]} -> {times[-1]}, "
                 f"expected {len(expected)} steps {expected[0]} -> {expected[-1]} "
                 f"({len(missing)} missing, first: {list(missing[:3])})")
 
         encoding = {v: {"zlib": True, "complevel": 1} for v in ds.data_vars}
         tmp = out.with_suffix(".part.nc")
         ds.to_netcdf(tmp, encoding=encoding)
+    finally:
+        for p in parts:
+            p.close()
     tmp.rename(out)
-    print(f"[merge] OK {key} {season}/{season + 1}: {times[0]:%Y-%m-%dT%H} -> {times[-1]:%Y-%m-%dT%H} "
-          f"({len(times)} steps) -> {out}")
+    print(f"[merge] OK {key} {name}: {times[0]:%Y-%m-%dT%H} -> {times[-1]:%Y-%m-%dT%H} "
+          f"({len(times)} steps, incl. {SEASON_BUFFER_DAYS}-day buffer) -> {out}")
     return out
 
 
-def remove_unused_raw(out_root, seasons, done, key="pl"):
-    """Delete raw year Y once season Y-1 (uses Jan/Feb) and season Y (uses Dec) are both written."""
-    for f in sorted((Path(out_root) / "raw").glob(f"{DATASETS[key]['raw']}_*.nc")):
-        year = int(f.stem.split("_")[-1])
-        users = [s for s in (year - 1, year) if s in seasons]
-        if all(s in done for s in users):
+def remove_unused_raw(out_root, users, done, key="pl"):
+    """Delete a raw month once every season of this run that uses it is written. users: {(y, m): {seasons}}"""
+    for f in sorted((Path(out_root) / "raw").glob(f"{DATASETS[key]['raw']}_*_*.nc")):
+        y, m = (int(x) for x in f.stem.split("_")[-2:])
+        if users.get((y, m)) and users[(y, m)] <= done:
             f.unlink()
             print(f"[cleanup] removed {f.name}")
 
@@ -196,34 +216,45 @@ def remove_unused_raw(out_root, seasons, done, key="pl"):
 # MAIN
 
 def main():
-    parser = argparse.ArgumentParser(description="Download ERA5 (850 hPa and single levels) and build DJF season files.")
+    parser = argparse.ArgumentParser(description="Download ERA5 (850 hPa and single levels) and build season files.")
     parser.add_argument("--out-root", type=Path, default=DEFAULT_OUT_ROOT,
                         help="folder for the season folders (use an external drive for the full range)")
-    parser.add_argument("--first-season", type=int, default=1940, help="first season (December year)")
-    parser.add_argument("--last-season", type=int, default=2025, help="last season (December year)")
+    parser.add_argument("--first-season", type=int, default=1940, help="first season year (December year for DJF)")
+    parser.add_argument("--last-season", type=int, default=2025, help="last season year (December year for DJF)")
+    parser.add_argument("--season-types", nargs="+", choices=SEASON_TYPES, default=SEASON_TYPES,
+                        help="season types to build (default: all four)")
     parser.add_argument("--days", type=int, nargs="+", default=list(range(1, 32)),
                         help="days of the month to download (use a few for testing)")
     parser.add_argument("--workers", type=int, default=4, help="number of CDS requests at the same time")
     parser.add_argument("--threads", type=int, default=4, help="cdo -P threads for regridding")
     parser.add_argument("--datasets", nargs="+", choices=list(DATASETS), default=list(DATASETS),
-                        help="pl: 850 hPa u, v, vo (global), sl: 10 m u, v and msl (configs.SL_AREA)")
+                        help="pl: 850 hPa u, v, vo (global), sl: 10 m u, v, msl and gust (configs.SL_AREA)")
     parser.add_argument("--regrid", action=argparse.BooleanOptionalAction, default=True,
                         help="regrid the 850 hPa files of every season after merging")
     parser.add_argument("--regrid-sl", action="store_true",
                         help="also regrid the single-level files (cut back to configs.SL_AREA)")
-    parser.add_argument("--keep-raw", action="store_true", help="do not delete the yearly raw files")
+    parser.add_argument("--keep-raw", action="store_true", help="do not delete the monthly raw files")
     args = parser.parse_args()
 
     out_root = args.out_root
-    seasons = list(range(args.first_season, args.last_season + 1))
+    seasons = season_list(range(args.first_season, args.last_season + 1), args.season_types)
     days = sorted(set(args.days))
     out_root.mkdir(parents=True, exist_ok=True)
-    print(f"Seasons {seasons[0]}/{seasons[0] + 1} -> {seasons[-1]}/{seasons[-1] + 1}, "
-          f"days {days[0]}-{days[-1]} ({len(days)}), output in {out_root}")
+    first, last = seasons[0], seasons[-1]
+    print(f"{len(seasons)} seasons {season_name(*first)} -> {season_name(*last)} "
+          f"({buffered_range(*first)[0]:%Y-%m-%d} -> {buffered_range(*last)[1]:%Y-%m-%d} with the "
+          f"{SEASON_BUFFER_DAYS}-day buffer), days {days[0]}-{days[-1]} ({len(days)}), output in {out_root}")
 
     # 1. download
-    tasks = [(key, y, m) for key in args.datasets for y, m in needed_months(out_root, seasons, key).items()]
-    failed_downloads = download_all(tasks, days, out_root, args.workers)
+    tasks = [(key, ym, d) for key in args.datasets for ym, d in needed_months(out_root, seasons, days, key).items()]
+    print(f"[download] {len(tasks)} monthly requests")
+    failed_downloads = download_all(tasks, out_root, args.workers)
+
+    # which seasons of this run use each raw month (for the cleanup)
+    users = {}
+    for s in seasons:
+        for ym in months_needed(*s, days):
+            users.setdefault(ym, set()).add(s)
 
     # 2. merge (+ 3. regrid), per dataset
     regrid = {"pl": args.regrid, "sl": args.regrid_sl}
@@ -231,28 +262,27 @@ def main():
     done = {key: set() for key in args.datasets}
     failed = []
     for s in seasons:
-        season_dir = out_root / f"{s}{s + 1}_DJF"
+        season_dir = out_root / season_name(*s)
         for key in args.datasets:
-            if (key, s) in failed_downloads or (key, s + 1) in failed_downloads:
-                failed.append(f"{key} {s}")
+            if any((key, y, m) in failed_downloads for y, m in months_needed(*s, days)):
+                failed.append(f"{key} {season_name(*s)}")
                 continue
             try:
-                merge_season(s, days, out_root, key)
+                merge_season(*s, days, out_root, key)
                 done[key].add(s)
                 if not args.keep_raw:
-                    remove_unused_raw(out_root, seasons, done[key], key)
+                    remove_unused_raw(out_root, users, done[key], key)
                 if regrid[key]:
                     regrid_season(season_dir, threads=args.threads, kind=key, area=area[key])
             except Exception as e:
-                print(f"[error] {key} season {s}/{s + 1}: {e}")
-                failed.append(f"{key} {s}")
+                print(f"[error] {key} season {season_name(*s)}: {e}")
+                failed.append(f"{key} {season_name(*s)}")
 
     for key in args.datasets:
-        n_res = len(RESOLUTIONS) if regrid[key] else 1
-        n_files = sum(season_file(out_root / f"{s}{s + 1}_DJF", r, key).exists()
-                      for s in done[key] for r in (RESOLUTIONS if regrid[key] else [NATIVE_RES]))
+        res_list = RESOLUTIONS if regrid[key] else [NATIVE_RES]
+        n_files = sum(season_file(out_root / season_name(*s), r, key).exists() for s in done[key] for r in res_list)
         print(f"[done] {key}: {len(done[key])} seasons, {n_files} files in {out_root} "
-              f"(expected {len(done[key]) * n_res})")
+              f"(expected {len(done[key]) * len(res_list)})")
     if failed:
         print(f"[done] FAILED: {failed}  (failed downloads: {failed_downloads}) - rerun to retry")
 
